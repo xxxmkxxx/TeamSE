@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="277px" height="160px" viewBox="0 0 277 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Slice</title>
+    <defs>
+        <circle id="path-1" cx="276.5" cy="276" r="268.5"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Oval" fill="#142142" xlink:href="#path-1"></use>
+        <circle id="Oval-Copy" fill="#111B33" mask="url(#mask-2)" cx="277" cy="276.5" r="256"></circle>
+    </g>
+</svg>
