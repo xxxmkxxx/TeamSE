@@ -5,7 +5,7 @@
 <head>
      <meta charset="utf-8">
      <title> </title>
-     <link href="registration.css" rel="stylesheet">
+     <link href="/Users/demydkourij/TeamSE/Application/Src/Css/registration.css" rel="stylesheet">
 </head>
 <!-- 
 <div class="vl"></div>
@@ -33,7 +33,7 @@
  <body>
 
 	<header>
-		<span class = "header_minilogo"> <img src="images/minilogo.png"> </span>
+		<span class = "header_minilogo"> <img src="/Users/demydkourij/TeamSE/Application/Src/images/minilogo.png"> </span>
 		<span class = "header_minilogo"> POLARGAME </span>
 	</header>
 
@@ -41,14 +41,21 @@
 		<div class = "main_form_reg"> 
 			<div class = "main_form_reg_name"> Регистрация </div>
 
-			<div class = "main_form_reg_fields_names"> Логин <span class = "sign_required_field"> * </span> </div>
-			<input type="text" id = "reg_form_login" class = "main_form_reg_fields" size="40">
-			<div class = "main_form_reg_fields_names"> Email <span class = "sign_required_field"> * </span></div>
-			<input type="text" id = "reg_form_mail" class = "main_form_reg_fields" size="40">
-			<div class = "main_form_reg_fields_names"> Пароль <span class = "sign_required_field"> * </span></div>
-			<input type="text" id = "reg_form_password" class = "main_form_reg_fields" size="40">
 
-			<button name = "button_create_account" id = "button_create_account" class ="button_create_account"> создать аккаунт </button>
+
+			<div class = "main_form_reg_fields_names"> Логин <span class = "sign_required_field"> * </span> </div>
+			<form action="temp.php"><input type="text" id = "reg_form_login" class = "main_form_reg_fields" size="40"></form>
+
+
+			<div class = "main_form_reg_fields_names"> Email <span class = "sign_required_field"> * </span></div>
+			<form action="temp.php"> <input type="text" id = "reg_form_mail" class = "main_form_reg_fields" size="40"></form>
+
+
+			<div class = "main_form_reg_fields_names"> Пароль <span class = "sign_required_field"> * </span></div>
+			<form action="temp.php"> <input type="text" id = "reg_form_password" class = "main_form_reg_fields" size="40"> </form>
+
+
+			<form action="temp.php"> <button name = "button_create_account" id = "button_create_account" class ="button_create_account"> создать аккаунт </button> <form action="temp.php">
 		</div>
 		
 	</main>

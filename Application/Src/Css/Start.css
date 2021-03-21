@@ -1,15 +1,15 @@
 
 @font-face {
     font-family: 'MainBoldFont';
-	src: url(fonts/15352.ttf);}
+	src: url(/Users/demydkourij/TeamSE/Application/Src/fonts/15352.ttf);}
 
 @font-face {
     font-family: 'ButtonsFont';
-	src: url(fonts/test.ttf);}	
+	src: url(/Users/demydkourij/TeamSE/Application/Src/fonts/test.ttf);}	
 
 @font-face {
     font-family: 'logofont';
-	src: url(fonts/logofont.otf);}
+	src: url(/Users/demydkourij/TeamSE/Application/Src/fonts/logofont.otf);}
 
 *{
     margin: 0;
@@ -97,6 +97,10 @@ main{
 	font-family: MainBoldFont;
 }
 
+.main_column_1_in_fields{
+	display: inline-flex;
+}
+
 
 #registration_button{
 	width: 16vw;
@@ -114,6 +118,7 @@ main{
 	height: 1vw;
 	border-radius: 6px;
 	padding: 1vw;
+	margin-right: 0.5vw;
 	font-size: 1.5vw;
 	border: none;
 }
