@@ -3,9 +3,10 @@
 <html lang="ru">
 
 <head>
-     <meta charset="utf-8">
-     <title> </title>
-     <link href="../Css/sign_in.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<title> </title>
+	<link href="../Css/sign_in.css" rel="stylesheet">
+	<script src="../JavaScript/jquery-3.6.0.min.js"></script>
 </head>
 <!-- 
 <div class="vl"></div>
@@ -29,6 +30,7 @@
 
  -->
  <body>
+	<script src="../JavaScript/login.js"></script>
 
 	<header>
 		<span class = "header_minilogo"> <img src="../images/minilogo.png"> </span>
@@ -36,25 +38,25 @@
 	</header>
 
 	<main>
-		<div class = "main_form_reg"> 
-			<div class = "main_form_reg_name"> Вход </div>
+		<script src="../JavaScript/login.js"></script>
 
+		<form id="sing_in">
+			<div class = "main_form_reg">
+				<div class = "main_form_reg_name" id="main_form_reg_name"> Вход </div>
 
-			<div class = "main_form_reg_fields_names"> Логин </div>
-			<form action="temp.php"> <input type="text" id = "sign_form_login" class = "main_form_reg_fields" size="40"> </form>
+				<div class = "main_form_reg_fields_names"> Логин </div>
+				<input type="text" name = "sign_form_login" class = "main_form_reg_fields" size="40">
 
+				<div class = "main_form_reg_fields_names"> Пароль </div>
+				<input type="password" name = "sign_form_password" class = "main_form_reg_fields" size="40">
 
-			<div class = "main_form_reg_fields_names"> Пароль </div>
-			<form action="temp.php"> <input type="text" id = "sign_form_password" class = "main_form_reg_fields" size="40"> </form>
+				<button name = "button_sign_in" id = "button_sign_in" class ="button_create_account" type="submit"> войти </button>
 
-
-			<form action="temp.php"> <button name = "button_sign_in" id = "button_sign_in" class ="button_create_account"> войти </button> </form>
-
-
-			<form action="temp.php"> <div class = "forgot_password" align="right"> Забыли пароль? </div> </form>
-		</div>
-		
+				<div class = "forgot_password" align="right"> Забыли пароль? </div>
+			</div>
+		</form>
 	</main>
+
 
 </body>
 
