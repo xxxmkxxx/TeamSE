@@ -1,15 +1,15 @@
 
 @font-face {
     font-family: 'MainBoldFont';
-	src: url(/Users/demydkourij/TeamSE/Application/Src/fonts/15352.ttf);}
+	src: url(../fonts/15352.ttf);}
 
 @font-face {
     font-family: 'ButtonsFont';
-	src: url(/Users/demydkourij/TeamSE/Application/Src/fonts/test.ttf);}	
+	src: url(../fonts/test.ttf);}
 
 @font-face {
     font-family: 'logofont';
-	src: url(/Users/demydkourij/TeamSE/Application/Src/fonts/logofont.otf);}
+	src: url(../fonts/logofont.otf);}
 
 *{
     margin: 0;
