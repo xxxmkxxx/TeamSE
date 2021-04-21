@@ -18,7 +18,7 @@
 body{
 	display: flex;
 	flex-direction: column;
-	overflow: scroll;
+	overflow: hidden;
 	min-width: 900px;
 }
 
