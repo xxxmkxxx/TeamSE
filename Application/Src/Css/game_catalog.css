@@ -1,0 +1,394 @@
+@font-face {
+    font-family: 'MainBoldFont';
+	src: url(../fonts/15352.ttf);}
+
+@font-face {
+    font-family: 'ButtonsFont';
+	src: url(../fonts/test.ttf);}
+
+@font-face {
+    font-family: 'logofont';
+	src: url(../fonts/logofont.otf);}
+
+@font-face {
+    font-family: 'bold';
+	src: url(../fonts/16683.ttf);}	
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	min-width: 900px;
+}
+
+header{
+	height: 12vh;
+	width: 100vw;
+	background-color: #142142;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	z-index: 2;
+}
+
+.header_minilogo{
+	color: white;
+	font-family: logofont;
+	padding: 0.7vw;
+	font-size: 3.5vw;
+}
+
+.header_minilogo > img{
+	width: 3vw;
+	padding-left: 3.5vw;
+}
+
+.menu_icon > img{
+	height: 6vh;
+	margin-left: 62vw;
+}
+
+.profile{
+	font-size: 1.4vw;
+	font-family: ButtonsFont;
+	color: #b8d9ff;
+	margin-left: 1vw;
+}
+
+main{
+	background-color: #111b33;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100vw;
+}
+
+.filters_row{
+	display: inline-flex;
+	flex-direction: row;
+	height: 15vh;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.LargeText{
+	font-family: ButtonsFont;
+	font-size: 1.8vw;
+	color: white;
+	margin-left: 8.2vw;
+}
+
+.find_game_inp{
+	border-radius: 10px;
+	height: 2vw;
+	width: 20vw;
+	margin-left: 1.5vw;
+	padding-left: 9px;
+	font-size: 1.4vw;
+}
+
+.find_icon > img{
+	width: 1.8vw;
+	margin-left: 0.5vw;
+}
+
+.filter_icon > img{
+	width: 2.3vw;
+	margin-left: 1.5vw;
+}
+
+.filters{
+	position: absolute;
+	width: 29vw;
+	/*height: 35vw;*/
+	background-color: #5A74F9;
+	margin-left: 54vw;
+	margin-top: 5vh;
+	z-index: 2;
+	border-radius: 10px;
+	opacity: 0;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 1vw;
+}
+
+.filters_block{   
+	min-height: 2vw;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+}
+
+.filter_categories{
+	font-family: ButtonsFont;
+	font-size: 1.5vw;
+	color: #111b33;
+	margin-right: 2vw;
+	margin-left: 2vw;
+}
+
+.take_categ{
+	display: flex;
+	flex-direction: row;
+}
+
+.categ{
+	width: 14vw;
+	margin-top: 2vh;
+	margin-left: 0.5vw;
+	display: flex;
+	flex-direction: column;
+}
+ 
+.categ_item{
+	display: flex;
+	flex-direction: row;
+	font-size: 2vw;
+	font-family: bold;
+	font-size: 1.2vw;
+	color: white;
+	font-weight: bold;
+	margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+	/*background-color: white;*/
+	border-radius: 10px;
+	height: 2vw;
+}
+
+.send_filters{
+width: 11.5vw; 
+font-size: 1.1vw;
+margin-left: 1vw;
+padding: 0.2vw;
+font-family: MainBoldFont;
+border: none;
+
+}
+
+
+input[type=checkbox] {
+    width: 1.4vw;
+    height: 1.4vw;
+    margin-right: 0.8vh;
+}
+
+.popular_games_row{    /* менять значение display на none */
+	display: inline-flex;
+	/*display: none;*/
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 8.2vw;
+	margin-right: 8.2vw;
+	margin-bottom: 8vh;
+}
+
+.pop_game >img {
+	width: 19vw;
+	height: 19vw;
+	border-radius: 30px;
+	margin-right: 2.4vw;
+	box-shadow: 0vw 0.8vw 0vw 0vw #070E1C;
+}
+
+.menu{   		/* менять значение display на none */
+	/*display: inline-flex;*/
+	display: none;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #42348C;
+	min-height: 3vw;
+	width: 100vw;
+}
+
+.menu_categories{
+	font-family: ButtonsFont;
+	font-size: 1.3vw;
+	color: white;
+	padding-left: 10vw;
+	margin-right: 10vw;
+}
+
+.games_block{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-left: 8.2vw;
+	margin-right: 8.2vw;
+	align-items: center;
+}
+
+.games_row{
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 83vw;
+}
+
+.game > img{
+	width: 11.5vw;
+	height: 11.5vw;
+	border-radius: 27px;
+}
+
+.game > img:hover{
+	opacity: 0;
+	transition: 0s;
+}
+
+[data-tooltip] {
+    position: relative; /* Относительное позиционирование */ 
+   }
+
+   [data-tooltip]::after {
+    content: attr(data-tooltip); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    width: 9.4vw;/* Ширина подсказки */
+    height: 9.4vw;
+	border-radius: 27px;
+    left: 0vw; 
+    top: 0vw;
+    background: #78A8EB; /* Синий цвет фона */
+    color: #111b33 ; /* Цвет текста */
+    padding: 0.5em; /* Поля вокруг текста */
+    pointer-events: none; /* Подсказка */
+    opacity: 0; /* Подсказка невидима */
+    transition: 0s; /* Время появления подсказки */
+    word-wrap: break-word;
+	border-radius:10px;
+	font-size: 1.2vw;
+	font-weight: bold;
+	font-family: MainBoldFont;
+
+   } 
+
+   [data-tooltip]:hover::after {
+    opacity: 1; /* Показываем подсказку */
+    border-radius: 27px;
+    padding: 1vw;
+   }
+
+
+
+@media (max-width : 900px) {
+	header{
+		max-width: 900px;
+		overflow-x: auto;
+	}
+
+	.header_minilogo{
+		font-size: 5vw;
+	}
+	.header_minilogo > img {
+		width: 5vw;
+	}
+
+	.menu_icon > img{
+	height: 5vh;
+	margin-left: 48vw;
+	}
+
+	.profile{
+		font-size: 1.7vw;
+		margin-left: 1vw;
+	}
+
+	.menu{
+		height: 4vw;
+	}
+
+	.menu_categories{
+		font-size: 1.8vw;
+		margin-right: 7vw;
+	}
+
+	.filter_categories{
+		 font-weight: bold;
+	}
+
+	[data-tooltip]::after {
+		font-size: 1.5vw;
+	}
+
+	.game{
+		border-radius: 10px;
+	}
+
+	.filters{
+		margin-left: 51vw;
+		width: 32vw;
+
+	}
+
+	.LargeText{
+		display: none;
+	}
+
+	.find_game_inp{
+		margin-left: 8.2vw;
+		height: 3vh;
+		width: 30vw;
+	}
+
+	.filter_categories{
+		font-size: 2vw;
+		margin-right: 1.5vw;
+		margin-left: 1.5vw;	
+	}
+
+	.categ{
+		width: 16vw;
+	}
+
+	.categ_item{
+		font-size: 1.5vw;
+		margin-bottom: 1vw;
+	}
+
+	.send_filters{
+	width: 13.5vw; 
+	font-size: 1.3vw;
+	margin-left: 1vw;
+	padding: 0.2vw;
+	font-family: MainBoldFont;
+	}
+
+	.filter_icon > img{
+	width: 2.3vw;
+	margin-left: 1.5vw;
+	}
+
+	.find_icon > img{
+		margin-left: 1.5vw;
+	}
+
+	.popular_games_row{
+		margin-bottom: 3vh;
+	}
+}
+
+
+
+
+
+
+
+
+
+.vl {
+    border-left: 2px solid green;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 6;
+}

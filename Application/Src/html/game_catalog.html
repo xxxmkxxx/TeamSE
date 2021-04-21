@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<title> </title>
+	<link href="../Css/game_catalog.css" rel="stylesheet">
+	
+</head>
+
+<!-- <div class="vl"></div>
+<div class="vl" style ="margin-left: 16.6vw"></div>
+<div class="vl" style ="margin-left: 33.2vw"></div>
+<div class="vl" style ="margin-left: 49.8vw"></div>
+<div class="vl" style ="margin-left: 66.4vw"></div>
+<div class="vl" style ="margin-left: 83vw"></div>
+<div class="vl" style ="margin-left: -16.6vw"></div>
+<div class="vl" style ="margin-left: -33.2vw"></div>
+<div class="vl" style ="margin-left: -49.8vw"></div>
+<div class="vl" style ="margin-left: -66.4vw"></div>
+<div class="vl" style ="margin-left: -83vw"></div>
+
+ <div class="vl" style ="margin-left: 24.9vw"></div>
+<div class="vl" style ="margin-left: 41.5vw"></div>
+<div class="vl" style ="margin-left: 58.1vw"></div>
+<div class="vl" style ="margin-left: 74.7vw"></div>
+<div class="vl" style ="margin-left: 91.3vw"></div>
+<div class="vl" style ="margin-left: 8.3vw"></div>
+ -->
+
+ <body>
+ 	<script src="../JavaScript/game_catalog.js"></script>
+ 	<script type="text/javascript" src="../JavaScript/jquery.js"></script>
+
+	<header>
+		<span class = "header_minilogo"> <img src="../images/minilogo.png"> </span>
+		<span class = "header_minilogo"> POLARGAME </span>
+
+		<span class = "menu_icon" onclick = "open_menu()"> <img src="../images/menu_icon.png"></span>
+		<span class = "profile"> мой профиль </span>
+	</header>
+
+	<main>
+
+			<div class = "menu">
+				<span class = "menu_categories"> ДРУЗЬЯ </span>
+				<span class = "menu_categories"> ДИАЛОГИ </span>
+				<span class = "menu_categories"> ИГРЫ </span>
+				<span class = "menu_categories"> ВЫЙТИ </span>
+			</div>
+
+			<div class = "filters_row"> 
+				<span class = "LargeText"> ВЫБОР ИГРЫ </span>
+				<input type="text" name = "find_game" class = "find_game_inp">
+				<span class = "find_icon"> <img src="../images/find_icon.png"></span>
+				<span class = "filter_icon" onclick = "open_game_filters()"> <img src="../images/filter_icon.png"></span>
+
+			</div>
+
+			<div class = "filters">
+
+				<div class = "filters_block"> 
+					<span class = "filter_categories" > жанр  </span>
+					<span class = "filter_categories">   </span>
+					<span class = "filter_categories">  популярность </span>
+				</div>
+
+				<div class = "take_categ">
+					<div class = "categ"> 
+						<div class = "categ_item">
+							<input type="checkbox" >
+							1 жанр 
+						 </div>
+
+						 <div class = "categ_item">
+							<input type="checkbox">
+							2 жанр 
+						 </div>
+
+						 <div class = "categ_item">
+							<input type="checkbox">
+							3 жанр 
+						 </div>
+
+					</div>
+
+					<div class = "categ"> 
+						<div class = "categ_item">
+							<input type="checkbox" >
+							1  
+						 </div>
+
+						 <div class = "categ_item">
+							<input type="checkbox">
+							2  
+						 </div>
+					</div>
+				</div>
+				<form action="temp.php"> <button name = "send_filters"  class ="send_filters"> применить </button> </form>
+			</div>
+
+
+
+
+			<div class = "popular_games_row">
+				<span class = "pop_game" style = "opacity: 100%"> <img src="../images/example_pic.png"></span>
+				<span class = "pop_game" style = "opacity: 80%"> <img src="../images/example_pic.png"></span>
+				<span class = "pop_game" style = "opacity: 60%"> <img src="../images/example_pic.png"></span>
+				<span class = "pop_game" style = "opacity: 40%"> <img src="../images/example_pic.png"></span>
+			</div>
+
+			<div class = "games_block">
+				<div class = "games_row">
+					<span class = "game" data-tooltip="Counter Strike GLobal Offensive"> <img src="../images/example_pic.png"> </span>
+					<span class = "game" data-tooltip="Название игры"> <img src="../images/example_pic.png"> </span>
+					<span class = "game" data-tooltip="Название игры"> <img src="../images/example_pic.png"> </span>
+					<span class = "game" data-tooltip="Название игры"> <img src="../images/example_pic.png"> </span>
+					<span class = "game" data-tooltip="Название игры"> <img src="../images/example_pic.png"> </span>
+					<span class = "game" data-tooltip="Название игры"> <img src="../images/example_pic.png"> </span>
+				</div>
+
+
+			</div>
+
+	</main>
+
+
+
+
+</body>
+
+</html>
