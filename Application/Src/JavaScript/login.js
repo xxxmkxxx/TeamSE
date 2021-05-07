@@ -15,7 +15,7 @@ function checkCorrectFields() {
     if(login.value === '') {
         $('#main_form_reg_name').html('Вы не ввели логин!');
         correct = false;
-    }else if(password.value === '') {
+    } else if(password.value === '') {
         $('#main_form_reg_name').html('Вы не ввели пароль!');
         correct = false;
     }

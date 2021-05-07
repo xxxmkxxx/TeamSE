@@ -27,3 +27,6 @@ function execudeQuery($connect, $q, $argsExecute) {
     $databaseResult->execute($argsExecute);
     return $databaseResult->fetchAll();
 }
+//сессии пользователей
+//гл страница меил перекид на форму
+//логин по почте
