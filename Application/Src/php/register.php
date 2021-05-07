@@ -7,18 +7,12 @@ try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
     $query = 'SELECT * FROM `users` WHERE `login` = :user_login';
-
-    $databaseResult = $databaseConnect->prepare($query);
-    $databaseResult->execute(['user_login'=>$_POST['reg_form_login']]);
-
-    $user = $databaseResult->fetchAll();
+    $execute = ['user_login'=>$_POST['reg_form_login']];
+    $user = execudeQuery($databaseConnect, $query, $execute);
 
     $query = 'SELECT * FROM `users` WHERE `mail` = :user_mail';
-
-    $databaseResult = $databaseConnect->prepare($query);
-    $databaseResult->execute(['user_mail'=>$_POST['reg_form_mail']]);
-
-    $mail = $databaseResult->fetchAll();
+    $execute = ['user_mail'=>$_POST['reg_form_mail']];
+    $mail = execudeQuery($databaseConnect, $query, $execute);
 
     if(count($user) != 0) {
         echo 'loginAlreadyExists';
@@ -26,11 +20,16 @@ try {
         echo 'mailAlreadyExists';
     } else {
         $query = 'INSERT INTO users (mail, login, password, type) VALUES(:user_mail, :user_login, :user_password, :user_type)';
-        $databaseResult = $databaseConnect->prepare($query);
-        $databaseResult->execute(['user_mail'=>$_POST['reg_form_mail'], 'user_login'=>$_POST['reg_form_login'], 'user_password'=>$_POST['reg_form_password'], 'user_type'=> '1']);
+        $execute = ['user_mail'=>$_POST['reg_form_mail'], 'user_login'=>$_POST['reg_form_login'], 'user_password'=>$_POST['reg_form_password'], 'user_type'=> '1'];
+        execudeQuery($databaseConnect, $query, $execute);
         echo 'success';
     }
 
 } catch (PDOException $e) {
     echo 'errorConnectToBD';
+}
+function execudeQuery($connect, $q, $argsExecute) {
+    $databaseResult = $connect->prepare($q);
+    $databaseResult->execute($argsExecute);
+    return $databaseResult->fetchAll();
 }

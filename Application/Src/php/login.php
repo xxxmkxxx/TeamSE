@@ -8,11 +8,8 @@ try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
     $query = 'SELECT * FROM `users` WHERE `login` = :user_login';
-
-    $databaseResult = $databaseConnect->prepare($query);
-    $databaseResult->execute(['user_login'=>$_POST['sign_form_login']]);
-
-    $user = $databaseResult->fetchAll();
+    $execute = ['user_login'=>$_POST['sign_form_login']];
+    $user = execudeQuery($databaseConnect, $query, $execute);
 
 
     if(count($user) == 0) {
@@ -22,9 +19,11 @@ try {
     } else {
         echo 'success';
     }
-
-
-
 } catch (PDOException $e) {
     echo 'errorConnectToBD';
+}
+function execudeQuery($connect, $q, $argsExecute) {
+    $databaseResult = $connect->prepare($q);
+    $databaseResult->execute($argsExecute);
+    return $databaseResult->fetchAll();
 }
