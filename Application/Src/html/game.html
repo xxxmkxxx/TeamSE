@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<title> </title>
+	<link href="../Css/game.css" rel="stylesheet">
+	
+</head>
+<!-- 
+<div class="vl"></div>
+<div class="vl" style ="margin-left: 16.6vw"></div>
+<div class="vl" style ="margin-left: 33.2vw"></div>
+<div class="vl" style ="margin-left: 49.8vw"></div>
+<div class="vl" style ="margin-left: 66.4vw"></div>
+<div class="vl" style ="margin-left: 83vw"></div>
+<div class="vl" style ="margin-left: -16.6vw"></div>
+<div class="vl" style ="margin-left: -33.2vw"></div>
+<div class="vl" style ="margin-left: -49.8vw"></div>
+<div class="vl" style ="margin-left: -66.4vw"></div>
+<div class="vl" style ="margin-left: -83vw"></div>
+
+ <div class="vl" style ="margin-left: 24.9vw"></div>
+<div class="vl" style ="margin-left: 41.5vw"></div>
+<div class="vl" style ="margin-left: 58.1vw"></div>
+<div class="vl" style ="margin-left: 74.7vw"></div>
+<div class="vl" style ="margin-left: 91.3vw"></div>
+<div class="vl" style ="margin-left: 8.3vw"></div>
+ -->
+
+<body>
+
+
+	<header>
+		<span class = "header_minilogo"> <img src="../images/minilogo.png"> </span>
+		<span class = "header_minilogo"> POLARGAME </span>
+
+		<span class = "menu_icon" onclick = "open_menu()"> <img src="../images/menu_icon.png"></span>
+		<span class = "profile"> мой профиль </span>
+	</header>
+
+	<main>
+
+		<form action="temp.php" method="post"> <!-- форма создания пати -->
+
+				<div class = "create_party_form">
+					<div class = "close" onclick = "close_party_creator()"> <img src="../images/close_icon.png"> </div>
+
+					<div class = "cre_row">
+						<span class = "privacy_name" style = "margin-top: 0vw"> Приватность: </span>
+						<input type="checkbox" name = "privacy" class = "privacy">
+
+						<span class = "pl_num_name"> Количество игроков: </span>
+						<input type="number" name = "player_num"  min="1" max="100" value="1" class = "player_num">
+					</div>
+
+					<div class = "cre_row">
+						<span class = "load_name"> Загрузите изображение: </span>
+						<input type="file" name="file" class = "load">
+					</div>
+
+					<div class = "cre_row">
+						<span class = "par_descr_name"> Описание: </span>
+					</div>
+
+					<div class = "cre_row">
+						<textarea name = "party_descr" wrap = "soft" maxlength="400" class = "party_descr"> </textarea>
+					</div>
+					
+					<button name = "create_party" class = "create_button"> СОЗДАТЬ ПАТИ</button>
+				</div>
+		</form>
+
+
+		<div class = "menu">
+			<span class = "menu_categories"> ДРУЗЬЯ </span>
+			<span class = "menu_categories"> ДИАЛОГИ </span>
+			<span class = "menu_categories"> ИГРЫ </span>
+			<span class = "menu_categories"> ВЫЙТИ </span>
+		</div>
+
+		<div class = "sections">
+			<span class = "section1">
+				<div  class = "gamesection">
+					<div class = "game_data">
+						<div class = "game_icon"> <img src="../images/example_pic.png"> </div>
+
+						<div class = "game_data_right">
+							<div class = "game_name"> НАЗВАНИЕ ИГРЫ </div>
+							<div class = "game_rating"> 
+
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class = "game_description"> 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+						описание игры описание игры описание игры описание игры описание игры 
+
+					</div>
+				</div>
+
+
+
+				<div class = "reviews">
+					<div class = "review_block1">
+						<span class = "rev"> отзывы </span>
+						<span class = "write"> <img src="../images/write_comment.png">  </span>
+					</div>
+
+					<div class = "review_block2">
+
+						<div class = "comment"> <!-- 1 отзыв ( пример ) -->
+
+							<div class = "author_data">
+
+								<span class = "author_icon">
+									<img src="../images/example_pic.png">
+								</span>
+
+								<span class = "author_name"> имя пользователя  </span>
+
+							</div>
+
+							<div class = "comment_text">
+								Текст отзыва <br>
+								Текст отзыва 
+							</div>	
+
+						</div>
+
+							<div class = "comment">  <!-- 2 отзыв ( пример ) -->
+
+							<div class = "author_data">
+
+								<span class = "author_icon">
+									<img src="../images/example_pic.png">
+								</span>
+
+								<span class = "author_name"> имя пользователя  </span>
+
+							</div>
+
+							<div class = "comment_text">
+								Текст отзыва 
+							</div>	
+
+						</div>
+					</div>
+				</div>
+			</span>
+
+			<span class = "section2">
+				<div class = "choice_of_action">	
+					<span class = "find_party"> НАЙТИ ПАТИ </span>
+					<span class = "find_command"> НАЙТИ КОМАНДУ </span>
+				</div>
+
+				<div class = "filter_row">
+					<input type="text" name = "find_game" class = "find_game_inp">
+					<span class = "find_icon"> <img src="../images/find_icon.png"></span>
+					<span class = "filter_icon" > <img src="../images/filter_icon.png"></span>
+					<span class = "create_party" onclick = "open_party_creator()"> СОЗДАТЬ ПАТИ </span>
+					<span class = "create_com"> СОЗДАТЬ КОМАНДУ </span>
+				</div>
+
+				<div class = "com_party_place"> 
+					<div class = "row1">
+						<span class = "form1">
+							<div class = "formsdata">
+								<span class = "form_img"> <img src="../images/example_pic.png"> </span>
+								<span class = "party_creator"> создатель пати </span>
+							</div>
+
+							<div class = "row2">
+								<span class = "participans"> n участников </span>
+								<span class = "come_in"> <img src="../images/come_in_icon.png"> </span>
+							</div>
+						</span>
+
+						<span class = "form2">
+							<div class = "formsdata">
+								<span class = "form_img"> <img src="../images/example_pic.png"> </span>
+								<span class = "party_creator"> создатель пати </span>
+							</div>
+
+							<div class = "row2">
+								<span class = "participans"> n участников </span>
+								<span class = "come_in"> <img src="../images/come_in_icon.png"> </span>
+							</div>
+						</span>
+
+						<span class = "form3">
+							<div class = "formsdata">
+								<span class = "form_img"> <img src="../images/example_pic.png"> </span>
+								<span class = "party_creator"> создатель пати </span>
+							</div>
+
+							<div class = "row2">
+								<span class = "participans"> n участников </span>
+								<span class = "come_in"> <img src="../images/come_in_icon.png"> </span>
+							</div>
+						</span>
+
+					</div>
+				
+
+				</div>
+			</span>
+		</div>
+
+
+
+	</main>
+
+
+	<script src="../JavaScript/game.js"></script>
+ 	<script type="text/javascript" src="../JavaScript/jquery.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+ </html>
