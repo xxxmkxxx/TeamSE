@@ -73,6 +73,37 @@
 		</form>
 
 
+		<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
+
+				<div class = "party_filters">
+					<div class = "party_filt_categ">
+						<div class = "filter_data"> 
+							<div class = "filter_name"> ПРИВАТНОСТЬ </div>
+
+							<div class = "categ_box">
+								<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> приватные
+							</div>
+
+							<div class = "categ_box">
+							<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> публичные
+							</div>
+						</div>
+
+						<div class = "filter_data"> 
+							<div class = "filter_name" style = "margin-left: 2.5vw;"> КОЛИЧЕСТВО УЧАСТНИКОВ </div>
+							<input type="range" min="0" max="10" step="1" value="0" id = "filter_range" name = "filter_range" onchange="outputchange()" class = "input_range">
+							<output type = "text" id = "ouput_range" class = "ouput_range"> 0 </output>
+						</div>
+					</div>
+
+					<button name = "apply_party_filt" class = "apply_party_filt"> ПРИМЕНИТЬ </button>
+				</div>
+		</form>
+
+
+
+
+
 		<div class = "menu">
 			<span class = "menu_categories"> ДРУЗЬЯ </span>
 			<span class = "menu_categories"> ДИАЛОГИ </span>
@@ -171,7 +202,7 @@
 				<div class = "filter_row">
 					<input type="text" name = "find_game" class = "find_game_inp">
 					<span class = "find_icon"> <img src="../images/find_icon.png"></span>
-					<span class = "filter_icon" > <img src="../images/filter_icon.png"></span>
+					<span class = "filter_icon" > <img src="../images/filter_icon.png" onclick = "filters()" ></span>
 					<span class = "create_party" onclick = "open_party_creator()"> СОЗДАТЬ ПАТИ </span>
 					<span class = "create_com"> СОЗДАТЬ КОМАНДУ </span>
 				</div>

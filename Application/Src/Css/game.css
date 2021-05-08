@@ -306,6 +306,7 @@ main{
 .filter_icon > img{
 	width: 2.3vw;
 	margin-left: 1.5vw;
+	cursor: pointer;
 }
 
 .create_com{
@@ -552,8 +553,83 @@ textarea:focus, input:focus{
 outline: none;
 }
 
+.party_filters{
+	display: none;
+	flex-direction: column;
+	width: 22vw;
+	height: 14vw;
+	position: absolute;
+	margin-left: 73vw;
+	margin-top: 7.5vw;
+	border-radius: 1vw;
+	background-color: #5A74F9;
+	opacity: 85%;
+}
 
+.party_filt_categ{
+	display: flex;
+	flex-direction: row;
+	margin-left: 1vw;
+	margin-top: 1vw;
+}
 
+.filter_data{
+	display: flex;
+	flex-direction: column;
+	width: 9vw;
+}
+
+.filter_name{
+	font-size: 1vw;
+	font-family: MainBoldFont;
+	color: #152142;
+}
+
+.privacy_filter{
+	width: 1.5vw;
+	height: 1.5vw;
+	margin-right: 0.7vw;
+}
+
+.ouput_range{
+	padding-left: 4.4vw;
+	margin-left: 2vw;
+	font-family: othertext;
+	font-size: 1.2vw;
+	background-color: #5A74F9;
+	width: 4.6vw;
+	border: none;
+	border-radius: 0.4vw;
+}
+
+.input_range{
+	margin-top: 2vw;
+	margin-left: 2vw;
+	width: 8.5vw;
+}
+
+.categ_box{
+	display: flex;
+	flex-direction: row;
+	color: white;
+	font-size: 1.2vw;
+	font-family: othertext;
+	margin-top: 1.5vw;
+}
+
+.apply_party_filt{
+	height: 2vw;
+	width: 20vw;
+	background-color: white;
+	color: #101C33;
+	font-family: MainBoldFont;
+	font-size: 1vw;
+	border-radius: 0.5vw;
+	border: none;
+	cursor: pointer;
+	margin-left: 1vw;
+	margin-top: 2.5vw;
+}
 
 
 
