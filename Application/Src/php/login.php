@@ -13,7 +13,17 @@ try {
 
 
     if(count($user) == 0) {
-        echo 'doesNotExist';
+        $query = 'SELECT * FROM `users` WHERE `mail` = :user_mail';
+        $execute = ['user_mail'=>$_POST['sign_form_login']];
+        $user = execudeQuery($databaseConnect, $query, $execute);
+
+        if(count($user) == 0) {
+            echo 'doesNotExist';
+        } else if($user[0]['password'] != $_POST['sign_form_password']) {
+            echo 'wrongPassword';
+        } else {
+            echo 'success';
+        }
     } else if ($user[0]['password'] != $_POST['sign_form_password']) {
         echo 'wrongPassword';
     } else {
@@ -28,5 +38,3 @@ function execudeQuery($connect, $q, $argsExecute) {
     return $databaseResult->fetchAll();
 }
 //сессии пользователей
-//гл страница меил перекид на форму
-//логин по почте
