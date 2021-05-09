@@ -49,9 +49,13 @@ header{
 	padding-left: 3.5vw;
 }
 
+.menu_icon{
+	margin-left: 62vw;
+}
+
 .menu_icon > img{
 	height: 6vh;
-	margin-left: 62vw;
+	
 }
 
 .profile{
@@ -293,9 +297,12 @@ input[type=checkbox] {
 		width: 5vw;
 	}
 
+	.menu_icon{
+		margin-left: 48vw;
+	}
+	
 	.menu_icon > img{
-	height: 5vh;
-	margin-left: 48vw;
+		height: 5vh;
 	}
 
 	.profile{

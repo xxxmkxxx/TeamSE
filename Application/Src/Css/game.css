@@ -394,7 +394,7 @@ main{
 }
 
 .participans{
-	width: 9.5vw;
+	width: 12vw;
 	height: 2vw;
 	background-image: -webkit-linear-gradient(left, white, rgba(0, 0, 0, 0));
 	border-radius: 10vw;
@@ -412,7 +412,7 @@ main{
 	width: 2.2vw;
 	height: 2.2vw;
 	margin-top: 0.9vw;
-	margin-left: 0.5vw;
+	margin-left: -1.3vw;
 }
 
 .menu{   		/* менять значение display на none */

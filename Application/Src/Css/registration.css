@@ -55,7 +55,7 @@ main{
 }
 
 .main_form_reg{
-	height: 70vh;
+	height: 78vh;
 	display: flex;
 	flex-direction: column;
 	background-color: #142142;
@@ -108,7 +108,8 @@ main{
 	font-size: 1.3vw;
 	background-color: #78A7EB;
 	border-radius: 7px;
-	border:none;
+	border: none;
+	cursor: pointer;
 }
 
 .button_create_account:hover{
@@ -116,6 +117,9 @@ main{
   transition: all 0.3s;
 }
 
+ input:focus{
+outline: none;
+}
 
 @media (max-width : 900px) {
 	main{flex-direction: column;
@@ -143,7 +147,7 @@ main{
 
 	.main_form_reg{
 		width:70vw;
-		height: 60vh;
+		height: 70vh;
 		align-content: center;
 	}
 
@@ -162,10 +166,12 @@ main{
 		width: 64vw;
 		height: 4vw;
 		font-size: 1.5vw;
+		cursor: pointer;
 	}
 
 	.main_form_reg_name{
 		font-size: 4vw;
+		margin-top: 2vw;
 	}
 
 }
