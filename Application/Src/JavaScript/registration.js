@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    inputMail();
+
     $('#registration').submit(function(obj){
         obj.preventDefault();
 
@@ -8,8 +10,6 @@ $(document).ready(function(){
     });
 });
 function checkCorrectFields() {
-    var regexPassword = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
-    var regexMail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     correct = true;
     var login = document.getElementById('reg_form_login');
     var password = document.getElementById('reg_form_password');
@@ -69,4 +69,11 @@ function checkAccount() {
             }
         }
     });
+}
+function inputMail() {
+    var url_str = window.location.href;
+    var url = new URL(url_str);
+    var mail = url.searchParams.get('mail');
+
+    $('#reg_form_mail').val(mail);
 }
