@@ -19,12 +19,15 @@ try {
     } else if (count($mail) != 0) {
         echo 'mailAlreadyExists';
     } else {
-        $query = 'INSERT INTO users (mail, login, password, type) VALUES(:user_mail, :user_login, :user_password, :user_type)';
-        $execute = ['user_mail'=>$_POST['reg_form_mail'], 'user_login'=>$_POST['reg_form_login'], 'user_password'=>$_POST['reg_form_password'], 'user_type'=> '1'];
-        execudeQuery($databaseConnect, $query, $execute);
-        echo 'success';
+        if($_POST['reg_form_password'] == $_POST['reg_form_password2']) {
+            $query = 'INSERT INTO users (mail, login, password, type) VALUES(:user_mail, :user_login, :user_password, :user_type)';
+            $execute = ['user_mail'=>$_POST['reg_form_mail'], 'user_login'=>$_POST['reg_form_login'], 'user_password'=>$_POST['reg_form_password'], 'user_type'=> '1'];
+            execudeQuery($databaseConnect, $query, $execute);
+            echo 'success';
+        } else {
+            echo 'passwordDontMatch';
+        }
     }
-
 } catch (PDOException $e) {
     echo 'errorConnectToBD';
 }
