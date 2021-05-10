@@ -62,8 +62,8 @@ function checkAccount() {
                 }
                 case 'success': {
                     // $('#main_form_reg_name').html('Регистрация выполнена успешно!'); ЗАЧЕМ ЭТО ПИСАТЬ? МОЖНО ПРОСТО ПЕРЕКИНУТЬ НА ГЛАВНУЮ СТРАНИЧКУ
-                    // window.location.href = '../html/game_catalog.html';
-                    // break;
+                    window.location.href = '../html/game_catalog.html';
+                    break;
                 }
                 case 'errorConnectToBD': {
                     alert('Подключение к БД не удалось!')
