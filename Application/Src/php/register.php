@@ -20,8 +20,9 @@ try {
         echo 'mailAlreadyExists';
     } else {
         if($_POST['reg_form_password'] == $_POST['reg_form_password2']) {
+            $userPassword = password_hash($_POST['reg_form_password'], PASSWORD_DEFAULT);
             $query = 'INSERT INTO users (mail, login, password, type) VALUES(:user_mail, :user_login, :user_password, :user_type)';
-            $execute = ['user_mail'=>$_POST['reg_form_mail'], 'user_login'=>$_POST['reg_form_login'], 'user_password'=>$_POST['reg_form_password'], 'user_type'=> '1'];
+            $execute = ['user_mail'=>$_POST['reg_form_mail'], 'user_login'=>$_POST['reg_form_login'], 'user_password'=>$userPassword, 'user_type'=> '1'];
             execudeQuery($databaseConnect, $query, $execute);
             echo 'success';
         } else {

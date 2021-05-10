@@ -20,12 +20,12 @@ try {
 
         if(count($user) == 0) {
             echo 'doesNotExist';
-        } else if($userPassword != $_POST['sign_form_password']) {
+        } else if(!password_verify($_POST['sign_form_password'], $userPassword)) {
             echo 'wrongPassword';
         } else {
             echo 'success';
         }
-    } else if ($user[0]['password'] != $_POST['sign_form_password']) {
+    } else if (password_verify($_POST['sign_form_password'], $user[0]['password'])) {
         echo 'wrongPassword';
     } else {
         echo 'success';
