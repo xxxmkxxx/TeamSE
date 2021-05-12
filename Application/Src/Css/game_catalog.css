@@ -234,7 +234,7 @@ input[type=checkbox] {
 .games_row{
 	display: inline-flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: start;
 	align-items: center;
 	width: 83vw;
 }
@@ -243,6 +243,8 @@ input[type=checkbox] {
 	width: 11.5vw;
 	height: 11.5vw;
 	border-radius: 27px;
+	margin-right: 2.7vw;
+
 }
 
 .game > img:hover{
