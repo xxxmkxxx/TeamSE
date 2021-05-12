@@ -1,22 +1,23 @@
 <?php
+$config = include('config.php');
 
-$databaseConnectInfo = 'mysql:dbname=polargame;host=localhost';
-$databaseUser = 'root';
-$databasePassword = 'root';
+$databaseConnectInfo = 'mysql:dbname='.$config['name_db'].';'.'host='.$config['host'];
+$databaseUser = $config['login_db'];
+$databasePassword = $config['password_db'];
 
 try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
-    $query = 'SELECT * FROM `users` WHERE `login` = :user_login';
+    $query = 'SELECT * FROM `Users` WHERE `Login` = :user_login';
     $execute = ['user_login'=>$_POST['sign_form_login']];
     $user = execudeQuery($databaseConnect, $query, $execute);
 
 
     if(count($user) == 0) {
-        $query = 'SELECT * FROM `users` WHERE `mail` = :user_mail';
-        $execute = ['user_mail'=>$_POST['sign_form_login']];
+        $query = 'SELECT * FROM `Users` WHERE `Email` = :user_email';
+        $execute = ['user_email'=>$_POST['sign_form_login']];
         $user = execudeQuery($databaseConnect, $query, $execute);
-        $userPassword = $user[0]['password'];
+        $userPassword = $user[0]['Password'];
 
         if(count($user) == 0) {
             echo 'doesNotExist';
@@ -25,7 +26,7 @@ try {
         } else {
             echo 'success';
         }
-    } else if (password_verify($_POST['sign_form_password'], $user[0]['password'])) {
+    } else if (!password_verify($_POST['sign_form_password'], $user[0]['Password'])) {
         echo 'wrongPassword';
     } else {
         echo 'success';
