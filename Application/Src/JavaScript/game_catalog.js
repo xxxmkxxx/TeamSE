@@ -12,20 +12,23 @@ function getGames() {
 		dataType: 'html',
 		data: regData,
 		success: function (data) {
-			var games = $('#games_row');
+			var gamesRow = $('#games_row');
 			var gameBlock;
 			var game;
-			var gamesArray = JSON.parse(data);
+			var gamesArray = $.parseJSON(data);
 
-			for (let i = 0; i < data.length; i++) {
+			for (let i = 0; i < gamesArray.length; i++) {
 				game = gamesArray[i];
+
 				gameBlock = $('<span>', {
 					'class': 'game',
-					'data-tooltip': game[0]
-				}).append(('<img>', {
-					'src': game[0]
+					'data-tooltip': game['GameDescription']
+				});
+				gameBlock.append($('<img>', {
+					'src': game['GameIconLink']
 				}));
-				games.append(gameBlock);
+
+				gamesRow.append(gameBlock);
 			}
 		}
 	});
