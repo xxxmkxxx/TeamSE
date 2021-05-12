@@ -1,37 +1,50 @@
 $(document).ready(mainFunction());
 
 function mainFunction() {
-	getGames();
+	getAllGames();
 }
-function getGames() {
-	var regData = $("#sing_in").serialize();
+function getAllGames() {
+	var gamesArray;
 
 	$.ajax({
-		url: '../php/game_catalog.php',
+		url: '../php/get_games.php',
 		type: 'POST',
 		dataType: 'html',
-		data: regData,
 		success: function (data) {
-			var gamesRow = $('#games_row');
-			var gameBlock;
-			var game;
-			var gamesArray = $.parseJSON(data);
+			gamesArray = $.parseJSON(data);
 
-			for (let i = 0; i < gamesArray.length; i++) {
-				game = gamesArray[i];
+			$('#search').submit(function (obj) {
+				obj.preventDefault();
 
-				gameBlock = $('<span>', {
-					'class': 'game',
-					'data-tooltip': game['GameDescription']
-				});
-				gameBlock.append($('<img>', {
-					'src': game['GameIconLink']
-				}));
+				var name = $('#find_game').val();
 
-				gamesRow.append(gameBlock);
-			}
+				searchGame(gamesArray, name);
+			});
+
+			viewPopularGames(gamesArray);
+			viewAllGames(gamesArray);
 		}
 	});
+
+	return gamesArray;
+}
+function searchGame(games, name) {
+	var gameBlock;
+
+	gameBlock = $('<div>', {
+		'class': 'popular_games_row',
+		'id': 'popular_games_row'
+	});
+
+	$('#games_row').remove();
+	$('#popular_games_row').remove();
+	$('#game_catalog').append(gameBlock);
+
+	for (let i = 0; i < games.length; i++) {
+		if(games[i]['GameName'] == name) {
+			viewPopularGame(games[i], $('#popular_games_row'), gameBlock)
+		}
+	}
 }
 function open_game_filters(){
 	if($(".filters").css("opacity") == "0"){
@@ -52,4 +65,61 @@ function open_menu(){
 	else $('.menu').hide('slow', function() { 
 			$(".menu").css("display","none");
 			$(".filters").css("margin-top","5vh")})
+}
+function viewAllGames(gamesArray) {
+	var gamesRow = $('#games_row');
+	var gameBlock;
+
+	for (let i = 0; i < gamesArray.length; i++) {
+		if((i + 1) % 6 != 0) {
+			viewGame(gamesArray[i], gamesRow, gameBlock);
+		} else {
+			gamesRow = createGamesRow(i / 6);
+			viewGame(gamesArray[i], gamesRow, gameBlock);
+		}
+
+	}
+}
+function viewGame(game, gamesRow, gameBlock) {
+	gameBlock = $('<span>', {
+		'class': 'game',
+		'data-tooltip': game['GameName']
+	});
+	gameBlock.append($('<img>', {
+		'src': game['GameIconLink']
+	}));
+
+	gamesRow.append(gameBlock);
+}
+function viewPopularGame(game, gamesRow, gameBlock) {
+	gameBlock = $('<span>', {
+		'class': 'pop_game',
+		'style': 'opacity: 100%'
+	});
+	gameBlock.append($('<img>', {
+		'src': game['GameIconLink']
+	}));
+
+	gamesRow.append(gameBlock);
+}
+function viewPopularGames(gamesArray) {
+	var gamesRow = $('#popular_games_row');
+	var gameBlock;
+	var countPopularGame = 0;
+	for (let i = 0; i < gamesArray.length; i++) {
+		if(Number(gamesArray[i]['Popularity']) >= 4 && Number(gamesArray[i]['Popularity']) <= 5 && countPopularGame <=4) {
+			viewPopularGame(gamesArray[i], gamesRow, gameBlock);
+			countPopularGame++;
+		}
+		if(countPopularGame == 4) break;
+	}
+}
+function createGamesRow(id) {
+	var gameBlock  = $('<div>', {
+		'class': 'games_row',
+		'id': 'games_row' + id
+	});
+
+	$('#games_block').append(gameBlock);
+	return $('#games_row' + id);
 }
