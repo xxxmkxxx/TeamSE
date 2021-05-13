@@ -30,13 +30,14 @@ function getAllGames() {
 }
 function searchGame(games, name) {
 	var gameBlock;
+	var view = false;
 
 	gameBlock = $('<div>', {
 		'class': 'popular_games_row',
 		'id': 'popular_games_row'
 	});
 
-	$('#games_row').remove();
+	$('#games_block').remove();
 	$('#popular_games_row').remove();
 	$('#game_catalog').append(gameBlock);
 
@@ -44,6 +45,23 @@ function searchGame(games, name) {
 		if(games[i]['GameName'] == name) {
 			viewPopularGame(games[i], $('#popular_games_row'), gameBlock)
 		}
+		if(name === '') {
+			view = true;
+		}
+	}
+
+	if(view) {
+		gameBlock = $('<div>', {
+			'class': 'games_block',
+			'id': 'games_block'
+		}).append($('<div>', {
+			'class': 'games_row',
+			'id': 'games_row'
+		}));
+		$('#popular_games_row').after(gameBlock);
+
+		viewPopularGames(games);
+		viewAllGames(games);
 	}
 }
 function open_game_filters(){
