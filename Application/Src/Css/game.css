@@ -33,7 +33,7 @@ body{
 }
 
 header{
-	height: 12vh;
+	height: 5.8vw;
 	width: 100vw;
 	background-color: #142142;
 	display: inline-flex;
@@ -41,6 +41,7 @@ header{
 	justify-content: flex-start;
 	align-items: center;
 	z-index: 2;
+	overflow: hidden;
 }
 
 .header_minilogo{
@@ -60,7 +61,7 @@ header{
 
 }
 .menu_icon > img{
-	height: 6vh;
+	height: 3vw;
 }
 
 .profile{
@@ -140,7 +141,7 @@ main{
 	color: white;
 	font-size: 2vw;
 	overflow: hidden;
-	height: 2vw;
+	height: 2.3vw;
 }
 
 .game_rating{

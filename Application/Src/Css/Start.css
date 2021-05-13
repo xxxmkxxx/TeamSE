@@ -24,7 +24,7 @@ body{
 }
 
 header{
-	height: 12vh;
+	height: 5.8vw;
 	width: 100vw;
 	background-color: #142142;
 	display: inline-flex;
@@ -32,11 +32,12 @@ header{
 	justify-content: flex-start;
 	align-items: center;
 	z-index: 2;
+	overflow: hidden;
 }
 
 main{
 	background-color: #111b33;
-	height: 88vh;
+	height: 100vh;
 	width: 100vw;
 	display: inline-flex;
 	flex-direction: row;
@@ -151,23 +152,22 @@ a{
 	main{flex-direction: column;
 		justify-content: flex-start;
 		align-items: flex-start;
-		overflow-y: scroll;
 
 	}
 	html{
 		background-color: #111b33;
-		overflow-x: hidden;
+		overflow: hidden;
 	}
 
 	header{
 		max-width: 900px;
-		overflow-x: auto;
+		height: 7vw;
 	}
 
 	.main_column_1{
 		font-size:3.5vw;
 		margin-left:7.5vw;
-		z-index:2;
+		z-index: 2;
 	}
 
 	.Larger_text {
@@ -206,7 +206,7 @@ a{
 	}
 
 	.header_buttons_cont{
-		margin-left: 41vw;
+		margin-left: 39vw;
 	}
 
 	.header_buttons{

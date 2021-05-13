@@ -14,6 +14,11 @@
     font-family: 'bold';
 	src: url(../fonts/16683.ttf);}	
 
+@font-face {
+	font-family: 'othertext';
+	src: url(../fonts/19676.ttf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -27,7 +32,7 @@ body{
 }
 
 header{
-	height: 12vh;
+	height: 5.8vw;
 	width: 100vw;
 	background-color: #142142;
 	display: inline-flex;
@@ -35,6 +40,7 @@ header{
 	justify-content: flex-start;
 	align-items: center;
 	z-index: 2;
+	overflow: hidden;
 }
 
 .header_minilogo{
@@ -54,7 +60,7 @@ header{
 }
 
 .menu_icon > img{
-	height: 6vh;
+	height: 3vw;
 	
 }
 
@@ -76,7 +82,7 @@ main{
 .filters_row{
 	display: inline-flex;
 	flex-direction: row;
-	height: 15vh;
+	height: 7.5vw;
 	justify-content: flex-start;
 	align-items: center;
 }
@@ -184,9 +190,19 @@ input[type=checkbox] {
     margin-right: 0.8vh;
 }
 
+
+.search_message{
+	height: 5vw;
+	font-family: MainBoldFont;
+	font-size: 1.8vw;
+	color: #0C1223;
+	margin-left: 8.3vw;
+	display: none;
+}
+
 .popular_games_row{    /* менять значение display на none */
-	display: inline-flex;
-	/*display: none;*/
+	/*display: inline-flex;*/
+	display: none;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
@@ -198,7 +214,7 @@ input[type=checkbox] {
 .pop_game >img {
 	width: 19vw;
 	height: 19vw;
-	border-radius: 30px;
+	border-radius: 2.7vw;
 	margin-right: 2.4vw;
 	box-shadow: 0vw 0.8vw 0vw 0vw #070E1C;
 }
@@ -242,7 +258,7 @@ input[type=checkbox] {
 .game > img{
 	width: 11.5vw;
 	height: 11.5vw;
-	border-radius: 27px;
+	border-radius: 2.3vw;
 	margin-right: 2.7vw;
 
 }
@@ -290,6 +306,7 @@ input[type=checkbox] {
 	header{
 		max-width: 900px;
 		overflow-x: auto;
+		height: 7vw;
 	}
 
 	.header_minilogo{
@@ -304,7 +321,7 @@ input[type=checkbox] {
 	}
 	
 	.menu_icon > img{
-		height: 5vh;
+		height: 4vw;
 	}
 
 	.profile{
@@ -383,6 +400,14 @@ input[type=checkbox] {
 
 	.popular_games_row{
 		margin-bottom: 3vh;
+	}
+
+	.search_message{
+		height: 2vw;
+	}
+
+	.filters_row{
+		margin-top: 2vw;
 	}
 }
 
