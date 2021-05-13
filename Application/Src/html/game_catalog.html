@@ -20,7 +20,6 @@
 <div class="vl" style ="margin-left: -49.8vw"></div>
 <div class="vl" style ="margin-left: -66.4vw"></div>
 <div class="vl" style ="margin-left: -83vw"></div>
-
  <div class="vl" style ="margin-left: 24.9vw"></div>
 <div class="vl" style ="margin-left: 41.5vw"></div>
 <div class="vl" style ="margin-left: 58.1vw"></div>
@@ -49,7 +48,9 @@
 
 			<div class = "filters_row"> 
 				<span class = "LargeText"> ВЫБОР ИГРЫ </span>
-				<input type="text" name = "find_game" class = "find_game_inp">
+				<form id="search">
+					<input type="text" name = "find_game" id="find_game" class = "find_game_inp">
+				</form>
 				<span class = "find_icon"> <img src="../images/find_icon.png"></span>
 				<span class = "filter_icon" onclick = "open_game_filters()"> <img src="../images/filter_icon.png"></span>
 			</div>
@@ -98,22 +99,17 @@
 
 
 
+		<div id="game_catalog">
+			<div class = "popular_games_row" id="popular_games_row">
 
-			<div class = "popular_games_row">
-				<span class = "pop_game" style = "opacity: 100%"> <img src="../images/example_pic.png"></span>
-				<span class = "pop_game" style = "opacity: 80%"> <img src="../images/example_pic.png"></span>
-				<span class = "pop_game" style = "opacity: 60%"> <img src="../images/example_pic.png"></span>
-				<span class = "pop_game" style = "opacity: 40%"> <img src="../images/example_pic.png"></span>
 			</div>
 
-			<div class = "games_block">
+			<div class = "games_block" id="games_block">
 				<div class = "games_row" id="games_row">
 
 				</div>
-
-
 			</div>
-
+		</div>
 	</main>
 
 
