@@ -57,4 +57,71 @@ function setAllInfo(game) {
 	$('#game_description').text(game['GameDescription']);
 	$('#game_icon').attr('src', game['GameIconLink']);
 
+	getAllComments(game);
+}
+function getAllComments(game) {
+	$.ajax({
+		url: '../php/get_comments.php',
+		data: { val : game['id_game']},
+		success: function (data) {
+			var comments = $.parseJSON(data);
+			getAllUsers(comments);
+		}
+	});
+}
+function setComments(comments, users) {
+	var commentBlock;
+
+	for (let i = 0; i <= 2; i++) {
+		for (let j = 0; j < users.length; j++) {
+			if(users[j]['id_user'] == i) {
+				createComment(comments[i], commentBlock, i + 1, users[j]);
+			}
+		}
+	}
+}
+function createComment(comment, commentBlock, number, user) {
+	commentBlock = $('<div>', {
+		'class': 'comment',
+		'id': number
+	});
+
+	var div_author_data = $('<div>', {
+		'class': 'author_data'
+	});
+
+	var div_comment_text = $('<div>', {
+		'class': 'comment_text'
+	}).text(comment['CommentText']);
+
+	var span_author_icon = $('<span>', {
+		'class': 'author_icon',
+		'id': 'author_icon'
+	});
+
+	var span_author_name = $('<span>', {
+		'class': 'author_name',
+	}).text(user['Login']);
+
+	var img = $('<img>', {
+		'src': user['UserIcon']
+	});
+
+	span_author_icon.append(img);
+	div_author_data.append(span_author_icon);
+	div_author_data.append(span_author_name);
+	commentBlock.append(div_author_data);
+	commentBlock.append(div_comment_text);
+
+	$('#review_block2').append(commentBlock);
+}
+function getAllUsers(comments) {
+	$.ajax({
+		url: '../php/get_users.php',
+		dataType: 'html',
+		success: function (data) {
+			var users = $.parseJSON(data);
+			setComments(comments, users);
+		}
+	});
 }
