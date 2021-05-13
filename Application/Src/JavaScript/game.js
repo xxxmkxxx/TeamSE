@@ -1,4 +1,8 @@
+$(document).ready(mainFunction());
 
+function mainFunction() {
+	getGame(getNameGame());
+}
 function open_menu(){
 	if($(".menu").css("display") == "none"){
 		$('.menu').show(0, function() { 
@@ -28,4 +32,28 @@ function filters(){
 		$(".party_filters").slideDown(200);
 	}
 	else $('.party_filters').slideUp(200);
+}
+function getGame(name) {
+	$.ajax({
+		url: '../php/get_game.php',
+		data: { val : name },
+		success: function (data) {
+			var game = $.parseJSON(data)[0];
+
+			setAllInfo(game);
+
+		}
+	});
+}
+function getNameGame() {
+	var url_str = window.location.href;
+	var url = new URL(url_str);
+	var mail = url.searchParams.get('GameName');
+
+	return mail;
+}
+function setAllInfo(game) {
+	$('#game_name').text(game['GameName']);
+	$('#game_description').text(game['GameDescription']);
+	$('#game_icon').attr('src', game['GameIconLink']);
 }

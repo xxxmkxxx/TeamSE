@@ -1,7 +1,7 @@
 $(document).ready(mainFunction());
 
 function mainFunction() {
-	getAllGames();
+	getAllGames();;
 }
 function getAllGames() {
 	var gamesArray;
@@ -23,6 +23,7 @@ function getAllGames() {
 
 			viewPopularGames(gamesArray);
 			viewAllGames(gamesArray);
+			openGamePage(gamesArray);
 		}
 	});
 
@@ -73,7 +74,6 @@ function open_game_filters(){
 			 }
 }
 
-
 function open_menu(){
 	if($(".menu").css("display") == "none"){
 		$('.menu').show(0, function() { 
@@ -104,7 +104,8 @@ function viewGame(game, gamesRow, gameBlock) {
 		'data-tooltip': game['GameName']
 	});
 	gameBlock.append($('<img>', {
-		'src': game['GameIconLink']
+		'src': game['GameIconLink'],
+		'id': game['GameName']
 	}));
 
 	gamesRow.append(gameBlock);
@@ -115,7 +116,8 @@ function viewPopularGame(game, gamesRow, gameBlock) {
 		'style': 'opacity: 100%'
 	});
 	gameBlock.append($('<img>', {
-		'src': game['GameIconLink']
+		'src': game['GameIconLink'],
+		'id': game['GameName']
 	}));
 
 	gamesRow.append(gameBlock);
@@ -140,4 +142,14 @@ function createGamesRow(id) {
 
 	$('#games_block').append(gameBlock);
 	return $('#games_row' + id);
+}
+function openGamePage() {
+	$(document).on('click','.game', function (obj) {
+		obj.preventDefault();
+
+		var gameName = this.getAttribute('data-tooltip');
+
+		window.location.href = '../html/game.html' + '?GameName=' + gameName;
+	});
+
 }
