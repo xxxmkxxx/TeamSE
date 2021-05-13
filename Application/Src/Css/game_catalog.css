@@ -27,7 +27,7 @@
 body{
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+	overflow-x: hidden;
 	min-width: 900px;
 }
 
@@ -197,26 +197,30 @@ input[type=checkbox] {
 	font-size: 1.8vw;
 	color: #0C1223;
 	margin-left: 8.3vw;
-	display: block;
+	display: none;
 }
 
 .popular_games_row{    /* менять значение display на none */
 	display: inline-flex;
+	width: 87.5vw;
 	/*display: none;*/
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	margin-left: 8.2vw;
+	margin-left: 4.15vw;
+	padding-left: 4.15vw;
+	/*width: 83.1vw;*/
 	margin-right: 8.2vw;
-	margin-bottom: 8vh;
+	background-color: #142142;
+	margin-bottom: 3vw;
+	border-radius: 3vw;
 }
 
 .pop_game >img {
-	width: 19vw;
-	height: 19vw;
+	width: 14.7vw;
+	height: 14.7vw;
 	border-radius: 2.7vw;
 	margin-right: 2.4vw;
-	box-shadow: 0vw 0.8vw 0vw 0vw #070E1C;
 }
 
 .menu{   		/* менять значение display на none */
@@ -253,13 +257,14 @@ input[type=checkbox] {
 	justify-content: start;
 	align-items: center;
 	width: 83vw;
+	margin-bottom: 2.76vw;
 }
 
 .game > img{
 	width: 11.5vw;
 	height: 11.5vw;
 	border-radius: 2.3vw;
-	margin-right: 2.7vw;
+	margin-right: 2.76vw;
 
 }
 
