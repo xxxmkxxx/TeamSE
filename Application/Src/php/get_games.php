@@ -8,7 +8,7 @@ $databasePassword = $config['password_db'];
 try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
-    $query = 'SELECT * FROM `game`';
+    $query = 'SELECT * FROM `Game`';
 
     $games = $databaseConnect->query($query)->fetchAll();
 

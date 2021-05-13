@@ -32,6 +32,7 @@ function getAllGames() {
 function searchGame(games, name) {
 	var gameBlock;
 	var view = false;
+	var found = 0;
 
 	gameBlock = $('<div>', {
 		'class': 'popular_games_row',
@@ -44,7 +45,9 @@ function searchGame(games, name) {
 
 	for (let i = 0; i < games.length; i++) {
 		if(games[i]['GameName'] == name) {
-			viewPopularGame(games[i], $('#popular_games_row'), gameBlock)
+			$('#search_message').text('');
+			viewGame(games[i], $('#popular_games_row'), gameBlock);
+			found++;
 		}
 		if(name === '') {
 			view = true;
@@ -52,6 +55,7 @@ function searchGame(games, name) {
 	}
 
 	if(view) {
+		$('#search_message').text('');
 		gameBlock = $('<div>', {
 			'class': 'games_block',
 			'id': 'games_block'
@@ -63,6 +67,9 @@ function searchGame(games, name) {
 
 		viewPopularGames(games);
 		viewAllGames(games);
+	} else if(found == 0) {
+		$('#search_message').text('ничего не найдено');
+		$('#games_block').remove();
 	}
 }
 function open_game_filters(){
@@ -112,8 +119,7 @@ function viewGame(game, gamesRow, gameBlock) {
 }
 function viewPopularGame(game, gamesRow, gameBlock) {
 	gameBlock = $('<span>', {
-		'class': 'pop_game',
-		'style': 'opacity: 100%'
+		'class': 'pop_game'
 	});
 	gameBlock.append($('<img>', {
 		'src': game['GameIconLink'],

@@ -197,12 +197,12 @@ input[type=checkbox] {
 	font-size: 1.8vw;
 	color: #0C1223;
 	margin-left: 8.3vw;
-	display: none;
+	display: block;
 }
 
 .popular_games_row{    /* менять значение display на none */
-	/*display: inline-flex;*/
-	display: none;
+	display: inline-flex;
+	/*display: none;*/
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
