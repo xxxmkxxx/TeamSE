@@ -119,7 +119,8 @@ function viewGame(game, gamesRow, gameBlock) {
 }
 function viewPopularGame(game, gamesRow, gameBlock) {
 	gameBlock = $('<span>', {
-		'class': 'pop_game'
+		'class': 'pop_game',
+		'id': game['GameName']
 	});
 	gameBlock.append($('<img>', {
 		'src': game['GameIconLink'],
@@ -133,11 +134,11 @@ function viewPopularGames(gamesArray) {
 	var gameBlock;
 	var countPopularGame = 0;
 	for (let i = 0; i < gamesArray.length; i++) {
-		if(Number(gamesArray[i]['Popularity']) >= 4 && Number(gamesArray[i]['Popularity']) <= 5 && countPopularGame <=4) {
+		if(Number(gamesArray[i]['Popularity']) >= 4 && Number(gamesArray[i]['Popularity']) <= 5 && countPopularGame <=5) {
 			viewPopularGame(gamesArray[i], gamesRow, gameBlock);
 			countPopularGame++;
 		}
-		if(countPopularGame == 4) break;
+		if(countPopularGame == 5) break;
 	}
 }
 function createGamesRow(id) {
@@ -158,4 +159,11 @@ function openGamePage() {
 		window.location.href = '../html/game.html' + '?GameName=' + gameName;
 	});
 
+	$(document).on('click','.pop_game', function (obj) {
+		obj.preventDefault();
+
+		var gameName = this.getAttribute('id');
+
+		window.location.href = '../html/game.html' + '?GameName=' + gameName;
+	});
 }

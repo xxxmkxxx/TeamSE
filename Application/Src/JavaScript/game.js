@@ -56,4 +56,5 @@ function setAllInfo(game) {
 	$('#game_name').text(game['GameName']);
 	$('#game_description').text(game['GameDescription']);
 	$('#game_icon').attr('src', game['GameIconLink']);
+
 }
