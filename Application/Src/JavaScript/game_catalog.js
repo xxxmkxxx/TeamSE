@@ -96,7 +96,7 @@ function viewAllGames(gamesArray) {
 	var gameBlock;
 
 	for (let i = 0; i < gamesArray.length; i++) {
-		if((i + 1) % 6 != 0) {
+		if((i) % 6 != 0) {
 			viewGame(gamesArray[i], gamesRow, gameBlock);
 		} else {
 			gamesRow = createGamesRow(i / 6);
