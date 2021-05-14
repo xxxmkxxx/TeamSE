@@ -65,7 +65,7 @@ function getAllComments(game) {
 		data: { val : game['id_game']},
 		success: function (data) {
 			var comments = $.parseJSON(data);
-			getAllUsers(comments);
+			getAllUsers(comments, game);
 		}
 	});
 }
@@ -115,51 +115,54 @@ function createComment(comment, commentBlock, number, user) {
 
 	$('#review_block2').append(commentBlock);
 }
-function getAllUsers(comments) {
+function getAllUsers(comments, game) {
 	$.ajax({
 		url: '../php/get_users.php',
 		dataType: 'html',
 		success: function (data) {
 			var users = $.parseJSON(data);
 			setComments(comments, users);
-			getAllParty(users);
+			getAllParty(users, game);
 		}
 	});
 }
-function getAllParty(users) {
+function getAllParty(users, game) {
 	$.ajax({
 		url: '../php/get_partys.php',
 		dataType: 'html',
 		success: function (data) {
 			var partyes = $.parseJSON(data);
-			setAllPartyes(partyes, users);
+			setAllPartyes(partyes, users, game);
 		}
 	});
 }
-function setAllPartyes(partyes, users) {
+function setAllPartyes(partyes, users, game) {
 	var numberPartyOnRow = 0;
 	var partyBlock;
 	var rowParty = $('#rowParty');
+	var arrayParty = new Array();
+	var arrayUsers = new Array();
 
 	for (let i = 0; i < partyes.length; i++) {
+		if(partyes[i]['id_game'] == game['id_game']) {
+			for (let j = 0; j < users.length; j++) {
+				if (partyes[i]['PartyCreator'] == users[j]['id_user']) {
+					arrayParty.push(partyes[i]);
+					arrayUsers.push(users[j]);
+				}
+			}
+		}
+	}
+	for (let i = 0; i < arrayParty.length; i++) {
 		if(i % 3 != 0) {
 			numberPartyOnRow++;
 
-			for (let j = 0; j < users.length; j++) {
-				if(partyes[i]['PartyCreator'] == users[j]['id_user']) {
-					createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, partyes[i]['GamersAmount'], 5, users[j]);
-				}
-			}
+			createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i]);
 		} else {
 			numberPartyOnRow = 0;
 
 			rowParty = createNewRow(i / 3);
-
-			for (let j = 0; j < users.length; j++) {
-				if(partyes[i]['PartyCreator'] == users[j]['id_user']) {
-					createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, partyes[i]['GamersAmount'], 5, users[j]);
-				}
-			}
+			createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i]);
 		}
 	}
 }
@@ -174,7 +177,7 @@ function createPartyBlock(number, partyBlock, rowParty, countPlayers, allCountPl
 
 	var span_participans = $('<span>', {
 		'class': 'participans'
-	}).text(countPlayers + ' из ' + allCountPlayers);
+	}).text(countPlayers + ' из ' + allCountPlayers + ' игроков');
 
 	var span_come_in = $('<span>', {
 		'class': 'come_in'
