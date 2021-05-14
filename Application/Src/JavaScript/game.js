@@ -122,6 +122,102 @@ function getAllUsers(comments) {
 		success: function (data) {
 			var users = $.parseJSON(data);
 			setComments(comments, users);
+			getAllParty(users);
 		}
 	});
+}
+function getAllParty(users) {
+	$.ajax({
+		url: '../php/get_partys.php',
+		dataType: 'html',
+		success: function (data) {
+			var partyes = $.parseJSON(data);
+			setAllPartyes(partyes, users);
+		}
+	});
+}
+function setAllPartyes(partyes, users) {
+	var numberPartyOnRow = 0;
+	var partyBlock;
+	var rowParty = $('#rowParty');
+
+	for (let i = 0; i < partyes.length; i++) {
+		if(i % 3 != 0) {
+			numberPartyOnRow++;
+
+			for (let j = 0; j < users.length; j++) {
+				if(partyes[i]['PartyCreator'] == users[j]['id_user']) {
+					createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, partyes[i]['GamersAmount'], 5, users[j]);
+				}
+			}
+		} else {
+			numberPartyOnRow = 0;
+
+			rowParty = createNewRow(i / 3);
+
+			for (let j = 0; j < users.length; j++) {
+				if(partyes[i]['PartyCreator'] == users[j]['id_user']) {
+					createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, partyes[i]['GamersAmount'], 5, users[j]);
+				}
+			}
+		}
+	}
+}
+function createPartyBlock(number, partyBlock, rowParty, countPlayers, allCountPlayers, creater) {
+	partyBlock = $('<span>', {
+		'class': 'form' + number
+	});
+
+	var div_row2 = $('<div>', {
+		'class': 'row2'
+	});
+
+	var span_participans = $('<span>', {
+		'class': 'participans'
+	}).text(countPlayers + ' из ' + allCountPlayers);
+
+	var span_come_in = $('<span>', {
+		'class': 'come_in'
+	});
+
+	var img_come_in = $('<img>', {
+		'src': '../images/come_in_icon.png'
+	});
+
+	var div_formsdata = $('<div>', {
+		'class': 'formsdata'
+	});
+
+	var span_form_img = $('<span>', {
+		'class': 'form_img'
+	});
+
+	var img_form_img = $('<img>', {
+		'src': creater['UserIcon']
+	});
+
+	var span_party_creator = $('<span>', {
+		'class': 'party_creator'
+	}).text(creater['Login']);
+
+	span_come_in.append(img_come_in);
+	div_row2.append(span_participans);
+	div_row2.append(span_come_in);
+	span_form_img.append(img_form_img);
+	div_formsdata.append(span_form_img);
+	div_formsdata.append(span_party_creator);
+	partyBlock.append(div_formsdata);
+	partyBlock.append(div_row2);
+
+	rowParty.append(partyBlock);
+}
+function createNewRow(id) {
+	var div_row = $('<div>', {
+		'class': 'row1',
+		'id': 'rowParty' + id
+	});
+
+	$('#com_party_place').append(div_row);
+
+	return $('#rowParty' + id);
 }
