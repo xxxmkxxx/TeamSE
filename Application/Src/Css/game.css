@@ -336,10 +336,10 @@ main{
 .row1{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: start;
 	margin-left: 1.5vw;
 	margin-right: 1.5vw;
-	margin-bottom: 2vw;
+	margin-bottom: 1.9vw;
 }
 
 .form1{
@@ -347,6 +347,7 @@ main{
 	width: 16vw;
 	background-color: #6071F9;
 	border-radius: 2.3vw;
+	margin-right: 1.9vw;
 }
 
 .form2{
@@ -354,6 +355,7 @@ main{
 	width: 16vw;
 	background-color: #7C65FB;
 	border-radius: 2.3vw;
+	margin-right: 2vw;
 }
 
 .form3{
