@@ -45,7 +45,7 @@
 		<form action="temp.php" method="post"> <!-- форма создания пати -->
 
 				<div class = "create_party_form">
-					<div class = "close" onclick = "close_party_creator()"> <img src="../images/close_icon.png"> </div>
+					<div class = "close_party_creator" onclick = "close_party_creator()"> <img src="../images/close_icon.png"> </div>
 
 					<div class = "cre_row">
 						<span class = "privacy_name" style = "margin-top: 0vw"> Приватность: </span>
@@ -73,6 +73,65 @@
 		</form>
 
 
+
+		<form action = "temp.php" method="post"> <!-- форма пати -->
+			<div class = "party_form">
+				
+				<div class = "close_party_form" onclick = "close_party_form()"> <img src="../images/close_icon.png"> </div>
+
+				<div class = "party_data">
+					<div class = "party_icon">
+						<img src="../images/example_pic.png"> 
+					</div>
+
+					<div class = "party_descriprion">
+						описание пати описание пати описание  этой пати  разные слова описание пати описание пати описание пати описание пати 
+					</div>
+					
+				</div>
+
+				<div class = "party_сontent">
+					<div class = "party_members_form">
+
+						<div class =  "party_member_row"> <!-- пример создателя  -->
+							<div class =  "party_member_icon"> <img src="../images/example_pic.png">  </div>
+							<div class =  "party_member_name"> ник создателя </div>
+							<div class = "game_nick"> ник в игре </div>
+						</div>
+
+						<div class =  "party_member_row"> <!-- пример участника  -->
+							<div class =  "party_member_icon"> <img src="../images/example_pic.png">  </div>
+							<div class =  "party_member_name"> ник участника </div>
+							<div class = "game_nick"> ник в игре </div>
+						</div>
+
+						<div class =  "party_member_row"> <!-- пример ТВОЕГО ПОЛЯ  -->
+							<div class =  "party_member_icon"> <img src="../images/example_pic.png">  </div>
+							<div class =  "party_member_name"> твой ник </div>
+							<input type="text" name = "game_nick" class = "game_nick_input">
+						</div>
+
+						<div class =  "party_member_row"> <!-- пример участника  -->
+							<div class =  "party_member_icon"> <img src="../images/example_pic.png">  </div>
+							<div class =  "party_member_name"> ник участника </div>
+							<div class = "game_nick"> ник в игре </div>
+						</div>
+
+
+
+					</div>
+
+					<div class = "party_buttons">
+						<button name = "ready_button" class = "ready_button"> ГОТОВО </button>
+						<button name = "exit_button" class = "exit_button"> ВЫЙТИ </button>
+					</div>
+				</div>
+
+			</div>
+		</form>
+
+
+
 		<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
 
 				<div class = "party_filters">
@@ -83,7 +142,7 @@
 							<div class = "categ_box">
 								<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> приватные
 							</div>
-
+ 
 							<div class = "categ_box">
 							<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> публичные
 							</div>
@@ -174,6 +233,7 @@
 				<div class = "com_party_place" id="com_party_place">
 
 					<div class = "row1" id="rowParty">
+
 					</div>
 					
 				</div>
