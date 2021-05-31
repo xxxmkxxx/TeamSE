@@ -42,7 +42,7 @@
 
 	<main>
 
-		<form action="temp.php" method="post"> <!-- форма создания пати -->
+		<form> <!-- форма создания пати -->
 
 				<div class = "create_party_form">
 					<div class = "close_party_creator" onclick = "close_party_creator()"> <img src="../images/close_icon.png"> </div>
@@ -74,20 +74,20 @@
 
 
 
-		<form action = "temp.php" method="post"> <!-- форма пати -->
-			<div class = "party_form">
-				
-				<div class = "close_party_form" onclick = "close_party_form()"> <img src="../images/close_icon.png"> </div>
+		<form> <!-- форма пати -->
+			<div class = "party_form" id="party_form">
+
+				<div class = "close_party_form" id="close_party_form"> <img src="../images/close_icon.png"> </div>
 
 				<div class = "party_data">
 					<div class = "party_icon">
-						<img src="../images/example_pic.png"> 
+						<img src="../images/example_pic.png">
 					</div>
 
 					<div class = "party_descriprion">
-						описание пати описание пати описание  этой пати  разные слова описание пати описание пати описание пати описание пати 
+						описание пати описание пати описание  этой пати  разные слова описание пати описание пати описание пати описание пати
 					</div>
-					
+
 				</div>
 
 				<div class = "party_сontent">
@@ -136,19 +136,19 @@
 
 				<div class = "party_filters">
 					<div class = "party_filt_categ">
-						<div class = "filter_data"> 
+						<div class = "filter_data">
 							<div class = "filter_name"> ПРИВАТНОСТЬ </div>
 
 							<div class = "categ_box">
 								<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> приватные
 							</div>
- 
+
 							<div class = "categ_box">
 							<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> публичные
 							</div>
 						</div>
 
-						<div class = "filter_data"> 
+						<div class = "filter_data">
 							<div class = "filter_name" style = "margin-left: 2.5vw;"> КОЛИЧЕСТВО УЧАСТНИКОВ </div>
 							<input type="range" min="0" max="10" step="1" value="0" id = "filter_range" name = "filter_range" onchange="outputchange()" class = "input_range">
 							<output type = "text" id = "ouput_range" class = "ouput_range"> 0 </output>

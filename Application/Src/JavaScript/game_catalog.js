@@ -1,69 +1,75 @@
 $(document).ready(mainFunction());
 
 function mainFunction() {
-	getAllGames();;
-}
-function getAllGames() {
 	var gamesArray;
 
-	$.ajax({
-		url: '../php/get_games.php',
-		type: 'POST',
-		dataType: 'html',
-		success: function (data) {
-			gamesArray = $.parseJSON(data);
+	//Событие отправки результата строки поиска
+	$('#search').submit(function (obj) {
+		obj.preventDefault();
 
-			$('#search').submit(function (obj) {
-				obj.preventDefault();
+		var name = $('#find_game').val();
 
-				var name = $('#find_game').val();
-
-				searchGame(gamesArray, name);
-			});
-
-			viewPopularGames(gamesArray);
-			viewAllGames(gamesArray);
-			openGamePage(gamesArray);
-		}
+		searchGame(gamesArray, name);
 	});
 
-	return gamesArray;
+	//При успешном получении json, обрабатываем его и выводим на экран игры
+	getAllGames().done(function (data) {
+		gamesArray = $.parseJSON(data);
+
+		viewPopularGames(gamesArray);
+		viewAllGames(gamesArray);
+	});
+
+	openGamePage();
 }
+//Получаем массив всех игр
+function getAllGames() {
+	return $.ajax({
+			url: '../php/get_games.php',
+			type: 'POST'
+	});
+}
+//Функция поиска игры
 function searchGame(games, name) {
-	var gameBlock;
-	var view = false;
+	var viewAll = false;
 	var found = 0;
 
-	gameBlock = $('<div>', {
+	var popularGamesRowDiv = $('<div>', {
 		'class': 'popular_games_row',
 		'id': 'popular_games_row'
 	});
 
 	$('#games_block').remove();
 	$('#popular_games_row').remove();
-	$('#game_catalog').append(gameBlock);
+
+	$('#game_catalog').append(popularGamesRowDiv);
 
 	for (let i = 0; i < games.length; i++) {
-		if(games[i]['GameName'] == name) {
+		if(games[i]['GameName'].toUpperCase() == name.toUpperCase()) {
 			$('#search_message').text('');
-			viewGame(games[i], $('#popular_games_row'), gameBlock);
+			viewGame(games[i], $('#popular_games_row'), popularGamesRowDiv);
 			found++;
 		}
 		if(name === '') {
-			view = true;
+			viewAll = true;
+			break;
 		}
 	}
 
-	if(view) {
+	if(viewAll) {
 		$('#search_message').text('');
-		gameBlock = $('<div>', {
+		var gamesBlockDiv = $('<div>', {
 			'class': 'games_block',
 			'id': 'games_block'
-		}).append($('<div>', {
+		})
+		var gamesRowDiv = $('<div>', {
 			'class': 'games_row',
 			'id': 'games_row'
-		}));
-		$('#popular_games_row').after(gameBlock);
+		});
+
+		gamesBlockDiv.append(gamesRowDiv);
+
+		$('#popular_games_row').after(gamesBlockDiv);
 
 		viewPopularGames(games);
 		viewAllGames(games);
@@ -80,7 +86,6 @@ function open_game_filters(){
 		$(".filters").animate({"opacity":"0"},100);
 			 }
 }
-
 function open_menu(){
 	if($(".menu").css("display") == "none"){
 		$('.menu').show(0, function() { 
@@ -91,65 +96,71 @@ function open_menu(){
 			$(".menu").css("display","none");
 			$(".filters").css("margin-top","5vh")})
 }
+//Функция отображения всех игр
 function viewAllGames(gamesArray) {
 	var gamesRow = $('#games_row');
-	var gameBlock;
 
 	for (let i = 0; i < gamesArray.length; i++) {
 		if((i) % 6 != 0) {
-			viewGame(gamesArray[i], gamesRow, gameBlock);
+			viewGame(gamesArray[i], gamesRow);
 		} else {
 			gamesRow = createGamesRow(i / 6);
-			viewGame(gamesArray[i], gamesRow, gameBlock);
+			viewGame(gamesArray[i], gamesRow);
 		}
 
 	}
 }
-function viewGame(game, gamesRow, gameBlock) {
-	gameBlock = $('<span>', {
+//Функция отображения одной игры в определённой строке
+function viewGame(game, gamesRow) {
+	var gameSpan = $('<span>', {
 		'class': 'game',
 		'data-tooltip': game['GameName']
 	});
-	gameBlock.append($('<img>', {
+	var gameIconImg = $('<img>', {
 		'src': game['GameIconLink'],
 		'id': game['GameName']
-	}));
+	});
 
-	gamesRow.append(gameBlock);
+	gameSpan.append(gameIconImg)
+	gamesRow.append(gameSpan);
 }
-function viewPopularGame(game, gamesRow, gameBlock) {
-	gameBlock = $('<span>', {
+//Функция отображения одной популярной игры
+function viewPopularGame(game, gamesRow) {
+	var popGameSpan = $('<span>', {
 		'class': 'pop_game',
 		'id': game['GameName']
 	});
-	gameBlock.append($('<img>', {
+	var gameIconImg = $('<img>', {
 		'src': game['GameIconLink'],
 		'id': game['GameName']
-	}));
+	});
 
-	gamesRow.append(gameBlock);
+	popGameSpan.append(gameIconImg)
+	gamesRow.append(popGameSpan);
 }
+//Функция отображения 5 популярных игр
 function viewPopularGames(gamesArray) {
 	var gamesRow = $('#popular_games_row');
-	var gameBlock;
 	var countPopularGame = 0;
 	for (let i = 0; i < gamesArray.length; i++) {
 		if(Number(gamesArray[i]['Popularity']) >= 4 && Number(gamesArray[i]['Popularity']) <= 5 && countPopularGame <=5) {
-			viewPopularGame(gamesArray[i], gamesRow, gameBlock);
+			viewPopularGame(gamesArray[i], gamesRow);
 			countPopularGame++;
 		}
 		if(countPopularGame == 5) break;
 	}
 }
+//Функция создания новой строки для отображения игр
 function createGamesRow(id) {
-	var gameBlock  = $('<div>', {
+	var gamesRowDiv  = $('<div>', {
 		'class': 'games_row',
 		'id': 'games_row' + id
 	});
 
-	$('#games_block').append(gameBlock);
+	$('#games_block').append(gamesRowDiv);
 	return $('#games_row' + id);
 }
+//Функция для перехода на страницу игры по нажатию на иконку игры
 function openGamePage() {
 	$(document).on('click','.game', function (obj) {
 		obj.preventDefault();

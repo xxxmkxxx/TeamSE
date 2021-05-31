@@ -1,7 +1,41 @@
 $(document).ready(mainFunction());
 
 function mainFunction() {
-	getGame(getNameGame());
+	var game;
+	var comments;
+	var users;
+	var partyes;
+
+	//Скрываем форму создания пати
+	$("#party_form").hide();
+
+	//Слушатель нажатия на иконку открытия пати
+	openPartyForm();
+
+	//Слушатель иконки закрытия пати
+	closePartyForm();
+
+	getGame(getNameGame()).done(function (data) {
+		game = $.parseJSON(data)[0];
+
+		viewAllInfo(game);
+
+		getAllComments(game).done(function (data) {
+			comments = $.parseJSON(data);
+
+			getAllUsers().done(function (data) {
+				users = $.parseJSON(data);
+
+				viewAllComments(comments, users, 3);
+
+				getAllParty().done(function (data) {
+					partyes = $.parseJSON(data);
+
+					viewAllPartyes(partyes, users, game);
+				});
+			});
+		});
+	});
 }
 function open_menu(){
 	if($(".menu").css("display") == "none"){
@@ -13,15 +47,12 @@ function open_menu(){
 			$(".menu").css("display","none");
 			$(".party_filters").css("margin-top","7.5vw")})
 }
-
 function open_party_creator(){
 	$('.create_party_form').slideDown(200)		
 	}
-
 function close_party_creator(){
 	$('.create_party_form').slideUp(200)
 }
-
 function outputchange() {
 	let val = document.getElementById("filter_range").value;
 	document.getElementById("ouput_range").innerHTML = val;
@@ -34,17 +65,12 @@ function filters(){
 	else $('.party_filters').slideUp(200);
 }
 function getGame(name) {
-	$.ajax({
+	return $.ajax({
 		url: '../php/get_game.php',
-		data: { val : name },
-		success: function (data) {
-			var game = $.parseJSON(data)[0];
-
-			setAllInfo(game);
-
-		}
+		data: { val : name }
 	});
 }
+//Функция получения имени игры из ссылки
 function getNameGame() {
 	var url_str = window.location.href;
 	var url = new URL(url_str);
@@ -52,36 +78,34 @@ function getNameGame() {
 
 	return mail;
 }
-function setAllInfo(game) {
+//Функция вывода всей информации об игре
+function viewAllInfo(game) {
 	$('#game_name').text(game['GameName']);
 	$('#game_description').text(game['GameDescription']);
 	$('#game_icon').attr('src', game['GameIconLink']);
-
-	getAllComments(game);
 }
+//Функция для получения массива всех комментраиев
 function getAllComments(game) {
-	$.ajax({
+	return $.ajax({
 		url: '../php/get_comments.php',
-		data: { val : game['id_game']},
-		success: function (data) {
-			var comments = $.parseJSON(data);
-			getAllUsers(comments, game);
-		}
+		data: { val : game['id_game']}
 	});
 }
-function setComments(comments, users) {
-	var commentBlock;
-
-	for (let i = 0; i <= 2; i++) {
-		for (let j = 0; j < users.length; j++) {
-			if(users[j]['id_user'] == i) {
-				createComment(comments[i], commentBlock, i + 1, users[j]);
+//Функция для отображения части комментариев
+function viewAllComments(comments, users, countComments) {
+	if(comments.length != 0) {
+		for (let i = 0; i < countComments; i++) {
+			for (let j = 0; j < users.length; j++) {
+				if(users[j]['id_user'] == i) {
+					viewComment(comments[i], i + 1, users[j]);
+				}
 			}
 		}
 	}
 }
-function createComment(comment, commentBlock, number, user) {
-	commentBlock = $('<div>', {
+//Функция отображения одного комментария
+function viewComment(comment, number, user) {
+	var commentDiv = $('<div>', {
 		'class': 'comment',
 		'id': number
 	});
@@ -110,35 +134,28 @@ function createComment(comment, commentBlock, number, user) {
 	span_author_icon.append(img);
 	div_author_data.append(span_author_icon);
 	div_author_data.append(span_author_name);
-	commentBlock.append(div_author_data);
-	commentBlock.append(div_comment_text);
+	commentDiv.append(div_author_data);
+	commentDiv.append(div_comment_text);
 
-	$('#review_block2').append(commentBlock);
+	$('#review_block2').append(commentDiv);
 }
-function getAllUsers(comments, game) {
-	$.ajax({
+//Функция получения массива всех пользователей
+function getAllUsers() {
+	return $.ajax({
 		url: '../php/get_users.php',
-		dataType: 'html',
-		success: function (data) {
-			var users = $.parseJSON(data);
-			setComments(comments, users);
-			getAllParty(users, game);
-		}
+		dataType: 'html'
 	});
 }
-function getAllParty(users, game) {
-	$.ajax({
+//Функция получения массива всех пати
+function getAllParty() {
+	return $.ajax({
 		url: '../php/get_partys.php',
-		dataType: 'html',
-		success: function (data) {
-			var partyes = $.parseJSON(data);
-			setAllPartyes(partyes, users, game);
-		}
+		dataType: 'html'
 	});
 }
-function setAllPartyes(partyes, users, game) {
+//Функция отображения всех пати
+function viewAllPartyes(partyes, users, game) {
 	var numberPartyOnRow = 0;
-	var partyBlock;
 	var rowParty = $('#rowParty');
 	var arrayParty = new Array();
 	var arrayUsers = new Array();
@@ -157,18 +174,19 @@ function setAllPartyes(partyes, users, game) {
 		if(i % 3 != 0) {
 			numberPartyOnRow++;
 
-			createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i]);
+			createPartyBlock(numberPartyOnRow + 1, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i], arrayParty[i]['id_party']);
 		} else {
 			numberPartyOnRow = 0;
 
 			rowParty = createNewRow(i / 3);
-			createPartyBlock(numberPartyOnRow + 1, partyBlock, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i]);
+			createPartyBlock(numberPartyOnRow + 1, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i]), arrayParty[i]['id_party'];
 		}
 	}
 }
-function createPartyBlock(number, partyBlock, rowParty, countPlayers, allCountPlayers, creater) {
-	partyBlock = $('<span>', {
-		'class': 'form' + number
+//Функция создания блока, где распологаются строки с пати
+function createPartyBlock(numberPartyOnRow, rowParty, countPlayers, allCountPlayers, creater, idParty) {
+	var partySpan = $('<span>', {
+		'class': 'form' + numberPartyOnRow
 	});
 
 	var div_row2 = $('<div>', {
@@ -180,6 +198,7 @@ function createPartyBlock(number, partyBlock, rowParty, countPlayers, allCountPl
 	}).text(countPlayers + ' из ' + allCountPlayers + ' игроков');
 
 	var span_come_in = $('<span>', {
+		'id': idParty,
 		'class': 'come_in'
 	});
 
@@ -209,18 +228,39 @@ function createPartyBlock(number, partyBlock, rowParty, countPlayers, allCountPl
 	span_form_img.append(img_form_img);
 	div_formsdata.append(span_form_img);
 	div_formsdata.append(span_party_creator);
-	partyBlock.append(div_formsdata);
-	partyBlock.append(div_row2);
+	partySpan.append(div_formsdata);
+	partySpan.append(div_row2);
 
-	rowParty.append(partyBlock);
+	rowParty.append(partySpan);
 }
+//Функция создания строки пати
 function createNewRow(id) {
-	var div_row = $('<div>', {
+	var rowDiv = $('<div>', {
 		'class': 'row1',
 		'id': 'rowParty' + id
 	});
 
-	$('#com_party_place').append(div_row);
+	$('#com_party_place').append(rowDiv);
 
 	return $('#rowParty' + id);
+}
+//Функция открытия формы пати
+function openPartyForm() {
+	$(document).on('click','.come_in', function (obj) {
+		obj.preventDefault();
+
+		var idParty = this.getAttribute('id');
+
+		$("#party_form").show();
+	});
+}
+//Функция закрытия пати
+function closePartyForm() {
+	$(document).on('click','#close_party_form', function (obj) {
+		obj.preventDefault();
+
+		var idParty = this.getAttribute('id');
+
+		$("#party_form").hide();
+	});
 }

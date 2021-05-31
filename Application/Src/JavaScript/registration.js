@@ -10,8 +10,6 @@ $(document).ready(function(){
     });
 });
 
-
-
 function checkCorrectFields() {
     correct = true;
     var login = $('#reg_form_login');
