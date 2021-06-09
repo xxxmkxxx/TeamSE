@@ -311,6 +311,7 @@ main{
 .find_icon > img{
 	width: 1.8vw;
 	margin-left: 0.5vw;
+	cursor: pointer;
 }
 
 .filter_icon > img{

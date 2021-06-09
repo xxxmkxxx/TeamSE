@@ -24,11 +24,19 @@
     padding: 0;
 }
 
+html{
+    overflow-x: hidden;
+}
+
 body{
 	display: flex;
 	flex-direction: column;
 	overflow-x: hidden;
 	min-width: 900px;
+}
+
+textarea:focus, input:focus{
+outline: none;
 }
 
 header{
@@ -114,11 +122,13 @@ main{
 .find_icon > img{
 	width: 1.8vw;
 	margin-left: 0.5vw;
+	cursor: pointer;
 }
 
 .filter_icon > img{
 	width: 2.3vw;
 	margin-left: 1.5vw;
+	cursor: pointer;
 }
 
 .filters{
@@ -130,8 +140,8 @@ main{
 	margin-top: 5vh;
 	z-index: 2;
 	border-radius: 10px;
-	opacity: 0;
-	display: flex;
+	opacity: 85%;
+	display: none;
 	flex-direction: column;
 	padding-bottom: 1vw;
 }

@@ -78,14 +78,17 @@ function searchGame(games, name) {
 		$('#games_block').remove();
 	}
 }
+
+//функция открытия формы фильтров по играм
 function open_game_filters(){
-	if($(".filters").css("opacity") == "0"){
-		$(".filters").animate({"opacity":"0.6"},100)}
- 
-	else {
-		$(".filters").animate({"opacity":"0"},100);
-			 }
+
+	if($(".filters").css("display") == "none"){
+		$(".filters").slideDown(200);
+	}
+	else $('.filters').slideUp(200);
 }
+
+//функция открытия формы меню
 function open_menu(){
 	if($(".menu").css("display") == "none"){
 		$('.menu').show(0, function() { 
