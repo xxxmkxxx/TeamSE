@@ -44,17 +44,26 @@ header{
 	overflow: hidden;
 }
 
+.click_logo{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-left: 3.5vw;
+
+}
 .header_minilogo{
 	color: white;
 	font-family: logofont;
 	padding: 0.7vw;
 	font-size: 3.5vw;
+	cursor: pointer;
 }
 
 .header_minilogo > img{
 	width: 3vw;
-	padding-left: 3.5vw;
+	cursor: pointer;
 }
+
 
 .menu_icon{
 	margin-left: 62vw;
