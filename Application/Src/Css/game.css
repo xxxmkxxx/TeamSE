@@ -426,6 +426,7 @@ main{
 	height: 2.2vw;
 	margin-top: 0.9vw;
 	margin-left: -1.3vw;
+	cursor: pointer;
 }
 
 .menu{   		/* менять значение display на none */
@@ -668,7 +669,7 @@ outline: none;
 	border-radius: 3vw;
 	border-color: #4092F7;
 	border-width: 0.5vw;
-	opacity: 90%;
+	opacity: 91%;
 	margin-left: 16.6vw;
 	margin-top: 4vw;
 	/*display: none;*/
@@ -691,6 +692,7 @@ outline: none;
 	width: 7vw;
 	height: 7vw;
 	border-radius: 1.5vw;
+
 }
 
 .party_descriprion{
@@ -772,7 +774,7 @@ outline: none;
 }
 
 .game_nick_input{
-	width: 18.5vw;
+	width: 18.4vw;
 	margin-left: 1.5vw;
 	font-family: othertext;
 	color: white;
@@ -781,8 +783,11 @@ outline: none;
 	padding-left: 1vw;
 	padding-right: 1vw;
 	border-radius: 0.7vw;
+	border-width: 0.3vw;
 	border-style: solid;
 	border-color: #2B3E8A;
+
+	/*border-color: #76D874;*/
 }
 
 .party_members_form::-webkit-scrollbar {
@@ -814,6 +819,14 @@ outline: none;
 	cursor: pointer;
 }
 
+.edit_icon > img{
+	width: 1.4vw;
+	display: flex;
+	margin-top: 0.45vw;
+	margin-left: -2.2vw;
+	cursor: pointer;
+}
+
 
 .exit_button{
 	background-color: #304398;
@@ -828,6 +841,23 @@ outline: none;
 	cursor: pointer;
 }
 
+.members_counter{
+	width: 5vw;
+	height: 5vw;
+	/*background-color: red;*/
+	margin-left: -6.5vw;
+	margin-top: -1vw;
+	z-index: 3;
+	color: white;
+	font-family: MainBoldFont;
+	font-size: 2.2vw;
+	display: flex;
+	flex-direction: row;
+}
+
+.members_here{
+	color: #76D874;
+}
 
 .vl {
     border-left: 2px solid green;
