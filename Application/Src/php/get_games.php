@@ -1,18 +1,7 @@
 <?php
-$config = include('config.php');
+include('DataBaseModul.php');
 
-$databaseConnectInfo = 'mysql:dbname='.$config['name_db'].';'.'host='.$config['host'];
-$databaseUser = $config['login_db'];
-$databasePassword = $config['password_db'];
+$query = 'SELECT * FROM game';
+$games = executeQuery($query);
 
-try {
-    $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
-
-    $query = 'SELECT * FROM `Game`';
-
-    $games = $databaseConnect->query($query)->fetchAll();
-
-    echo json_encode($games);
-} catch (PDOException $e) {
-    echo 'errorConnectToBD';
-}
+echo json_encode($games);

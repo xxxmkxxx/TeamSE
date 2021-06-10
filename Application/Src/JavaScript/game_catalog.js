@@ -2,6 +2,7 @@ $(document).ready(mainFunction());
 
 function mainFunction() {
 	var gamesArray;
+	var filtersArray = new Array();
 
 	//Событие отправки результата строки поиска
 	$('#search').submit(function (obj) {
@@ -11,7 +12,55 @@ function mainFunction() {
 
 		searchGame(gamesArray, name);
 	});
+	//Событие нажатия на кнопку фильтрации(применить)
+	$('#send_filters').click(function (obj) {
+		obj.preventDefault();
+		var gamesByFiltersArray;
+		filtersArray = new Array();
 
+		getAllGamesByFilters().done(function (data) {
+			gamesByFiltersArray = $.parseJSON(data);
+
+			var arrayDiv = document.getElementById('genres').getElementsByTagName('div');
+
+			for (let i = 0; i < arrayDiv.length; i++) {
+				if(arrayDiv[i].getElementsByTagName('input')[0].checked) {
+					filtersArray.push(arrayDiv[i].getElementsByTagName('input')[0].value);
+				}
+			}
+
+			if(filtersArray.length == 0) {
+				var popularGamesRowDiv = $('<div>', {
+					'class': 'popular_games_row',
+					'id': 'popular_games_row'
+				});
+
+				$('#game_catalog').append(popularGamesRowDiv);
+
+				$('#games_block').remove();
+				$('#popular_games_row').remove();
+
+				$('#search_message').text('');
+				var gamesBlockDiv = $('<div>', {
+					'class': 'games_block',
+					'id': 'games_block'
+				})
+				var gamesRowDiv = $('<div>', {
+					'class': 'games_row',
+					'id': 'games_row'
+				});
+
+				gamesBlockDiv.append(gamesRowDiv);
+
+				$('#popular_games_row').after(gamesBlockDiv);
+
+				viewPopularGames(gamesArray);
+				viewAllGames(gamesArray);
+			} else {
+				searchGamesByFilters(gamesByFiltersArray, filtersArray);
+			}
+		});
+	});
 	//При успешном получении json, обрабатываем его и выводим на экран игры
 	getAllGames().done(function (data) {
 		gamesArray = $.parseJSON(data);
@@ -19,6 +68,9 @@ function mainFunction() {
 		viewPopularGames(gamesArray);
 		viewAllGames(gamesArray);
 	});
+
+	//Слушатель нажатия на иконку фильтров
+	openGameFilters();
 
 	openGamePage();
 }
@@ -29,10 +81,20 @@ function getAllGames() {
 			type: 'POST'
 	});
 }
+//Получаем массив всех игр c жанрами
+function getAllGamesByFilters() {
+	return $.ajax({
+		url: '../php/get_games_by_filters.php',
+		type: 'POST'
+	});
+}
 //Функция поиска игры
 function searchGame(games, name) {
 	var viewAll = false;
 	var found = 0;
+	var isSetGameVithName;
+
+	$('#search_message').text('');
 
 	var popularGamesRowDiv = $('<div>', {
 		'class': 'popular_games_row',
@@ -45,7 +107,8 @@ function searchGame(games, name) {
 	$('#game_catalog').append(popularGamesRowDiv);
 
 	for (let i = 0; i < games.length; i++) {
-		if(games[i]['GameName'].toUpperCase() == name.toUpperCase()) {
+		isSetGameVithName = games[i]['GameName'].toUpperCase() == name.toUpperCase();
+		if(isSetGameVithName) {
 			$('#search_message').text('');
 			viewGame(games[i], $('#popular_games_row'), popularGamesRowDiv);
 			found++;
@@ -57,6 +120,7 @@ function searchGame(games, name) {
 	}
 
 	if(viewAll) {
+		$('#search_message').text('');
 		$('#search_message').text('');
 		var gamesBlockDiv = $('<div>', {
 			'class': 'games_block',
@@ -78,24 +142,48 @@ function searchGame(games, name) {
 		$('#games_block').remove();
 	}
 }
+//Функция поиска игр по фильтрам
+function searchGamesByFilters(games, filters) {
+	var resultArrayGames = new Array();
+	var isSetGameVithFilter;
 
-//функция открытия формы фильтров по играм
-function open_game_filters(){
+	var popularGamesRowDiv = $('<div>', {
+		'class': 'popular_games_row',
+		'id': 'popular_games_row'
+	});
 
-	if($(".filters").css("display") == "none"){
-		$(".filters").slideDown(200);
+	$('#games_block').remove();
+	$('#popular_games_row').remove();
+
+	$('#game_catalog').append(popularGamesRowDiv);
+
+	for (let i = 0; i < filters.length; i++) {
+		for (let j = 0; j < games.length; j++) {
+			isSetGameVithFilter = games[j]['Genre'] == filters[i];
+
+			if(isSetGameVithFilter) {
+				resultArrayGames.push(games[j]);
+			}
+		}
 	}
-	else $('.filters').slideUp(200);
-}
 
+	if(resultArrayGames.length == 0) {
+		$('#search_message').text('ничего не найдено');
+		$('#games_block').remove();
+	} else {
+		for (let i = 0; i < resultArrayGames.length; i++) {
+			viewGame(resultArrayGames[i], $('#popular_games_row'), popularGamesRowDiv);
+		}
+	}
+}
 //функция открытия формы меню
 function open_menu(){
 	if($(".menu").css("display") == "none"){
-		$('.menu').show(0, function() { 
+		$('.menu').show(0, function() {
 			$(".menu").css("display","inline-flex");
 			$(".filters").css("margin-top","11vh")})
 	}
-	else $('.menu').hide('slow', function() { 
+	else $('.menu').hide('slow', function() {
 			$(".menu").css("display","none");
 			$(".filters").css("margin-top","5vh")})
 }
@@ -181,11 +269,57 @@ function openGamePage() {
 		window.location.href = '../html/game.html' + '?GameName=' + gameName;
 	});
 }
+//Функция для получения списка фильтров по жанрам из бд
+function getFiltersByGenres() {
+	return $.ajax({
+		url: '../php/get_genres.php',
+		type: 'POST'
+	});
+}
+//Функция для создания 1 жанра
+function createFilter(name) {
+	var categ_itemDiv = $('<div>', {
+		'class': 'categ_item'
+	});
+	var inputCheckbox = $('<input>', {
+		'type': 'checkbox',
+		'value': name
+	});
+
+	categ_itemDiv.append(inputCheckbox);
+	categ_itemDiv.append(name);
+
+	return categ_itemDiv;
+}
+//Функция для отображения всех жанров
+function viewAllGenres(genres) {
+	var categGenresDiv = $('<div>', {
+		'class': 'categ',
+		'id': 'genres'
+	});
+
+	$('#genres').remove();
+
+	for (let i = 0; i < genres.length; i++) {
+		categGenresDiv.append(createFilter(genres[i]['Genre']));
+	}
+
+	$('#take_categ').append(categGenresDiv);
+}
 //Функция для открытия формы с фильтрами
 function openGameFilters() {
 	$(document).on('click','.filter_icon', function (obj) {
 		obj.preventDefault();
 
+		if($(".filters").css("display") == "none"){
+			$(".filters").slideDown(200);
 
+			getFiltersByGenres().done(function (data) {
+				var genres = $.parseJSON(data);
+
+				viewAllGenres(genres);
+			});
+		} else
+			$('.filters').slideUp(200);
 	});
 }

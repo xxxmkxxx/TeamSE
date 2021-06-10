@@ -4,4 +4,4 @@ include('DataBaseModul.php');
 $query = 'SELECT * FROM `genres`';
 $genres = executeQuery($query);
 
-return $genres;
+echo json_encode($genres);
