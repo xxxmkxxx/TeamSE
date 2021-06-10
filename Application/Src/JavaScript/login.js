@@ -24,11 +24,11 @@ function checkAccount() {
             success: function(data){
                 switch (data) {
                     case 'doesNotExist': {
-                        $('#sign_form_login')[0].setCustomValidity("Данного аккаунта не существует!");
+                        $('#main_form_reg_name').text("Данного аккаунта не существует!");
                         break;
                     }
                     case 'wrongPassword': {
-                        $('#sign_form_password')[0].setCustomValidity("Вы указали неверный пароль!");
+                        $('#main_form_reg_name').text("Вы указали неверный пароль!");
                         break;
                     }
                     case 'success': {

@@ -181,3 +181,11 @@ function openGamePage() {
 		window.location.href = '../html/game.html' + '?GameName=' + gameName;
 	});
 }
+//Функция для открытия формы с фильтрами
+function openGameFilters() {
+	$(document).on('click','.filter_icon', function (obj) {
+		obj.preventDefault();
+
+
+	});
+}

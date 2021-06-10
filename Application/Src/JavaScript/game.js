@@ -64,7 +64,6 @@ function outputchange() {
 	let val = document.getElementById("filter_range").value;
 	document.getElementById("ouput_range").innerHTML = val;
 }
-
 //функция открытия формы с фильтрами выбора пати
 function filters(){
 	if($(".party_filters").css("display") == "none"){
@@ -72,8 +71,6 @@ function filters(){
 	}
 	else $('.party_filters').slideUp(200);
 }
-
-
 //функция открытия формы создания отзыва
 function open_new_com_form(){
 	if($(".write_commment").css("display") == "none"){
@@ -86,10 +83,6 @@ function open_new_com_form(){
 	}
 
 }
-
-		
-
-
 function getGame(name) {
 	return $.ajax({
 		url: '../php/get_game.php',
