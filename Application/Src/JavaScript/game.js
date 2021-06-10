@@ -73,6 +73,23 @@ function filters(){
 	else $('.party_filters').slideUp(200);
 }
 
+
+//функция открытия формы создания отзыва
+function open_new_com_form(){
+	if($(".write_commment").css("display") == "none"){
+		$(".write_commment").slideDown(200);
+		$(".review_block2").animate({"margin-top": "13vw"}, 500);
+	}
+	else {
+		$('.write_commment').slideUp(200);
+		$(".review_block2").animate({"margin-top": "0vw"}, 500);
+	}
+
+}
+
+		
+
+
 function getGame(name) {
 	return $.ajax({
 		url: '../php/get_game.php',

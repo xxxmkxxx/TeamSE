@@ -135,7 +135,6 @@
 		</form>
 
 
-
 		<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
 
 				<div class = "party_filters">
@@ -211,10 +210,65 @@
 				<div class = "reviews">
 					<div class = "review_block1">
 						<span class = "rev"> отзывы </span>
-						<span class = "write"> <img src="../images/write_comment.png">  </span>
+						<span class = "write"> <img src="../images/write_comment.png" onclick = "open_new_com_form()">  </span>
 					</div>
 
+							<form method="post"> <!-- Форма создания отзыва -->
+								<div class = "write_commment">
+									<textarea name="write_commment_area" wrap="soft" class="write_commment_area"> </textarea>
+									<button name = "push_comment" class = "comment_but"> отправить </button>
+								</div>
+							</form>
+
+
 					<div class = "review_block2" id="review_block2">
+
+
+
+
+
+
+
+
+						<div class = "comment"> <!-- 1 отзыв ( пример ) -->
+
+							<div class = "author_data">
+
+								<span class = "author_icon">
+									<img src="../images/example_pic.png">
+								</span>
+
+								<span class = "author_name"> имя пользователя  </span>
+
+							</div>
+
+							<div class = "comment_text">
+								Текст отзыва <br>
+								Текст отзыва 
+							</div>	
+
+						</div>
+
+							<div class = "comment"> <!-- 1 отзыв ( пример ) -->
+
+							<div class = "author_data">
+
+								<span class = "author_icon">
+									<img src="../images/example_pic.png">
+								</span>
+
+								<span class = "author_name"> имя пользователя  </span>
+
+							</div>
+
+							<div class = "comment_text">
+								Текст отзыва <br>
+								Текст отзыва 
+							</div>	
+
+						</div>
+
+
 
 					</div>
 				</div>

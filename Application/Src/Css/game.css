@@ -204,13 +204,61 @@ main{
 
 .write > img{
 	margin-left: 13.8vw;
+}
+
+.write > img{
 	width: 3vw;
 	height: 3vw;
+	cursor: pointer;
 }
 
 .review_block2{
 	display: flex;
 	flex-direction: column;
+}
+
+.write_commment{
+	width: 40vw;
+	display: flex;
+	flex-direction: column;
+	background: linear-gradient(to top, #152142, #2F3270);
+	border: solid;
+	border-color: #2F3270;
+	border-radius: 1vw;
+	position: absolute;
+	top: 36vw;
+	left: 1.6vw;
+	display: none;
+}
+
+.write_commment_area{
+	height: 7vw;
+	width: 36vw;
+	margin-left: 1.5vw;
+	/*margin-right: 2vw;*/
+	margin-top: 2vw;
+	margin-bottom: 1vw;
+	border-radius: 0.7vw;
+	padding: 0.5vw 0.5vw 0.5vw 0.5vw;
+	border: none;
+	font-size: 1.2vw;
+	font-family: othertext;
+	resize: none;
+}
+
+.comment_but{
+	font-size: 1.2vw;
+	font-family: ButtonsFont;
+	width: 12vw;
+	border-radius: 0.5vw;
+	border: none;
+	margin-left: 26.55vw;
+	margin-right: 2vw;
+	margin-bottom: 1vw;
+	background-color: #2F3270;
+	color: white;
+	padding: 0.1vw;
+
 }
 
 .comment{
