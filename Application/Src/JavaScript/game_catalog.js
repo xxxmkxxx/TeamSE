@@ -124,7 +124,7 @@ function searchGame(games, name) {
 	$('#game_catalog').append(popularGamesRowDiv);
 
 	for (let i = 0; i < games.length; i++) {
-		isSetGameVithName = games[i]['GameName'].toUpperCase() == name.toUpperCase();
+		isSetGameVithName = games[i]['game_name'].toUpperCase() == name.toUpperCase();
 		if(isSetGameVithName) {
 			$('#search_message').text('');
 			viewGame(games[i], $('#popular_games_row'), popularGamesRowDiv);
@@ -176,7 +176,7 @@ function searchGamesByFilters(games, filters) {
 
 	for (let i = 0; i < filters.length; i++) {
 		for (let j = 0; j < games.length; j++) {
-			isSetGameVithFilter = games[j]['Genre'] == filters[i];
+			isSetGameVithFilter = games[j]['genre'] == filters[i];
 
 			if(isSetGameVithFilter) {
 				resultArrayGames.push(games[j]);
@@ -318,7 +318,7 @@ function viewAllGenres(genres) {
 	$('#genres').remove();
 
 	for (let i = 0; i < genres.length; i++) {
-		categGenresDiv.append(createFilter(genres[i]['Genre']));
+		categGenresDiv.append(createFilter(genres[i]['genre']));
 	}
 
 	$('#take_categ').append(categGenresDiv);
