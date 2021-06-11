@@ -17,7 +17,7 @@ function executeQuery($query) {
     try {
         $databaseConnect = connectToDataBase();
 
-        return $databaseConnect->query($query)->fetchAll();
+        return $databaseConnect->query($query)->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         echo 'errorConnectToBD';
     }
@@ -28,7 +28,7 @@ function executePreparedQuery($query, $prepareArgs) {
         $databaseResult = $databaseConnect->prepare($query);
         $databaseResult->execute($prepareArgs);
 
-        return $databaseResult->fetchAll();
+        return $databaseResult->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         echo 'errorConnectToBD';
     }
