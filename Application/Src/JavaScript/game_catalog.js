@@ -222,11 +222,11 @@ function viewAllGames(gamesArray) {
 function viewGame(game, gamesRow) {
 	var gameSpan = $('<span>', {
 		'class': 'game',
-		'data-tooltip': game['GameName']
+		'data-tooltip': game['game_name']
 	});
 	var gameIconImg = $('<img>', {
-		'src': game['GameIconLink'],
-		'id': game['GameName']
+		'src': game['game_icon_link'],
+		'id': game['game_name']
 	});
 
 	gameSpan.append(gameIconImg)
@@ -236,11 +236,11 @@ function viewGame(game, gamesRow) {
 function viewPopularGame(game, gamesRow) {
 	var popGameSpan = $('<span>', {
 		'class': 'pop_game',
-		'id': game['GameName']
+		'id': game['game_name']
 	});
 	var gameIconImg = $('<img>', {
-		'src': game['GameIconLink'],
-		'id': game['GameName']
+		'src': game['game_icon_link'],
+		'id': game['game_name']
 	});
 
 	popGameSpan.append(gameIconImg)
@@ -251,7 +251,7 @@ function viewPopularGames(gamesArray) {
 	var gamesRow = $('#popular_games_row');
 	var countPopularGame = 0;
 	for (let i = 0; i < gamesArray.length; i++) {
-		if(Number(gamesArray[i]['Popularity']) >= 4 && Number(gamesArray[i]['Popularity']) <= 5 && countPopularGame <=5) {
+		if(Number(gamesArray[i]['popularity']) >= 4 && Number(gamesArray[i]['popularity']) <= 5 && countPopularGame <=5) {
 			viewPopularGame(gamesArray[i], gamesRow);
 			countPopularGame++;
 		}
