@@ -151,17 +151,17 @@ main{
 	border-radius: 10px;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	z-index: 3;
 }
 
 .filter_categories{
-	font-family: ButtonsFont;
-	font-size: 1.5vw;
-	color: #111b33;
-	margin-right: 2vw;
-	margin-left: 2vw;
+	font-family: MainBoldFont;
+	font-size: 1.3vw;
+	color: #152142;
+	margin-right: 3.5vw;
+	margin-left: 1.4vw;
 }
 
 .take_categ{
@@ -180,33 +180,39 @@ main{
 .categ_item{
 	display: flex;
 	flex-direction: row;
-	font-size: 2vw;
-	font-family: bold;
-	font-size: 1.2vw;
 	color: white;
-	font-weight: bold;
-	margin: 0.5vw 0.5vw 0.5vw 0.5vw;
-	/*background-color: white;*/
-	border-radius: 10px;
-	height: 2vw;
+	font-size: 1.2vw;
+	font-family: othertext;
+	margin-top: 1.5vw;
+	margin-left: 1vw;
+	/*margin-bottom: 0.5vw;*/
+	
 }
 
-.send_filters{
-width: 11.5vw; 
-font-size: 1.1vw;
-margin-left: 1vw;
-padding: 0.2vw;
-font-family: MainBoldFont;
-border: none;
 
+.send_filters{
+	height: 2vw;
+	width: 27vw;
+	background-color: white;
+	color: #101C33;
+	font-family: MainBoldFont;
+	font-size: 1.2vw;
+	border-radius: 0.5vw;
+	border: none;
+	cursor: pointer;
+	margin-left: 1vw;
+	margin-top: 2.5vw;
 }
 
 
 input[type=checkbox] {
-    width: 1.4vw;
-    height: 1.4vw;
-    margin-right: 0.8vh;
+ 
+	width: 1.5vw;
+	height: 1.5vw;
+	margin-right: 0.7vw;
+	/*margin-bottom: 1vw;*/
 }
+
 
 
 .search_message{
