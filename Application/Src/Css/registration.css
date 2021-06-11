@@ -124,6 +124,35 @@ main{
   transition: all 0.3s;
 }
 
+
+.Error_form{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 46vw;
+	margin-top: 1vw;
+	/*background-color: #f2a79d;*/
+	border-radius: 7px;
+	margin-bottom: -3vw;
+
+}
+
+.Error_message{
+	color: #f2a79d;
+	font-size: 1.25vw;
+	border-radius: 0.5vw;
+	margin-left: 0.7vw;
+	font-weight: 400;
+}
+
+.error_icon > img {
+	width: 1.35vw;
+	margin-top: 0.3vw;
+	margin-left: 0.5vw;
+	margin-bottom: 0.1vw;
+}
+
+
  input:focus{
 outline: none;
 }
@@ -180,6 +209,21 @@ outline: none;
 		font-size: 4vw;
 		margin-top: 2vw;
 	}
+	
+	.Error_form{
+	width: 64vw;
+	margin-top: 1vw;
+	/*background-color: #f2a79d;*/
+	border-radius: 7px;
+	margin-bottom: -3vw;
+
+	}
+
+	.Error_message{
+		color: #f2a79d;
+		font-size: 1.6vw;
+	}
+
 
 }
 

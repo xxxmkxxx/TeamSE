@@ -10,6 +10,11 @@
     font-family: 'logofont';
 	src: url(../fonts/logofont.otf);}
 
+@font-face {
+	font-family: 'othertext';
+	src: url(../fonts/19676.ttf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -73,6 +78,33 @@ main{
 	margin: 2vw;
 	z-index: 2;
 	border-radius: 12px;
+}
+
+.Error_form{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 46vw;
+	margin-top: 1vw;
+	/*background-color: #f2a79d;*/
+	border-radius: 7px;
+	margin-bottom: -3vw;
+
+}
+
+.Error_message{
+	color: #f2a79d;
+	font-size: 1.25vw;
+	border-radius: 0.5vw;
+	margin-left: 0.7vw;
+	font-weight: 400;
+}
+
+.error_icon > img {
+	width: 1.35vw;
+	margin-top: 0.3vw;
+	margin-left: 0.5vw;
+	margin-bottom: 0.1vw;
 }
 
 .main_form_reg_name{
@@ -196,6 +228,21 @@ outline: none;
 		font-size: 1.6vw;
 		cursor: pointer;
 	}
+
+	.Error_form{
+	width: 64vw;
+	margin-top: 1vw;
+	/*background-color: #f2a79d;*/
+	border-radius: 7px;
+	margin-bottom: -3vw;
+
+	}
+
+	.Error_message{
+		color: #f2a79d;
+		font-size: 1.6vw;
+	}
+
 
 }
 
