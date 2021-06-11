@@ -17,16 +17,6 @@ function checkCorrectFields() {
     var password2 = $('#reg_form_password2');
     var mail = $('#reg_form_mail');
 
-if(login.val().length < 4) {
-        login[0].setCustomValidity("Логин должен содержать не менее 4 символов");
-        correct = false;
-    } else if(password.val().length < 4) {
-        password[0].setCustomValidity("Вы ввели слишком простой пароль");
-        correct = false;
-    } else if(password2.val() != password.val()){
-        password2[0].setCustomValidity("Пароли не совпадают");
-    }
-
     return correct;
 }
 

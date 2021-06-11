@@ -109,9 +109,9 @@ function getNameGame() {
 }
 //Функция вывода всей информации об игре
 function viewAllInfo(game) {
-	$('#game_name').text(game['GameName']);
-	$('#game_description').text(game['GameDescription']);
-	$('#game_icon').attr('src', game['GameIconLink']);
+	$('#game_name').text(game['game_name']);
+	$('#game_description').text(game['game_description']);
+	$('#game_icon').attr('src', game['game_icon_link']);
 }
 //Функция для получения массива всех комментраиев
 function getAllComments(game) {
@@ -145,7 +145,7 @@ function viewComment(comment, number, user) {
 
 	var div_comment_text = $('<div>', {
 		'class': 'comment_text'
-	}).text(comment['CommentText']);
+	}).text(comment['comment_text']);
 
 	var span_author_icon = $('<span>', {
 		'class': 'author_icon',
@@ -154,10 +154,10 @@ function viewComment(comment, number, user) {
 
 	var span_author_name = $('<span>', {
 		'class': 'author_name',
-	}).text(user['Login']);
+	}).text(user['login']);
 
 	var img = $('<img>', {
-		'src': user['UserIcon']
+		'src': user['user_icon']
 	});
 
 	span_author_icon.append(img);
@@ -192,7 +192,7 @@ function viewAllPartyes(partyes, users, game) {
 	for (let i = 0; i < partyes.length; i++) {
 		if(partyes[i]['id_game'] == game['id_game']) {
 			for (let j = 0; j < users.length; j++) {
-				if (partyes[i]['PartyCreator'] == users[j]['id_user']) {
+				if (partyes[i]['party_creator'] == users[j]['id_user']) {
 					arrayParty.push(partyes[i]);
 					arrayUsers.push(users[j]);
 				}
@@ -203,12 +203,12 @@ function viewAllPartyes(partyes, users, game) {
 		if(i % 3 != 0) {
 			numberPartyOnRow++;
 
-			createPartyBlock(numberPartyOnRow + 1, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i], arrayParty[i]['id_party']);
+			createPartyBlock(numberPartyOnRow + 1, rowParty, arrayParty[i]['gamers_amount'], 5, arrayUsers[i], arrayParty[i]['id_party']);
 		} else {
 			numberPartyOnRow = 0;
 
 			rowParty = createNewRow(i / 3);
-			createPartyBlock(numberPartyOnRow + 1, rowParty, arrayParty[i]['GamersAmount'], 5, arrayUsers[i]), arrayParty[i]['id_party'];
+			createPartyBlock(numberPartyOnRow + 1, rowParty, arrayParty[i]['gamers_amount'], 5, arrayUsers[i]), arrayParty[i]['id_party'];
 		}
 	}
 }
@@ -244,12 +244,12 @@ function createPartyBlock(numberPartyOnRow, rowParty, countPlayers, allCountPlay
 	});
 
 	var img_form_img = $('<img>', {
-		'src': creater['UserIcon']
+		'src': creater['user_icon']
 	});
 
 	var span_party_creator = $('<span>', {
 		'class': 'party_creator'
-	}).text(creater['Login']);
+	}).text(creater['login']);
 
 	span_come_in.append(img_come_in);
 	div_row2.append(span_participans);
