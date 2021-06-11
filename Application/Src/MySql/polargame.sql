@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 11, 2021 at 10:47 PM
+-- Generation Time: Jun 12, 2021 at 02:20 AM
 -- Server version: 8.0.19
 -- PHP Version: 7.1.33
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `game` (
-  `id_game` int NOT NULL,
+  `game_id` int NOT NULL,
   `game_name` text,
   `game_description` text,
   `game_icon_link` text,
@@ -39,7 +39,7 @@ CREATE TABLE `game` (
 -- Dumping data for table `game`
 --
 
-INSERT INTO `game` (`id_game`, `game_name`, `game_description`, `game_icon_link`, `popularity`) VALUES
+INSERT INTO `game` (`game_id`, `game_name`, `game_description`, `game_icon_link`, `popularity`) VALUES
 (1, 'WORLD OF WARCRAFT', 'Массовая многопользовательская ролевая онлайн-игра, разработанная и издаваемая компанией Blizzard Entertainment. Всё действие происходит в Азероте, мире магии и нескончаемых приключений. Исследуйте постоянно развивающийся фантастический мир и прокачивайте персонажей. Во время своих приключений вы встретите других игроков, что обитают в Азероте. В WoW есть множество сообществ, участники которых связаны между собой крепкими узами дружбы. Дух этой игры сплачивает людей, будь то надежные товарищи, верная команда или достойные соперники. Это не просто игра... это образ жизни.', '../images/WORLD_OF_WARCRAFT.jpg', 4),
 (2, 'COUNTER STRIKE: GLOBAL OFFENSIVE (CS:GO)', 'Трёхмерный многопользовательский шутер от первого лица, в котором игроки распределяются по двум командам и сражаются друг против друга, разработанная компаниями Valve и Hidden Path Entertainment. В игре представлены две команды: террористы и спецназ, а также содержит несколько многопользовательских режимов игры: обычный и соревновательный режим (разминирование бомбы, спасение заложников), королевская битва, военные игры (гонка вооружений, уничтожение объекта, перелётные снайперы), бой насмерть, зачистка, совместный налёт, напарники и страж. В первом сценарии игроки, играющие за команду террористов, должны заложить бомбу в одной из нескольких точек закладки, а спецназ — успешно её разминировать. Во втором сценарии игрокам из команды террористов необходимо не дать противоборствующей команде спасти заложников, которых они похитили.', '../images/CSGO.jpg', 4),
 (3, 'PLAYERUNKNOWN`S BATTLEGROUNDS (PUBG)', 'Многопользовательская онлайн-игра в жанре королевской битвы, PlayerUnknown’s Battlegrounds является экшн-игрой, разрабатываемая и издаваемая студией PUBG Corporation, дочерней компанией корейского издателя Bluehole. в которой игроки в количестве до 100 человек сражаются в «королевской битве» (Battle Royale), по типу крупномасштабной «last man standing» схватки в deathmatch режиме, где игроки воюют между собой, чтобы стать последним выжившим. Игроки могут выбирать, как войти в матч: в одиночку, в паре, в трио или отрядом из четырёх человек. В любом случае, последний человек или команда, оставшаяся в живых, выигрывает матч.', '../images/PLAYERUNKNOWNS_BATTLEGROUNDS_(PUBG).png', 4),
@@ -90,7 +90,7 @@ INSERT INTO `games_genres` (`game_id`, `genre_id`) VALUES
 
 CREATE TABLE `game_comments` (
   `id_comment` int NOT NULL,
-  `id_game` int DEFAULT NULL,
+  `game_id` int DEFAULT NULL,
   `id_user` int DEFAULT NULL,
   `comment_text` text,
   `date_time` datetime DEFAULT NULL
@@ -100,7 +100,7 @@ CREATE TABLE `game_comments` (
 -- Dumping data for table `game_comments`
 --
 
-INSERT INTO `game_comments` (`id_comment`, `id_game`, `id_user`, `comment_text`, `date_time`) VALUES
+INSERT INTO `game_comments` (`id_comment`, `game_id`, `id_user`, `comment_text`, `date_time`) VALUES
 (1, 1, 1, 'Любая игра, в которой есть Дун Морог, заслуживает 10 баллов', '2021-05-10 20:30:00'),
 (2, 1, 2, 'Поиграл на оффе, после 3.1.3, боже что сделали с игрой? Повальный автолевелинг, автоизучение скилов, у шмоток впринципе можно было оставить 1 параметр \"КГУТОСТЬ!!!\" потому что они теперь кардинально между собой не отличаются, и невозможно кардинально перекачать шмотом персонажа, потому что статы шмота теперь формируются динамически при выпаде, и он всегда будет чуть-чуть лучше чем то что на тебе одето, короче превратили мою уютную ВоВку в какой - то скайфордж для имбецилов((', '2021-05-12 10:50:00'),
 (3, 1, 3, 'Тот момент когда самое лучшее становится как его конкуренты. Компания уже прямо говорит что им нужны бабки а не люди и не мнение. рест и пис близ.', '2021-05-13 23:10:00'),
@@ -161,7 +161,7 @@ INSERT INTO `genres` (`id_genre`, `genre`) VALUES
 
 CREATE TABLE `party` (
   `id_party` int NOT NULL,
-  `id_game` int DEFAULT NULL,
+  `game_id` int DEFAULT NULL,
   `party_password` text,
   `gamers_amount` int DEFAULT NULL,
   `party_description` text,
@@ -174,7 +174,7 @@ CREATE TABLE `party` (
 -- Dumping data for table `party`
 --
 
-INSERT INTO `party` (`id_party`, `id_game`, `party_password`, `gamers_amount`, `party_description`, `privacy`, `party_icon`, `party_creator`) VALUES
+INSERT INTO `party` (`id_party`, `game_id`, `party_password`, `gamers_amount`, `party_description`, `privacy`, `party_icon`, `party_creator`) VALUES
 (1, 1, '12345', 3, 'ищу пати для совместной прокачки', 'открытая', '---', 2),
 (2, 2, '67890', 4, 'научите играть кто-нибудь пж', 'открытая', '---', 1),
 (3, 3, 'abcde', 3, 'ищу людей поиграть по фану', 'открытая', '---', 4),
@@ -250,10 +250,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `login`, `password`, `email`, `id_users_roles`, `user_icon`, `user_description`) VALUES
-(1, 'abc', '12345', 'xyz@gmail.com', 2, 'dsfhnjs', 'ahljsafsah'),
-(2, 'def', '98765', 'abc@gmail.com', 2, 'sfdgerh', 'sdfggdfsgsdf'),
-(3, 'xyz', '45056', 'def@gmail.com', 2, 'dgfdgfd', 'ljadfjhkgfdh'),
-(4, 'test', '$2y$10$3P8P9MC2Xv4vVIO2TwBPb.Lh6RQ4XORvOvvYfCnptg3csNNIuGJEu', 'test@mail.ru', 2, 'default.png', 'default');
+(1, 'abc', '12345', 'xyz@gmail.com', 2, '../images/example_pic.png', 'ahljsafsah'),
+(2, 'def', '98765', 'abc@gmail.com', 2, '../images/example_pic.png', 'sdfggdfsgsdf'),
+(3, 'xyz', '45056', 'def@gmail.com', 2, '../images/example_pic.png', 'ljadfjhkgfdh'),
+(4, 'test', '$2y$10$3P8P9MC2Xv4vVIO2TwBPb.Lh6RQ4XORvOvvYfCnptg3csNNIuGJEu', 'test@mail.ru', 2, '../images/example_pic.png', 'default'),
+(5, 'jekarws', '$2y$10$DKCZjZCMK4F.NmMhfb5KZ.mrczJUDJOHgE4pVkzvEGKd7/1kY6zBS', 'jenialeontiev@yandex.ru', 2, '../images/example_pic.png', 'default'),
+(6, 'asdf', '$2y$10$QRe9Ffmu/pPo0xohAFdCKePPlI1CJgT4mIOH7y3lZhOsLfSNSFU22', 'asdf', 2, '../images/example_pic.png', 'default');
 
 -- --------------------------------------------------------
 
@@ -282,7 +284,7 @@ INSERT INTO `users_roles` (`id_users_roles`, `users_role`) VALUES
 -- Indexes for table `game`
 --
 ALTER TABLE `game`
-  ADD PRIMARY KEY (`id_game`);
+  ADD PRIMARY KEY (`game_id`);
 
 --
 -- Indexes for table `games_genres`
@@ -342,7 +344,7 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `game_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `game_comments`
@@ -372,7 +374,7 @@ ALTER TABLE `private_message`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users_roles`
@@ -388,7 +390,7 @@ ALTER TABLE `users_roles`
 -- Constraints for table `games_genres`
 --
 ALTER TABLE `games_genres`
-  ADD CONSTRAINT `games_genres_ibfk_1` FOREIGN KEY (`game_id`) REFERENCES `game` (`id_game`),
+  ADD CONSTRAINT `games_genres_ibfk_1` FOREIGN KEY (`game_id`) REFERENCES `game` (`game_id`),
   ADD CONSTRAINT `games_genres_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id_genre`);
 
 --

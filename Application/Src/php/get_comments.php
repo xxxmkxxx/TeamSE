@@ -8,7 +8,7 @@ $databasePassword = $config['password_db'];
 try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
-    $query = 'SELECT * FROM `game_comments` WHERE `id_game` = :game_id';
+    $query = 'SELECT * FROM `game_comments` WHERE `game_id` = :game_id';
     $execute = ['game_id'=>$_GET['val']];
     $comments = execudeQuery($databaseConnect, $query, $execute);
 

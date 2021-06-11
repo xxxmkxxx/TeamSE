@@ -117,7 +117,7 @@ function viewAllInfo(game) {
 function getAllComments(game) {
 	return $.ajax({
 		url: '../php/get_comments.php',
-		data: { val : game['id_game']}
+		data: { val : game['game_id']}
 	});
 }
 //Функция для отображения части комментариев
@@ -190,7 +190,7 @@ function viewAllPartyes(partyes, users, game) {
 	var arrayUsers = new Array();
 
 	for (let i = 0; i < partyes.length; i++) {
-		if(partyes[i]['id_game'] == game['id_game']) {
+		if(partyes[i]['game_id'] == game['game_id']) {
 			for (let j = 0; j < users.length; j++) {
 				if (partyes[i]['party_creator'] == users[j]['id_user']) {
 					arrayParty.push(partyes[i]);
