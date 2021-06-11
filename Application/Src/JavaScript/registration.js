@@ -54,7 +54,7 @@ function checkAccount() {
                     break;
                 }
                 case 'success': {
-                    window.location.href = '../html/game_catalog.html';
+                    window.location.href = '../html/game_catalog.html?logining=1';
                     break;
                 }
                 case 'errorConnectToBD': {

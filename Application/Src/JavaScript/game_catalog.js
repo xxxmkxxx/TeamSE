@@ -4,6 +4,7 @@ function mainFunction() {
 	var gamesArray;
 	var filtersArray = new Array();
 
+	connectSession();
 	//Событие отправки результата строки поиска
 	$('#search').submit(function (obj) {
 		obj.preventDefault();
@@ -73,6 +74,22 @@ function mainFunction() {
 	openGameFilters();
 
 	openGamePage();
+}
+function getLoginingStatus() {
+	var url_str = window.location.href;
+	var url = new URL(url_str);
+	return url.searchParams.get('logining');
+}
+//Функция подключения сессии
+function connectSession(){
+	$.ajax({
+		url: '../php/SessionModul.php',
+		data: { logining: getLoginingStatus()},
+		success: function (data) {
+			var session = $.parseJSON(data);
+			$("#profile").text(session['login']);
+		}
+	});
 }
 //Получаем массив всех игр
 function getAllGames() {
@@ -258,7 +275,7 @@ function openGamePage() {
 
 		var gameName = this.getAttribute('data-tooltip');
 
-		window.location.href = '../html/game.html' + '?GameName=' + gameName;
+		window.location.href = '../html/game.html' + '?GameName=' + gameName + "&logining=1";
 	});
 
 	$(document).on('click','.pop_game', function (obj) {
@@ -266,7 +283,7 @@ function openGamePage() {
 
 		var gameName = this.getAttribute('id');
 
-		window.location.href = '../html/game.html' + '?GameName=' + gameName;
+		window.location.href = '../html/game.html' + '?GameName=' + gameName + "&logining=1";
 	});
 }
 //Функция для получения списка фильтров по жанрам из бд

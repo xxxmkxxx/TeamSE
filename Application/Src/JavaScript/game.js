@@ -12,6 +12,15 @@ function mainFunction() {
 	//Слушатель нажатия на иконку открытия пати
 	openPartyForm();
 
+	//Подключение сессии
+	connectSession();
+
+	//Слушатель нажатия на лого
+	openCatalogGames();
+
+	//Слушатель нажатия на иконку записи комментария
+	open_new_com_form();
+
 	//Слушатель иконки закрытия пати
 	closePartyForm();
 
@@ -73,15 +82,16 @@ function filters(){
 }
 //функция открытия формы создания отзыва
 function open_new_com_form(){
-	if($(".write_commment").css("display") == "none"){
-		$(".write_commment").slideDown(200);
-		$(".review_block2").animate({"margin-top": "13vw"}, 500);
-	}
-	else {
-		$('.write_commment').slideUp(200);
-		$(".review_block2").animate({"margin-top": "0vw"}, 500);
-	}
-
+	$(document).on('click','.write', function (obj) {
+		if($(".write_commment").css("display") == "none"){
+			$(".write_commment").slideDown(200);
+			$(".review_block2").animate({"margin-top": "13vw"}, 500);
+		}
+		else {
+			$('.write_commment').slideUp(200);
+			$(".review_block2").animate({"margin-top": "0vw"}, 500);
+		}
+	});
 }
 function getGame(name) {
 	return $.ajax({
@@ -281,5 +291,27 @@ function closePartyForm() {
 		var idParty = this.getAttribute('id');
 
 		$("#party_form").hide();
+	});
+}
+//Слушатель нажатия на лого
+function openCatalogGames() {
+	$(document).on('click','.click_logo', function (obj) {
+		window.location.href = '../html/game_catalog.html?logining=1';
+	});
+}
+function getLoginingStatus() {
+	var url_str = window.location.href;
+	var url = new URL(url_str);
+	return url.searchParams.get('logining');
+}
+//Функция подключения сессии
+function connectSession(){
+	$.ajax({
+		url: '../php/SessionModul.php',
+		data: { logining: getLoginingStatus()},
+		success: function (data) {
+			var session = $.parseJSON(data);
+			$("#profile").text(session['login']);
+		}
 	});
 }
