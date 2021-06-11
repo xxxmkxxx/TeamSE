@@ -9,13 +9,13 @@ $databasePassword = $config['password_db'];
 try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
-    $query = 'SELECT * FROM `Users` WHERE `Login` = :user_login';
+    $query = 'SELECT * FROM `users` WHERE `login` = :user_login';
     $execute = ['user_login'=>$_POST['sign_form_login']];
     $user = execudeQuery($databaseConnect, $query, $execute);
 
 
     if(count($user) == 0) {
-        $query = 'SELECT * FROM `Users` WHERE `Email` = :user_email';
+        $query = 'SELECT * FROM `users` WHERE `email` = :user_email';
         $execute = ['user_email'=>$_POST['sign_form_login']];
         $user = execudeQuery($databaseConnect, $query, $execute);
         $userPassword = $user[0]['Password'];

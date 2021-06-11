@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    rofl();
+
     $('#sing_in').submit(function(obj){
         obj.preventDefault();
 
@@ -24,11 +26,13 @@ function checkAccount() {
             success: function(data){
                 switch (data) {
                     case 'doesNotExist': {
-                        $('#main_form_reg_name').text("Данного аккаунта не существует!");
+                        $("#error_icon").attr('src', '../images/error.png');
+                        $('#Error_message').text("Данного аккаунта не существует!");
                         break;
                     }
                     case 'wrongPassword': {
-                        $('#main_form_reg_name').text("Вы указали неверный пароль!");
+                        $("#error_icon").attr('src', '../images/error.png');
+                        $('#Error_message').text("Вы указали неверный пароль!");
                         break;
                     }
                     case 'success': {
@@ -43,4 +47,11 @@ function checkAccount() {
                 }
             }
         });
+}
+function rofl() {
+    $("#forgot_password").on('click', function (){
+        prompt('К сожалению, вы лох(', 'da');
+    });
+
+
 }

@@ -42,15 +42,18 @@ function checkAccount() {
         success: function(data){
             switch (data) {
                 case 'loginAlreadyExists': {
-                    $('#reg_form_login')[0].setCustomValidity("Данный логин уже занят!");
-                    break; 
+                    $("#error_icon").attr('src', '../images/error.png');
+                    $('#Error_message').text("Данный логин уже занят!");
+                    break;
                 }
                 case 'mailAlreadyExists': {
-                   $('#reg_form_mail')[0].setCustomValidity("На данный почтовый адрес уже зарегестрирован аккаунт!");
+                    $("#error_icon").attr('src', '../images/error.png');
+                    $('#Error_message').text("На данный почтовый адрес уже зарегестрирован аккаунт!");
                     break;
                 }
                 case 'passwordDontMatch': {
-                   $('#reg_form_password2')[0].setCustomValidity("Пароли не совпадают!");
+                    $("#error_icon").attr('src', '../images/error.png');
+                    $('#Error_message').text("Пароли не совпадают!");
                     break;
                 }
                 case 'success': {

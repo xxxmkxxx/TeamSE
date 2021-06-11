@@ -8,7 +8,7 @@ $databasePassword = $config['password_db'];
 try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
-    $query = 'SELECT * FROM `Party`';
+    $query = 'SELECT * FROM `party`';
 
     $partyes = $databaseConnect->query($query)->fetchAll();
 

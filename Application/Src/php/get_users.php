@@ -8,7 +8,7 @@ $databasePassword = $config['password_db'];
 try {
     $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
 
-    $query = 'SELECT * FROM `Users`';
+    $query = 'SELECT * FROM `users`';
 
     $users = $databaseConnect->query($query)->fetchAll();
 
