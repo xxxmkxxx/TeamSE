@@ -506,7 +506,7 @@ main{
 	border-style: solid;
 	border-radius: 2.5vw;
 	border-color: #4092F7;
-	border-width: 0.5vw;
+	border-width: 0.35vw;
 	opacity: 90%;
 	margin-left: 46vw;
 	margin-top: 4vw;
@@ -936,6 +936,19 @@ outline: none;
 .members_here{
 	color: #76D874;
 }
+
+.button_show_more{
+	background-color: #2F3270;
+	border: none;
+	font-family: MainBoldFont;
+	font-size: 0.9vw;
+	padding: 0.1vw 0.7vw 0.1vw 0.7vw;
+	border-radius: 0.4vw;
+	margin-left: 27vw;
+	color: #111b33;
+	margin-bottom: 2vw;
+	cursor: pointer;
+} 
 
 .vl {
     border-left: 2px solid green;
