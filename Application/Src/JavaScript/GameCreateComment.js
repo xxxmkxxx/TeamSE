@@ -24,6 +24,9 @@ function createComment(gameId, userId) {
                 type: 'POST',
                 data: {gameId: gameId, userId: userId, commentText: commentText}
             });
+
+            $('.write_commment').slideUp(200);
+            $(".review_block2").animate({"margin-top": "0vw"}, 500);
         }
     });   
 }
@@ -34,5 +37,5 @@ function isCorrect(value) {
     var isMoreNormalLengthFlag = value.length > 10;
 
     flag = isExistsFlag && isMoreNormalLengthFlag;
-    return true;
+    return flag;
 }
