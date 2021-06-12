@@ -226,8 +226,7 @@ main{
 	border-color: #2F3270;
 	border-radius: 1vw;
 	position: absolute;
-	top: 36vw;
-	left: 1.6vw;
+	left: 1.55vw;
 	display: none;
 }
 
@@ -499,13 +498,13 @@ main{
 
 .create_party_form{
 	width: 46.5vw;
-	height: 32vw;
+	height: 36vw;
 	position: absolute;
 	background-image: url("../images/background1.png");
 	background-size: 120%;
 	z-index: 1;
 	border-style: solid;
-	border-radius: 3vw;
+	border-radius: 2.5vw;
 	border-color: #4092F7;
 	border-width: 0.5vw;
 	opacity: 90%;
@@ -522,6 +521,34 @@ main{
 	margin-bottom: 1.5vw;
 }
 
+.password_form{
+	display: none;
+	height: 1.5vw;
+	width: 11vw;
+	background-color: #4f68d4;
+	margin-left: 4.5vw;
+	margin-bottom: 1.5vw;
+	margin-top: -1vw;
+	font-family: othertext;
+	font-size: 1.4vw;
+	border: solid 0.1vw white;
+	border-radius: 0.5vw;
+	padding-left: 0.5vw;
+	color: white;
+}
+
+.password_form::placeholder {
+  color: white;
+  font-size: 1.4vw;
+  font-family: othertext;
+  opacity: 50%;
+  font-style: italic;
+}
+
+.preview{
+	margin-top: -1.5vw;
+	height: 4vw;
+}
 .privacy_name{
 	height: 1.5vw;
 	color: white;
@@ -603,6 +630,7 @@ main{
 .close_party_creator {
 	margin-left: 43vw;
 	margin-top: 0.9vw;
+	margin-bottom: -0.5vw;
 }
 
 .close_party_creator > img{
@@ -626,6 +654,8 @@ main{
 textarea:focus, input:focus{
 outline: none;
 }
+
+
 
 .party_filters{
 	display: none;

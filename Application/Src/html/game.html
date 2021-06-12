@@ -41,7 +41,7 @@
 		<span class = "profile" id="profile"> мой профиль </span>
 	</header>
 
-	<main>
+	<main id = "main" name = "main">
 
 		<form> <!-- форма создания пати -->
 
@@ -50,15 +50,24 @@
 
 					<div class = "cre_row">
 						<span class = "privacy_name" style = "margin-top: 0vw"> Приватность: </span>
-						<input type="checkbox" name = "privacy" class = "privacy">
+						<input type="checkbox" name = "privacy" id = "privacy" class = "privacy">
 
 						<span class = "pl_num_name"> Количество игроков: </span>
-						<input type="number" name = "player_num"  min="1" max="100" value="1" class = "player_num">
+						<input type="number" name = "player_num"  min="2" max="100" value="2" class = "player_num">
 					</div>
+
+					<input type ="text" class = "password_form" placeholder="пароль">
+
+				
 
 					<div class = "cre_row">
 						<span class = "load_name"> Загрузите изображение: </span>
-						<input type="file" name="file" class = "load">
+						<input type="file" name="file" id="file" class = "load">
+						
+					</div>
+
+					<div class = "cre_row">
+						<img id="preview" src="#" alt="your image" class = "preview">
 					</div>
 
 					<div class = "cre_row">
@@ -137,7 +146,7 @@
 
 		<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
 
-				<div class = "party_filters">
+				<div class = "party_filters" id = "party_filters">
 					<div class = "party_filt_categ">
 						<div class = "filter_data">
 							<div class = "filter_name"> ПРИВАТНОСТЬ </div>
@@ -153,8 +162,8 @@
 
 						<div class = "filter_data">
 							<div class = "filter_name" style = "margin-left: 2.5vw;"> КОЛИЧЕСТВО УЧАСТНИКОВ </div>
-							<input type="range" min="0" max="10" step="1" value="0" id = "filter_range" name = "filter_range" onchange="outputchange()" class = "input_range">
-							<output type = "text" id = "ouput_range" class = "ouput_range"> 0 </output>
+							<input type="range" min="2" max="15" step="1" value="2" id = "filter_range" name = "filter_range" onchange="outputchange()" class = "input_range">
+							<output type = "text" id = "ouput_range" class = "ouput_range"> 2 </output>
 						</div>
 					</div>
 
