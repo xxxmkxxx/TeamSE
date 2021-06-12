@@ -26,6 +26,9 @@ if(count($user) != 0) {
                     'user_icon'=>'../images/example_pic.png', 'user_description'=>'default'];
 
         executePreparedQuery($query, $execute);
+
+        setLogin($user[0]['login']);
+
         echo 'success';
     } else {
         echo 'passwordDontMatch';

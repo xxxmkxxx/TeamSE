@@ -224,53 +224,17 @@
 
 							<form id="write_commment_form"> <!-- Форма создания отзыва -->
 								<div class = "write_commment">
-									<textarea name="write_commment_area" id="write_commment_area" wrap="soft" class="write_commment_area"> </textarea>
-									<button name = "push_comment" class = "comment_but"> отправить </button>
+									<textarea id="write_commment_area" wrap="soft" class="write_commment_area"> </textarea>
+									<button class = "comment_but" id="write_commment_button"> отправить </button>
 								</div>
 							</form>
 
 
 					<div class = "review_block2" id="review_block2">
-						<div class="comment"> <!-- 1 отзыв ( пример ) -->
 
-							<div class="author_data">
-
-								<span class="author_icon">
-									<img src="../images/example_pic.png">
-								</span>
-
-								<span class="author_name"> имя пользователя  </span>
-
-							</div>
-
-							<div class="comment_text">
-								Текст отзыва <br>
-								Текст отзыва 
-							</div>	
-
-						</div>
 					</div>
-					
-					<div class = "review_block2" id="review_block2">
-						<div class="comment"> <!-- 1 отзыв ( пример ) -->
 
-							<div class="author_data">
 
-								<span class="author_icon">
-									<img src="../images/example_pic.png">
-								</span>
-
-								<span class="author_name"> имя пользователя  </span>
-
-							</div>
-
-							<div class="comment_text">
-								Текст отзыва <br>
-								Текст отзыва 
-							</div>	
-
-						</div>
-					</div>
 				</div>
 
 				<button class = "button_show_more"> ПОКАЗАТЬ БОЛЬШЕ </button> 
@@ -284,8 +248,10 @@
 				</div>
 
 				<div class = "filter_row">
-					<input type="text" name = "find_game" class = "find_game_inp">
-					<span class = "find_icon"> <img src="../images/find_icon.png"></span>
+					<form id="party_search">
+						<input type="text" id="find_party" class = "find_game_inp" placeholder="ник создателя пати">
+					</form>
+					<span class = "find_icon"> <img id="find_icon" src="../images/find_icon.png"></span>
 					<span class = "filter_icon" > <img src="../images/filter_icon.png" onclick = "filters()" ></span>
 					<span class = "create_party" onclick = "open_party_creator()"> СОЗДАТЬ ПАТИ </span>
 					<span class = "create_com"> СОЗДАТЬ КОМАНДУ </span>
@@ -353,9 +319,11 @@
 	<script src="../JavaScript/GameController.js"></script>
 	<script src="../JavaScript/GameGeneralInfo.js"></script>
 	<script src="../JavaScript/GameCommentInfo.js"></script>
-	<script src="../JavaScript/GamePartyInfo.js"></script>
+	<script src="../JavaScript/GamePartiesInfo.js"></script>
 	<script src="../JavaScript/GameCreatePartyFormInfo.js"></script>
-
+	<script src="../JavaScript/GameCreateComment.js"></script>
+	<script src="../JavaScript/GamePartySearch"></script>
+	<script src="../JavaScript/GamePartyFilters"></script>
 
 
 

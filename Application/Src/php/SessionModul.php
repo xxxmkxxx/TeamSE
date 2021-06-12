@@ -13,3 +13,6 @@ function chooseModificator() {
 function setLogin($login) {
     $_SESSION['login'] = $login;
 }
+function setLoginId($id) {
+    $_SESSION['id'] = $id;
+}

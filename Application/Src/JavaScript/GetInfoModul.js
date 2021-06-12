@@ -14,7 +14,7 @@ function getGameByName(gameName) {
         data: {gameName : gameName}
     });
 }
-//Функция получение игры из бд по id игры
+//Функция получение пользователя из бд по id пользователя
 function getUserById(userId) {
     return $.ajax({
         url: '../php/get_user_by_id.php',
@@ -37,6 +37,13 @@ function connectSession(){
             var session = $.parseJSON(data);
             $("#profile").text(session['login']);
         }
+    });
+}
+//Функция получения текущей сессии
+function getSession(){
+    return $.ajax({
+        url: '../php/SessionModul.php',
+        data: { logining: getLoginingStatus()},
     });
 }
 //функция закрытия формы с фильтрами выбора пати по нажатию вне данной формы

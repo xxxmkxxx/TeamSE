@@ -23,11 +23,13 @@ if(count($user) == 0) {
         echo 'wrongPassword';
     } else {
         setLogin($user[0]['login']);
+        setLoginId($user[0]['id_user']);
         echo 'success';
     }
 } else if (!password_verify($_POST['sign_form_password'], $user[0]['password'])) {
     echo 'wrongPassword';
 } else {
     setLogin($user[0]['login']);
+    setLoginId($user[0]['id_user']);
     echo 'success';
 }

@@ -33,19 +33,6 @@ function openCatalogGames() {
         window.location.href = '../html/game_catalog.html?logining=1';
     });
 }
-//функция открытия формы создания отзыва
-function open_new_com_form(){
-    $(document).on('click','.write', function (obj) {
-        if($(".write_commment").css("display") == "none"){
-            $(".write_commment").slideDown(200);
-            $(".review_block2").animate({"margin-top": "13vw"}, 500);
-        }
-        else {
-            $('.write_commment').slideUp(200);
-            $(".review_block2").animate({"margin-top": "0vw"}, 500);
-        }
-    });
-}
 //Функция закрытия пати
 function closePartyForm() {
     $(document).on('click','#close_party_form', function (obj) {
@@ -72,4 +59,17 @@ function filters(){
         $(".party_filters").slideDown(200);
     }
     else $('.party_filters').slideUp(200);
+}
+//функция открытия формы создания отзыва
+function open_new_com_form(){
+    $(document).on('click','.write', function (obj) {
+        if($(".write_commment").css("display") == "none"){
+            $(".write_commment").slideDown(200);
+            $(".review_block2").animate({"margin-top": "13vw"}, 500);
+        }
+        else {
+            $('.write_commment').slideUp(200);
+            $(".review_block2").animate({"margin-top": "0vw"}, 500);
+        }
+    });
 }
