@@ -545,7 +545,7 @@ main{
   font-style: italic;
 }
 
-.preview{
+.preview>img{
 	margin-top: -1.5vw;
 	height: 4vw;
 }

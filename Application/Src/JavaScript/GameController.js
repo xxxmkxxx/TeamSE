@@ -13,6 +13,8 @@ function mainFunction() {
     open_new_com_form();
     //Слушатель иконки закрытия пати
     closePartyForm();
+    //Слушатель нажатия вне зоны формы фильтров
+    closeOutZoneForm('party_filters');
 }
 
 //Функция открытия формы пати

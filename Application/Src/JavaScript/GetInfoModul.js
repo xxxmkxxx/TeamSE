@@ -39,3 +39,15 @@ function connectSession(){
         }
     });
 }
+//функция закрытия формы с фильтрами выбора пати по нажатию вне данной формы
+function closeOutZoneForm(idFormFilters) {
+    $(function(){
+        $(document).mouseup(function (e){ // событие клика по веб-документу
+            var div = $("#" + idFormFilters); // тут указываем ID элемента
+            if (!div.is(e.target) // если клик был не по нашему блоку
+                && div.has(e.target).length === 0) { // и не по его дочерним элементам
+                div.slideUp(200); // скрываем его
+            }
+        });
+    });
+}

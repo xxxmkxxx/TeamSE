@@ -5,6 +5,8 @@ function mainFunction() {
     connectSession();
     //Слушатель нажатия на иконки игр
     openGamePage();
+    //Слушатель нажатия вне зоны формы фильтров
+    closeOutZoneForm('filters');
 }
 //Функция для перехода на страницу игры по нажатию на иконку игры
 function openGamePage() {
