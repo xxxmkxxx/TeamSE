@@ -62,7 +62,7 @@ main{
 }
 
 .main_form_reg{
-	height: 78vh;
+	height: 80vh;
 	display: flex;
 	flex-direction: column;
 	background-color: #142142;
@@ -152,6 +152,13 @@ main{
 	margin-bottom: 0.1vw;
 }
 
+.back{
+	width: 46vw;
+	font-size: 1.3vw;
+	color: #78A7EB;
+	margin-top: 1vw;
+	cursor: pointer;
+}
 
  input:focus{
 outline: none;
@@ -183,8 +190,13 @@ outline: none;
 
 	.main_form_reg{
 		width:70vw;
-		height: 70vh;
+		height: 80vh;
 		align-content: center;
+	}
+
+	.back{
+		width: 64vw;
+		font-size: 1.6vw;
 	}
 
 	.main_form_reg_fields_names{
