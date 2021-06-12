@@ -7,6 +7,8 @@ function mainFunction() {
     openGamePage();
     //Слушатель нажатия вне зоны формы фильтров
     closeOutZoneForm('filters');
+    //Слушатель нажатия на иконку меню
+    open_menu();
 }
 //Функция для перехода на страницу игры по нажатию на иконку игры
 function openGamePage() {

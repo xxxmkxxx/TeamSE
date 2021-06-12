@@ -15,6 +15,8 @@ function mainFunction() {
     closePartyForm();
     //Слушатель нажатия вне зоны формы фильтров
     closeOutZoneForm('party_filters');
+    //Слушатель нажатия на иконку меню
+    open_menu();
 }
 
 //Функция открытия формы пати
@@ -51,17 +53,6 @@ function closePartyForm() {
 
         $("#party_form").hide();
     });
-}
-//функция открытия формы меню
-function open_menu(){
-    if($(".menu").css("display") == "none"){
-        $('.menu').show(0, function() {
-            $(".menu").css("display","inline-flex");
-            $(".party_filters").css("margin-top","10.4vw")})
-    }
-    else $('.menu').hide('slow', function() {
-        $(".menu").css("display","none");
-        $(".party_filters").css("margin-top","7.5vw")})
 }
 //функция открытия формы создания пати
 function open_party_creator(){
