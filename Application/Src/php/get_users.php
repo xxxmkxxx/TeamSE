@@ -1,18 +1,8 @@
 <?php
 $config = include('config.php');
+include('DataBaseModul.php');
 
-$databaseConnectInfo = 'mysql:dbname='.$config['name_db'].';'.'host='.$config['host'];
-$databaseUser = $config['login_db'];
-$databasePassword = $config['password_db'];
+$query = 'SELECT * FROM `users`';
+$users = executeQuery($query);
 
-try {
-    $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
-
-    $query = 'SELECT * FROM `users`';
-
-    $users = $databaseConnect->query($query)->fetchAll();
-
-    echo json_encode($users);
-} catch (PDOException $e) {
-    echo 'errorConnectToBD';
-}
+echo json_encode($users);

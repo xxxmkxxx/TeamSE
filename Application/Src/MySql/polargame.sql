@@ -33,7 +33,7 @@ CREATE TABLE `game` (
   `game_description` text,
   `game_icon_link` text,
   `popularity` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `game`
@@ -60,7 +60,7 @@ INSERT INTO `game` (`game_id`, `game_name`, `game_description`, `game_icon_link`
 CREATE TABLE `games_genres` (
   `game_id` int NOT NULL,
   `genre_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `games_genres`
@@ -94,7 +94,7 @@ CREATE TABLE `game_comments` (
   `id_user` int DEFAULT NULL,
   `comment_text` text,
   `date_time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `game_comments`
@@ -136,7 +136,7 @@ INSERT INTO `game_comments` (`id_comment`, `game_id`, `id_user`, `comment_text`,
 CREATE TABLE `genres` (
   `id_genre` int NOT NULL,
   `genre` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `genres`
@@ -168,7 +168,7 @@ CREATE TABLE `party` (
   `privacy` text,
   `party_icon` text,
   `party_creator` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `party`
@@ -197,7 +197,7 @@ CREATE TABLE `party_members` (
   `members_party_id` int NOT NULL,
   `party_member_role` text,
   `nickname` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `party_members`
@@ -219,7 +219,7 @@ CREATE TABLE `private_message` (
   `id_receiver` int DEFAULT NULL,
   `date_time` datetime DEFAULT NULL,
   `message_text` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `private_message`
@@ -243,7 +243,7 @@ CREATE TABLE `users` (
   `id_users_roles` int DEFAULT NULL,
   `user_icon` text,
   `user_description` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `users`
@@ -266,7 +266,7 @@ INSERT INTO `users` (`id_user`, `login`, `password`, `email`, `id_users_roles`, 
 CREATE TABLE `users_roles` (
   `id_users_roles` int NOT NULL,
   `users_role` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `users_roles`

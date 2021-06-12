@@ -213,62 +213,15 @@
 						<span class = "write"> <img src="../images/write_comment.png">  </span>
 					</div>
 
-							<form method="post"> <!-- Форма создания отзыва -->
+							<form id="write_commment_form"> <!-- Форма создания отзыва -->
 								<div class = "write_commment">
-									<textarea name="write_commment_area" wrap="soft" class="write_commment_area"> </textarea>
+									<textarea name="write_commment_area" id="write_commment_area" wrap="soft" class="write_commment_area"> </textarea>
 									<button name = "push_comment" class = "comment_but"> отправить </button>
 								</div>
 							</form>
 
 
 					<div class = "review_block2" id="review_block2">
-
-
-
-
-
-
-
-
-						<div class = "comment"> <!-- 1 отзыв ( пример ) -->
-
-							<div class = "author_data">
-
-								<span class = "author_icon">
-									<img src="../images/example_pic.png">
-								</span>
-
-								<span class = "author_name"> имя пользователя  </span>
-
-							</div>
-
-							<div class = "comment_text">
-								Текст отзыва <br>
-								Текст отзыва 
-							</div>	
-
-						</div>
-
-							<div class = "comment"> <!-- 1 отзыв ( пример ) -->
-
-							<div class = "author_data">
-
-								<span class = "author_icon">
-									<img src="../images/example_pic.png">
-								</span>
-
-								<span class = "author_name"> имя пользователя  </span>
-
-							</div>
-
-							<div class = "comment_text">
-								Текст отзыва <br>
-								Текст отзыва 
-							</div>	
-
-						</div>
-
-
 
 					</div>
 				</div>
@@ -346,8 +299,11 @@
 
 	</main>
 
-
-	<script src="../JavaScript/game.js"></script>
+	<script src="../JavaScript/GetInfoModul.js"></script>
+	<script src="../JavaScript/GameController.js"></script>
+	<script src="../JavaScript/GameGeneralInfo.js"></script>
+	<script src="../JavaScript/GameCommentInfo.js"></script>
+	<script src="../JavaScript/GamePartyInfo.js"></script>
 
 
 
