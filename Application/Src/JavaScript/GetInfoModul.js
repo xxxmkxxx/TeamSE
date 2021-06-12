@@ -51,3 +51,16 @@ function closeOutZoneForm(idFormFilters) {
         });
     });
 }
+//функция открытия формы меню
+function open_menu(){
+    $('#menu_icon').click(function () {
+        if($(".menu").css("display") == "none"){
+            $('.menu').show(0, function() {
+                $(".menu").css("display","inline-flex");
+                $(".party_filters").css("margin-top","10.4vw")})
+        }
+        else $('.menu').hide('slow', function() {
+            $(".menu").css("display","none");
+            $(".party_filters").css("margin-top","7.5vw")})
+    });
+}
