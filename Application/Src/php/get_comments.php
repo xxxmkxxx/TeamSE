@@ -1,23 +1,10 @@
 <?php
 $config = include('config.php');
+include('DataBaseModul.php');
 
-$databaseConnectInfo = 'mysql:dbname='.$config['name_db'].';'.'host='.$config['host'];
-$databaseUser = $config['login_db'];
-$databasePassword = $config['password_db'];
+$query = 'SELECT * FROM `game_comments` WHERE `game_id` = :gameId';
+$execute = ['gameId'=>$_POST['gameId']];
 
-try {
-    $databaseConnect = new PDO($databaseConnectInfo, $databaseUser, $databasePassword);
+$comments = executePreparedQuery($query, $execute);
 
-    $query = 'SELECT * FROM `game_comments` WHERE `game_id` = :game_id';
-    $execute = ['game_id'=>$_GET['val']];
-    $comments = execudeQuery($databaseConnect, $query, $execute);
-
-    echo json_encode($comments);
-} catch (PDOException $e) {
-    echo 'errorConnectToBD';
-}
-function execudeQuery($connect, $q, $argsExecute) {
-    $databaseResult = $connect->prepare($q);
-    $databaseResult->execute($argsExecute);
-    return $databaseResult->fetchAll();
-}
+echo json_encode($comments);
