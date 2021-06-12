@@ -3,6 +3,6 @@ $config = include('config.php');
 include('DataBaseModul.php');
 
 $query = 'SELECT * FROM `party`';
-$partyes = executeQuery($query);
+$parties = executeQuery($query);
 
-echo json_encode($partyes);
+echo json_encode($parties);

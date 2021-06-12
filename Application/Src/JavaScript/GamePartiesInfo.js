@@ -1,20 +1,21 @@
+var partiesArray;
 $(document).ready(mainFunction());
 
 function mainFunction() {
-    getAllParty().done(function (data) {
-        partyes = $.parseJSON(data);
+    getAllParties().done(function (data) {
+        partiesArray = $.parseJSON(data);
 
-        viewAllPartyes(partyes);
+        viewAllParties(partiesArray);
     });
 }
 //Функция получения массива всех пати
-function getAllParty() {
+function getAllParties() {
     return $.ajax({
-        url: '../php/get_partys.php'
+        url: '../php/get_parties.php'
     });
 }
 //Функция отображения всех пати
-function viewAllPartyes(partyes) {
+function viewAllParties(partiesArray) {
     var numberPartyOnRow = 0;
     var numberRow = 1;
     var rowParty = $('#rowParty');
@@ -22,25 +23,25 @@ function viewAllPartyes(partyes) {
     getGameByName(getNameGame()).done(function (data) {
         var game = $.parseJSON(data);
 
-        for (let i = 0; i < partyes.length; i++) {
+        for (let i = 0; i < partiesArray.length; i++) {
             var user;
-            var flag = game[0]['game_id'] == partyes[i]['game_id'];
+            var flag = game[0]['game_id'] == partiesArray[i]['game_id'];
 
             if(flag) {
-                getUserById(partyes[i]['party_creator']).done(function (data) {
+                getUserById(partiesArray[i]['party_creator']).done(function (data) {
                     user = $.parseJSON(data);
-                    var flag = partyes[i]['party_creator'] == user[0]['id_user'];
+                    var flag = partiesArray[i]['party_creator'] == user[0]['id_user'];
 
 
                     if(flag) {
                         if(numberPartyOnRow % 3 != 0) {
                             numberPartyOnRow++;
 
-                            createPartyBlock(numberPartyOnRow + 1, rowParty, partyes[i]['gamers_amount'], 5, user[0], partyes[i]['id_party']);
+                            createPartyBlock(numberPartyOnRow + 1, rowParty, partiesArray[i]['gamers_amount'], 5, user[0], partiesArray[i]['id_party']);
                         } else {
                             numberPartyOnRow = 0;
                             rowParty = createNewRow(numberRow);
-                            createPartyBlock(numberPartyOnRow + 1, rowParty, partyes[i]['gamers_amount'], 5, user[0], partyes[i]['id_party']);
+                            createPartyBlock(numberPartyOnRow + 1, rowParty, partiesArray[i]['gamers_amount'], 5, user[0], partiesArray[i]['id_party']);
                         }
                     }
                 });
