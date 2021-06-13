@@ -3,8 +3,6 @@ $(document).ready(mainFunction());
 function mainFunction() {
     //Скрываем форму создания пати
     $("#party_form").hide();
-    //Слушатель нажатия на иконку открытия пати
-    openPartyForm();
     //Подключение сессии
     connectSession();
     //Слушатель нажатия на лого
@@ -19,14 +17,6 @@ function mainFunction() {
     open_menu();
 }
 
-//Функция открытия формы пати
-function openPartyForm() {
-    $(document).on('click','.come_in', function (obj) {
-        obj.preventDefault();
-
-        $("#party_form").show();
-    });
-}
 //Слушатель нажатия на лого
 function openCatalogGames() {
     $(document).on('click','.click_logo', function (obj) {

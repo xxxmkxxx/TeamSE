@@ -118,9 +118,12 @@ function uploadImage(files) {
 }
 //Слушатель нажатия на чекбокс в форме создания пати
 function checkCheckBox() {
-    $('#privacy').click(function (obj) {
+    $('#privacy').on("change", function (obj) {
         obj.preventDefault();
 
-        $('#privacy').val('yes');
+        if ($('#privacy').val() == "yes")
+            $('#privacy').val('no');
+        else
+            $('#privacy').val('yes');
     });
 }

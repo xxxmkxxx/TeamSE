@@ -1,7 +1,12 @@
 <?php
+$config = include('config.php');
 include('DataBaseModul.php');
 
-$query = 'SELECT * FROM party_members';
-$party_members = executeQuery($query);
+$query = 'SELECT * FROM party_members
+            INNER JOIN users ON  party_members.members_party_id = users.id_user
+            WHERE `party_id` = :party_id';
+$execute = ['party_id'=>$_POST['partyId']];
 
-echo json_encode($party_members);
+$members = executePreparedQuery($query, $execute);
+
+echo json_encode($members);
