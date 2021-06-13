@@ -95,10 +95,10 @@
 
 				<div class = "party_data">
 					<div class = "party_icon">
-						<img src="../images/example_pic.png">
+						<img id="party_icon" src="">
 					</div>
 
-					<div class = "party_descriprion">
+					<div class = "party_descriprion" id="party_descriprion">
 						описание пати описание пати описание  этой пати  разные слова описание пати описание пати описание пати описание пати
 					</div>
 
@@ -106,7 +106,7 @@
 
 
 				<div class = "party_сontent">
-					<div class = "party_members_form">
+					<div class = "party_members_form" id="party_members_form">
 
 						<div class =  "party_member_row"> <!-- пример создателя  -->
 							<div class =  "party_member_icon"> <img src="../images/example_pic.png">  </div>
@@ -134,8 +134,8 @@
 						</div>
 					</div>
 
-						<div class = "members_counter">
-							<div class = "members_here">4/ </div>10
+						<div class = "members_counter" id="members_counter">
+							<div class = "members_here" id="members_here">4/ </div>10
 						</div>
 
 					<div class = "party_buttons">
@@ -148,7 +148,7 @@
 		<!-- </form> -->
 
 
-		<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
+		<!--<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
 
 				<div class = "party_filters" id = "party_filters">
 					<div class = "party_filt_categ">
@@ -156,11 +156,11 @@
 							<div class = "filter_name"> ПРИВАТНОСТЬ </div>
 
 							<div class = "categ_box">
-								<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> приватные
+								<input type="checkbox" id = "privacy_filter1" class = "privacy_filter"> приватные
 							</div>
 
 							<div class = "categ_box">
-							<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> публичные
+							<input type="checkbox" id = "privacy_filter2" class = "privacy_filter"> публичные
 							</div>
 						</div>
 
@@ -171,9 +171,9 @@
 						</div>
 					</div>
 
-					<button name = "apply_party_filt" class = "apply_party_filt"> ПРИМЕНИТЬ </button>
+					<button id = "apply_party_filt" class = "apply_party_filt" onclick = "filters()"> ПРИМЕНИТЬ </button>
 				</div>
-		</form>
+		<!--</form>-->
 
 
 
@@ -324,6 +324,7 @@
 	<script src="../JavaScript/GameCreateComment.js"></script>
 	<script src="../JavaScript/GamePartySearch.js"></script>
 	<script src="../JavaScript/GamePartyFilters.js"></script>
+	<script src="../JavaScript/GameInvitePartyInfo.js"></script>
 
 	<script src="../JavaScript/temp.js"></script>
 
