@@ -88,7 +88,7 @@
 
 
 
-		<form> <!-- форма пати -->
+		<!-- <form id = "party_form2">  --><!-- форма пати -->
 			<div class = "party_form" id="party_form">
 
 				<div class = "close_party_form" id="close_party_form"> <img src="../images/close_icon.png"> </div>
@@ -110,7 +110,7 @@
 
 						<div class =  "party_member_row"> <!-- пример создателя  -->
 							<div class =  "party_member_icon"> <img src="../images/example_pic.png">  </div>
-							<div class =  "party_member_name"> ник создателя </div>
+							<div class =  "party_creator_name"> ник создателя </div>
 							<div class = "game_nick"> ник в игре </div>
 						</div>
 
@@ -123,8 +123,8 @@
 						<div class =  "party_member_row"> <!-- пример ТВОЕГО ПОЛЯ  -->
 							<div class =  "party_member_icon"> <img src="../images/example_pic.png">  </div>
 							<div class =  "party_member_name"> твой ник </div>
-							<input type="text" name = "game_nick" class = "game_nick_input">
-							<div class = "edit_icon" > <img src="../images/edit_icon.png"  ></div> <!-- ИКОНКА РЕДАКТИРОВАНИЯ НИКА -->
+							<input type="text" id = "my_nick" class = "game_nick_input">
+							<div class = "edit_icon" > <img id = "edit_icon" src="../images/edit_icon.png" ></div> 
 						</div>
 
 						<div class =  "party_member_row"> <!-- пример участника  -->
@@ -139,13 +139,13 @@
 						</div>
 
 					<div class = "party_buttons">
-						<button name = "ready_button" class = "ready_button"> ГОТОВО </button>
-						<button name = "exit_button" class = "exit_button"> ВЫЙТИ </button>
+						<button id = "ready_button" class = "ready_button"> Я ГОТОВ(А) </button>
+						<button id = "exit_button" class = "exit_button"> ВЫЙТИ </button>
 					</div>
 				</div>
 
 			</div>
-		</form>
+		<!-- </form> -->
 
 
 		<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
@@ -287,10 +287,10 @@
 							</div>
 							<div class = "row2"> -->
 								<!-- <span class = "participans"> n участников </span> -->
-								<!-- <input type="password" class = "party2_password" placeholder="пароль">
+							<!-- 	<input type="password" class = "party2_password" placeholder="пароль">
 								<span class = "come_in"> <img src="../images/lock_icon.png"> </span> 
 							</div>
-						</span>
+						</span> -->
 						<span class = "form3">
 							<div class = "formsdata">
 								<span class = "form_img"> <img src="../images/example_pic.png"> </span>
@@ -302,7 +302,7 @@
 							</div>
 						</span>
 					</div>
- -->
+
 
 
 					</div>
@@ -324,6 +324,8 @@
 	<script src="../JavaScript/GameCreateComment.js"></script>
 	<script src="../JavaScript/GamePartySearch.js"></script>
 	<script src="../JavaScript/GamePartyFilters.js"></script>
+
+	<script src="../JavaScript/temp.js"></script>
 
 
 
