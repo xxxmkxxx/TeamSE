@@ -42,21 +42,20 @@ function searchParty(parties, nickname) {
     $('#com_party_place').append(partiesRowDiv);
     
     if(nickname == '') {                        ////если поле поиска пустое, отображаем все пати
-        viewAllParties(parties);
-        //showErrorMessage = false;
+        getGameByName(getNameGame()).done(function (data) {
+            var game = $.parseJSON(data);
+            viewAllParties(parties, game[0]['game_id']);
+
+        });
     } 
     else {
         viewParties(parties, nickname);
     }
-    // if(showErrorMessage){
-    //     $('#search_message').text('ничего не найдено');
-    // }
 }
 
 
 //функция отображения нужных пати
 function viewParties(partiesArray, nickname) {
-
     getGameByName(getNameGame()).done(function (data) {
         var showErrorMessage = true;
         var game = $.parseJSON(data);
@@ -72,27 +71,14 @@ function viewParties(partiesArray, nickname) {
                         var flag = partiesArray[i]['party_creator'] == user[0]['id_user'];
 
                         if(flag) {
-                            var flag = nickname == user[0]['login'];
-                            // console.log('nickname ' + nickname);
-                            // console.log('login ' + user[0]['login']);
-                            // console.log(flag);
-                            if(flag){
-                                // console.log('after');
-                                // console.log('nickname ' + nickname);
-                                // console.log('login ' + user[0]['login']);
-                                // console.log(flag);
-                                //console.log(user[0]['login']);
-                                //getCountPartyMembers(partiesArray[i]['id_party']).done(function (data){
-                                //console.log(user[0]['login']);
-                                //var gamersInParty = $.parseJSON(data)[0]['count'];
 
+                            var flag = nickname == user[0]['login'];
+                            if(flag){
                                 let rowDiv = createNewRow(1);
                                 createPartyBlock(1, rowDiv, gamersInParty , partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
                                 $('#com_party_place').append(rowDiv);
-                                //$('#search_message').text('');
                                 showErrorMessage = false;
                                 $('#search_message').text('');
-                                //});
                             } else if(showErrorMessage){
                                 $('#search_message').text('ничего не найдено');
                             }
