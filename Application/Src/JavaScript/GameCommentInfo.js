@@ -1,5 +1,5 @@
 var countComments = 3;
-var nowCount = 0;
+var nowCountComments = 0;
 
 $(document).ready(mainFunction());
 
@@ -9,7 +9,7 @@ function mainFunction() {
     getGameByName(getNameGame()).done(function (data) {
         game = $.parseJSON(data);
 
-        dbListner(game[0]['game_id'], nowCount);
+        dbListner(game[0]['game_id']);
 
         viewMoreComments(game[0]['game_id']);
     });
@@ -104,21 +104,21 @@ function getCountComments(gameId) {
         data: {gameId : gameId}
     });
 }
-//Слушатель изменения бд
+//Слушатель добавления комментария в бд
 function dbListner(gameId) {
     setInterval(() => {
         getCountComments(gameId).done(function (data) {
             var count = $.parseJSON(data);
 
-            if(count[0]['count'] != nowCount) {
+            if(count[0]['count'] != nowCountComments) {
                 getAllComments(gameId).done(function (data) {
                     var comments = $.parseJSON(data);
 
                     viewAllComments(comments, countComments);
                 });
 
-                nowCount = count[0]['count'];
+                nowCountComments = count[0]['count'];
             }
         });
-    }, 1500);
+    }, 1200);
 }

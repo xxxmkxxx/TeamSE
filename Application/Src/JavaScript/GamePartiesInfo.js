@@ -1,11 +1,12 @@
-var partiesArray;
+var nowCountPartyes = 0;
+
 $(document).ready(mainFunction());
 
 function mainFunction() {
-    getAllParties().done(function (data) {
-        partiesArray = $.parseJSON(data);
+    getGameByName(getNameGame()).done(function (data) {
+        var gameId = $.parseJSON(data)[0]['game_id'];
 
-        viewAllParties(partiesArray);
+        createPartyListner(gameId);
     });
 }
 //Функция получения массива всех пати
@@ -15,39 +16,46 @@ function getAllParties() {
     });
 }
 //Функция отображения всех пати
-function viewAllParties(partiesArray) {
+function viewAllParties(partiesArray, gameId) {
     var numberPartyOnRow = 0;
     var numberRow = 1;
     var rowParty = $('#rowParty');
+    $("#com_party_place").empty();
 
-    getGameByName(getNameGame()).done(function (data) {
-        var game = $.parseJSON(data);
-
-        for (let i = 0; i < partiesArray.length; i++) {
+    recursFunc(0);
+    
+    function recursFunc(i) {
+        if(i < partiesArray.length) {
             var user;
-            var flag = game[0]['game_id'] == partiesArray[i]['game_id'];
+            var flag = gameId == partiesArray[i]['game_id'];
 
             if(flag) {
                 getUserById(partiesArray[i]['party_creator']).done(function (data) {
                     user = $.parseJSON(data);
                     var flag = partiesArray[i]['party_creator'] == user[0]['id_user'];
 
+                    getCountPartyMembers(i).done(function (data) {
+                        var count = $.parseJSON(data)[0]['count'];
+                        if(flag) {
+                            if(numberPartyOnRow % 3 != 0) {
+                                createPartyBlock(numberPartyOnRow + 1, rowParty, count, partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
+                            } else {
+                                numberPartyOnRow = 0;
+                                rowParty = createNewRow(numberRow);
+                                numberRow++;
+                                createPartyBlock(numberPartyOnRow + 1, rowParty, count, partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
+                            }
 
-                    if(flag) {
-                        if(numberPartyOnRow % 3 != 0) {
                             numberPartyOnRow++;
-
-                            createPartyBlock(numberPartyOnRow + 1, rowParty, 1, partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
-                        } else {
-                            numberPartyOnRow = 0;
-                            rowParty = createNewRow(numberRow);
-                            createPartyBlock(numberPartyOnRow + 1, rowParty, 1, partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
                         }
-                    }
+                    });
                 });
             }
         }
-    });
+
+        recursFunc(i + 1);
+    }
+
 }
 //Функция создания блока, где распологаются строки с пати
 function createPartyBlock(numberPartyOnRow, rowParty, countPlayers, allCountPlayers, creater, idParty) {
@@ -126,4 +134,32 @@ function getCountPartyMembers(partyId) {
             partyId: partyId
         }
     });
+}
+// Функция для получения количества игроков в пати
+function getCountPartyes(gameId) {
+    return $.ajax({
+        url: '../php/get_count_partyes_to_game.php',
+        type: "POST",
+        data: {
+            gameId: gameId
+        }
+    });
+}
+//Слушатель добавления пати в бд
+function createPartyListner(gameId) {
+    setInterval(() => {
+        getCountPartyes(gameId).done(function (data) {
+            var count = $.parseJSON(data);
+
+            if(count[0]['count'] != nowCountPartyes) {
+                getAllParties().done(function (data) {
+                    var partiesArray = $.parseJSON(data);
+
+                    viewAllParties(partiesArray, gameId);
+                });
+
+                nowCountPartyes = count[0]['count'];
+            }
+        });
+    }, 1200);
 }
