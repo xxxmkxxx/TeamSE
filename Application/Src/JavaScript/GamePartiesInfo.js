@@ -135,7 +135,7 @@ function getCountPartyMembers(partyId) {
         }
     });
 }
-// Функция для получения количества игроков в пати
+// Функция для получения количества существующих пати по id игры
 function getCountPartyes(gameId) {
     return $.ajax({
         url: '../php/get_count_partyes_to_game.php',

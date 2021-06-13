@@ -148,7 +148,7 @@
 		</form>
 
 
-		<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
+		<!--<form action="temp.php" method="post"> <!-- фильтры выбора пати -->
 
 				<div class = "party_filters" id = "party_filters">
 					<div class = "party_filt_categ">
@@ -156,11 +156,11 @@
 							<div class = "filter_name"> ПРИВАТНОСТЬ </div>
 
 							<div class = "categ_box">
-								<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> приватные
+								<input type="checkbox" id = "privacy_filter1" class = "privacy_filter"> приватные
 							</div>
 
 							<div class = "categ_box">
-							<input type="checkbox" name = "privacy_filter" class = "privacy_filter"> публичные
+							<input type="checkbox" id = "privacy_filter2" class = "privacy_filter"> публичные
 							</div>
 						</div>
 
@@ -171,9 +171,9 @@
 						</div>
 					</div>
 
-					<button name = "apply_party_filt" class = "apply_party_filt"> ПРИМЕНИТЬ </button>
+					<button id = "apply_party_filt" class = "apply_party_filt" onclick = "filters()"> ПРИМЕНИТЬ </button>
 				</div>
-		</form>
+		<!--</form>-->
 
 
 
