@@ -110,3 +110,10 @@ function createNewRow(id) {
 
     return $('#rowParty' + id);
 }
+
+// Получение всех party_members
+function getAllPartyMembers() {
+    return $.ajax({
+        url: '../php/get_party_members.php'
+    });
+}
