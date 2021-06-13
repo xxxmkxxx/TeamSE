@@ -1,13 +1,18 @@
+var files_path;
+
 $(document).ready(mainFunction());
 
 function mainFunction() {
     // вызов функции предварительного просмотра загружаемого изображения
     $("#file").change(function() {
         readURL(this);
+        uploadImage(this.files).done(function (respond) {
+            files_path = respond.files;
+        });
     });
 
     getGameByName(getNameGame()).done(function (data) {
-        game = $.parseJSON(data)[0];
+        var game = $.parseJSON(data)[0];
         getSession().done(function (data) {
             var session = $.parseJSON(data);
 
@@ -72,4 +77,28 @@ function createParty(gameId, userId) {
             }
         }
     });
+}
+//Функция загрузки изображения на сервер
+function uploadImage(files) {
+    if(typeof files == 'undefined')
+        return;
+
+    var data = new FormData();
+
+    $.each(files, function(key, value) {
+        data.append(key, value);
+    });
+
+    data.append('my_file_upload', 1);
+
+    return $.ajax({
+        url: './submit.php',
+        type: 'POST', // важно!
+        data: data,
+        cache: false,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+    });
+
 }
