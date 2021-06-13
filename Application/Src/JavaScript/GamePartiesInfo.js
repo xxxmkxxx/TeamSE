@@ -22,7 +22,7 @@ function viewAllParties(partiesArray, gameId) {
     var rowParty = $('#rowParty');
     $("#com_party_place").empty();
 
-    recursFunc(0);
+    setTimeout(recursFunc(0), 0);
     
     function recursFunc(i) {
         if(i < partiesArray.length) {
@@ -30,11 +30,11 @@ function viewAllParties(partiesArray, gameId) {
             var flag = gameId == partiesArray[i]['game_id'];
 
             if(flag) {
-                getUserById(partiesArray[i]['party_creator']).done(function (data) {
+                $.when(getUserById(partiesArray[i]['party_creator'])).done(function (data) {
                     user = $.parseJSON(data);
                     var flag = partiesArray[i]['party_creator'] == user[0]['id_user'];
 
-                    getCountPartyMembers(i).done(function (data) {
+                    getCountPartyMembers(partiesArray[i]['id_party']).done(function (data) {
                         var count = $.parseJSON(data)[0]['count'];
                         if(flag) {
                             if(numberPartyOnRow % 3 != 0) {
