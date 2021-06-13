@@ -72,14 +72,10 @@ function viewParties(partiesArray, nickname) {
                     if(flag) {
                         var flag = nickname == user[0]['login'];
                         if(flag){
-                            getAllPartyMembers().done(function (data){
+                            getCountPartyMembers(partiesArray[i]['id_party']).done(function (data){
                                 var partyMembers = $.parseJSON(data);
-                                var gamersInParty = 0;
-                                for(let j = 0; j < partyMembers.length; j++){
-                                    if(partyMembers[j]['party_id'] == partiesArray[i]['id_party']){
-                                        gamersInParty++;                //подсчет количества игроков в пати
-                                    }
-                                }
+                                var gamersInParty = partyMembers[0]['count'];
+
                                 let rowDiv = createNewRow(1);
                                 createPartyBlock(1, rowDiv, gamersInParty , partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
                                 $('#com_party_place').append(rowDiv);

@@ -117,3 +117,13 @@ function getAllPartyMembers() {
         url: '../php/get_party_members.php'
     });
 }
+// Функция для получения количества игроков в пати
+function getCountPartyMembers(partyId) {
+    return $.ajax({
+        url: '../php/get_count_party_members.php',
+        type: "POST",
+        data: {
+            partyId: partyId
+        }
+    });
+}

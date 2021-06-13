@@ -1,5 +1,4 @@
 <?php
-//$config = include('config.php');
 include('DataBaseModul.php');
 
 $query = 'SELECT * FROM party_members';
