@@ -73,8 +73,7 @@ function viewParties(partiesArray, nickname) {
                         var flag = nickname == user[0]['login'];
                         if(flag){
                             getCountPartyMembers(partiesArray[i]['id_party']).done(function (data){
-                                var partyMembers = $.parseJSON(data);
-                                var gamersInParty = partyMembers[0]['count'];
+                                var gamersInParty = $.parseJSON(data)[0]['count'];
 
                                 let rowDiv = createNewRow(1);
                                 createPartyBlock(1, rowDiv, gamersInParty , partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
