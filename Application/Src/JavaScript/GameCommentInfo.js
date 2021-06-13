@@ -1,3 +1,5 @@
+var countComments = 3;
+
 $(document).ready(mainFunction());
 
 function mainFunction() {
@@ -10,8 +12,9 @@ function mainFunction() {
         getAllComments(game[0]['game_id']).done(function (data) {
             comments = $.parseJSON(data);
 
-            viewAllComments(comments, 3);
+            viewAllComments(comments, countComments);
         });
+        viewMoreComments(game[0]['game_id']);
     });
 }
 //Функция для получения массива всех комментраиев
@@ -26,7 +29,10 @@ function getAllComments(gameId) {
 function viewAllComments(comments, countComments) {
     if(comments.length != 0) {
         for (let i = 0; i < comments.length; i++) {
-            if(i <= countComments) {
+            if(i < countComments) {
+                if(i == comments.length - 1) {
+                    $("#button_show_more").remove();
+                }
                 getUserById(comments[i]['id_user']).done(function (data) {
                     var user = $.parseJSON(data);
 
@@ -71,4 +77,23 @@ function viewComment(comment, number, user) {
     commentDiv.append(div_comment_text);
 
     $('#review_block2').append(commentDiv);
+}
+//Функция отображения больше комментариев
+function viewMoreComments(gameId) {
+    $("#button_show_more").click(function (obj) {
+        obj.preventDefault();
+
+        $("#review_block2").empty();
+        countComments += 3;
+
+        getGameByName(getNameGame()).done(function (data) {
+            var game = $.parseJSON(data);
+
+            getAllComments(game[0]['game_id']).done(function (data) {
+                var comments = $.parseJSON(data);
+
+                viewAllComments(comments, countComments);
+            });
+        });
+    });
 }

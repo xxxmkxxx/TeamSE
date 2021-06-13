@@ -71,3 +71,30 @@ function open_menu(){
             $(".party_filters").css("margin-top","7.5vw")})
     });
 }
+function insSortJsonArr(jsonArray, key, isGreatestToLeast){
+
+    for(var i = 1; i < jsonArray.length; i++){
+
+        var next = jsonArray[i];
+        var j = i;
+
+        if(isGreatestToLeast){
+
+            while(j > 0 &&  next[key] >  jsonArray[j - 1][key]){
+
+                jsonArray[j] = jsonArray[j - 1];
+                j--;
+            }
+        } else{
+
+            while(j > 0 &&  jsonArray[j - 1][key] < next[key]){
+
+                jsonArray[j] = jsonArray[j - 1];
+                j--;
+            }
+        }
+
+        jsonArray[j] = next;
+    }
+    return jsonArray;
+}

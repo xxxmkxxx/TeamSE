@@ -257,7 +257,7 @@ main{
 	background-color: #2F3270;
 	color: white;
 	padding: 0.1vw;
-
+	cursor: pointer;
 }
 
 .comment{

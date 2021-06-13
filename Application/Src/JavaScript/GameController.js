@@ -62,7 +62,7 @@ function filters(){
 }
 //функция открытия формы создания отзыва
 function open_new_com_form(){
-    $(document).on('click','.write', function (obj) {
+    $(document).on('click','.write', function () {
         if($(".write_commment").css("display") == "none"){
             $(".write_commment").slideDown(200);
             $(".review_block2").animate({"margin-top": "13vw"}, 500);
