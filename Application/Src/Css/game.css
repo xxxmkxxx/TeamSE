@@ -575,6 +575,7 @@ main{
 	color: white;
 	padding-left: 10vw;
 	margin-right: 10vw;
+	cursor: pointer;
 }
 
 
@@ -737,7 +738,16 @@ textarea:focus, input:focus{
 outline: none;
 }
 
+ A{
+    text-decoration: none;
+ }
 
+.search_message{
+	margin-left: 1.5vw;
+	font-family: ButtonsFont;
+	color: white;
+	font-size: 1.3vw;
+}
 
 .party_filters{
 	display: none;

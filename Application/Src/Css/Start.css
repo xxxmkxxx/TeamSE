@@ -123,6 +123,11 @@ main{
 	border-radius: 6px;
 	font-family: ButtonsFont;
 	border: none;
+	z-index: 2;
+}
+
+textarea:focus, input:focus{
+outline: none;
 }
 
 #registration_inputtype{

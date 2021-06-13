@@ -240,11 +240,12 @@ input[type=checkbox] {
 
 .search_message{
 	height: 5vw;
-	font-family: MainBoldFont;
-	font-size: 1.8vw;
-	color: #0C1223;
+	font-family: ButtonsFont;
+	font-size: 1.5vw;
+	color: white;
 	margin-left: 8.3vw;
 	display: block;
+
 }
 
 .popular_games_row{    /* менять значение display на none */
@@ -281,12 +282,19 @@ input[type=checkbox] {
 	width: 100vw;
 }
 
+
+ A{
+    text-decoration: none;
+ }
+
+
 .menu_categories{
 	font-family: ButtonsFont;
 	font-size: 1.3vw;
 	color: white;
 	padding-left: 10vw;
 	margin-right: 10vw;
+	cursor: pointer;
 }
 
 .games_block{
