@@ -1,5 +1,5 @@
 
-// функция окрашивания border в зеленый
+// функция окрашивания border в зеленый и тд
 function ready_nick(){
 	$(document).on('click','#ready_button', function (obj) {
         obj.preventDefault();
@@ -21,8 +21,6 @@ function ready_nick(){
 
         $("#party_form").hide();
     });
-
-
 }
 
 
