@@ -42,7 +42,11 @@ function searchParty(parties, nickname) {
     $('#com_party_place').append(partiesRowDiv);
     
     if(nickname == '') {                        ////если поле поиска пустое, отображаем все пати
-        viewAllParties(parties);
+        getGameByName(getNameGame()).done(function (data) {
+            var game = $.parseJSON(data);
+            viewAllParties(parties, game[0]['game_id']);
+
+        });
     } 
     else {
         viewParties(parties, nickname);
