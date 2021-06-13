@@ -378,6 +378,7 @@ main{
 	margin-left: 1.5vw;
 	padding-left: 9px;
 	font-size: 1.4vw;
+	border: none;
 }
 
 .find_game_inp::placeholder{
@@ -452,6 +453,7 @@ main{
 	border-radius: 2.3vw;
 }
 
+
 .formsdata{
 	height: 2vw;
 	display: flex;
@@ -498,13 +500,63 @@ main{
     overflow: hidden;
 }
 
+.party1_password{
+	width: 12vw;
+	height: 2vw;
+	padding-left: 1vw;
+    margin-left: 1vw;
+    margin-top: 1vw;
+    font-family: othertext;
+    font-size: 1.2vw;
+    border-radius: 10vw;
+    border: none;
+    background: linear-gradient(to right, white, #6071F9);;
+}
+
+
+.party2_password{
+	width: 12vw;
+	height: 2vw;
+	padding-left: 1vw;
+    margin-left: 1vw;
+    margin-top: 1vw;
+    font-family: othertext;
+    font-size: 1.2vw;
+    border-radius: 10vw;
+    border: none;
+    background: linear-gradient(to right, white, #7C65FB);;
+}
+
+
+.party3_password{
+	width: 12vw;
+	height: 2vw;
+	padding-left: 1vw;
+    margin-left: 1vw;
+    margin-top: 1vw;
+    font-family: othertext;
+    font-size: 1.2vw;
+    border-radius: 10vw;
+    border: none;
+    background: linear-gradient(to right, white, #8D56FC);;
+}
+
+.party_password::placeholder{
+  font-size: 1.2vw;
+  font-family: othertext;
+  opacity: 50%;
+  font-style: italic;
+}
+
+
 .come_in > img{
 	width: 2.2vw;
-	height: 2.2vw;
+	/*height: 2.2vw;*/
 	margin-top: 0.9vw;
 	margin-left: -1.3vw;
 	cursor: pointer;
 }
+
 
 .menu{   		/* менять значение display на none */
 	/*display: inline-flex;*/
@@ -523,6 +575,7 @@ main{
 	color: white;
 	padding-left: 10vw;
 	margin-right: 10vw;
+	cursor: pointer;
 }
 
 
@@ -685,7 +738,16 @@ textarea:focus, input:focus{
 outline: none;
 }
 
+ A{
+    text-decoration: none;
+ }
 
+.search_message{
+	margin-left: 1.5vw;
+	font-family: ButtonsFont;
+	color: white;
+	font-size: 1.3vw;
+}
 
 .party_filters{
 	display: none;
