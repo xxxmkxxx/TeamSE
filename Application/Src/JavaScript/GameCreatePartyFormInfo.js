@@ -3,6 +3,7 @@ var files_path;
 $(document).ready(mainFunction());
 
 function mainFunction() {
+    checkCheckBox();
     // вызов функции предварительного просмотра загружаемого изображения
     $("#file").change(function() {
         readURL(this);
@@ -60,14 +61,28 @@ function createParty(gameId, userId) {
         if(isPrivacyFlag) {
             var passwordForm = document.getElementById('passwordForm').value;
 
-            if(passwordForm.length != '' && passwordForm.length > 4) {
-                console.log('working');
+            if(passwordForm.length != '' && passwordForm.length > 4 && partyDescrTextArea.value != '') {
                 $.ajax({
                     url: '../php/set_party.php',
                     type: 'POST',
                     data: {
                         gameId: gameId, partyPassword: passwordForm, gamersAmount: playerNumInput.value,
                         partyDescription: partyDescrTextArea.value, privacy: 'закрытая',
+                        partyIcon: '', partyCreator: userId
+                    },
+                    success: function () {
+                        close_party_creator();
+                    }
+                });
+            }
+        } else {
+            if(partyDescrTextArea.value != '') {
+                $.ajax({
+                    url: '../php/set_party.php',
+                    type: 'POST',
+                    data: {
+                        gameId: gameId, partyPassword: '', gamersAmount: playerNumInput.value,
+                        partyDescription: partyDescrTextArea.value, privacy: 'открытая',
                         partyIcon: '', partyCreator: userId
                     },
                     success: function () {
@@ -100,5 +115,12 @@ function uploadImage(files) {
         processData: false,
         contentType: false
     });
+}
+//Слушатель нажатия на чекбокс в форме создания пати
+function checkCheckBox() {
+    $('#privacy').click(function (obj) {
+        obj.preventDefault();
 
+        $('#privacy').val('yes');
+    });
 }
