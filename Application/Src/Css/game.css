@@ -134,7 +134,7 @@ main{
 	background-color: #142142;
 	border-radius: 2vw;
 	width: 70vw;
-	height: 50vw;
+	min-height: 50vw;
 	margin-left: 1vw;
 	display: flex;
 	flex-direction: column;
