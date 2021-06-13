@@ -43,10 +43,10 @@ function searchParty(parties, nickname) {
     
     if(nickname == '') {                        ////если поле поиска пустое, отображаем все пати
         viewAllParties(parties);
-        showErrorMessage = false;
+        //showErrorMessage = false;
     } 
     else {
-        showErrorMessage =  viewParties(parties, nickname);
+        viewParties(parties, nickname);
     }
     // if(showErrorMessage){
     //     $('#search_message').text('ничего не найдено');
@@ -58,35 +58,49 @@ function searchParty(parties, nickname) {
 function viewParties(partiesArray, nickname) {
 
     getGameByName(getNameGame()).done(function (data) {
+        var showErrorMessage = true;
         var game = $.parseJSON(data);
-
         for (let i = 0; i < partiesArray.length; i++) {
-            var user;
-            var flag = game[0]['game_id'] == partiesArray[i]['game_id'];
+            getCountPartyMembers(partiesArray[i]['id_party']).done(function (data){
+                var gamersInParty = $.parseJSON(data)[0]['count'];
+                var user;
+                var flag = game[0]['game_id'] == partiesArray[i]['game_id'];
 
-            if(flag) {
-                getUserById(partiesArray[i]['party_creator']).done(function (data) {
-                    user = $.parseJSON(data);
-                    var flag = partiesArray[i]['party_creator'] == user[0]['id_user'];
+                if(flag) {
+                    getUserById(partiesArray[i]['party_creator']).done(function (data) {
+                        user = $.parseJSON(data);
+                        var flag = partiesArray[i]['party_creator'] == user[0]['id_user'];
 
-                    if(flag) {
-                        var flag = nickname == user[0]['login'];
-                        if(flag){
-                            getCountPartyMembers(partiesArray[i]['id_party']).done(function (data){
-                                var gamersInParty = $.parseJSON(data)[0]['count'];
+                        if(flag) {
+                            var flag = nickname == user[0]['login'];
+                            // console.log('nickname ' + nickname);
+                            // console.log('login ' + user[0]['login']);
+                            // console.log(flag);
+                            if(flag){
+                                // console.log('after');
+                                // console.log('nickname ' + nickname);
+                                // console.log('login ' + user[0]['login']);
+                                // console.log(flag);
+                                //console.log(user[0]['login']);
+                                //getCountPartyMembers(partiesArray[i]['id_party']).done(function (data){
+                                //console.log(user[0]['login']);
+                                //var gamersInParty = $.parseJSON(data)[0]['count'];
 
                                 let rowDiv = createNewRow(1);
                                 createPartyBlock(1, rowDiv, gamersInParty , partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
                                 $('#com_party_place').append(rowDiv);
+                                //$('#search_message').text('');
+                                showErrorMessage = false;
                                 $('#search_message').text('');
-                            });
-                        } else{
-                            $('#search_message').text('ничего не найдено');
-                        }
+                                //});
+                            } else if(showErrorMessage){
+                                $('#search_message').text('ничего не найдено');
+                            }
 
-                    }
-                });
-            }
+                        }
+                    });
+                }
+        });
         }
     });
 }
