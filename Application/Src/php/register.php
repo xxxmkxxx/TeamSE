@@ -1,6 +1,7 @@
 <?php
 $config = include('config.php');
 include('DataBaseModul.php');
+include('SessionModul.php');
 
 $query = 'SELECT * FROM `users` WHERE `login` = :user_login';
 $execute = ['user_login'=>$_POST['reg_form_login']];
