@@ -22,8 +22,11 @@ function createComment(gameId, userId) {
             $.ajax({
                 url: '../php/set_comment.php',
                 type: 'POST',
-                data: {gameId: gameId, userId: userId, commentText: commentText}
-            });
+                data: {gameId: gameId, userId: userId, commentText: commentText},
+                success: function () {
+                    $('#write_commment_area').val('');
+                }
+            })
 
             $('.write_commment').slideUp(200);
             $(".review_block2").animate({"margin-top": "0vw"}, 500);

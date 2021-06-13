@@ -1,19 +1,16 @@
 var countComments = 3;
+var nowCount = 0;
 
 $(document).ready(mainFunction());
 
 function mainFunction() {
     var game;
-    var comments;
 
     getGameByName(getNameGame()).done(function (data) {
         game = $.parseJSON(data);
 
-        getAllComments(game[0]['game_id']).done(function (data) {
-            comments = $.parseJSON(data);
+        dbListner(game[0]['game_id'], nowCount);
 
-            viewAllComments(comments, countComments);
-        });
         viewMoreComments(game[0]['game_id']);
     });
 }
@@ -27,6 +24,8 @@ function getAllComments(gameId) {
 }
 //Функция для отображения части комментариев
 function viewAllComments(comments, countComments) {
+    $("#review_block2").empty();
+
     if(comments.length != 0) {
         for (let i = 0; i < comments.length; i++) {
             if(i < countComments) {
@@ -79,7 +78,7 @@ function viewComment(comment, number, user) {
     $('#review_block2').append(commentDiv);
 }
 //Функция отображения больше комментариев
-function viewMoreComments(gameId) {
+function viewMoreComments() {
     $("#button_show_more").click(function (obj) {
         obj.preventDefault();
 
@@ -96,4 +95,30 @@ function viewMoreComments(gameId) {
             });
         });
     });
+}
+//Функция получения количества комментариев в бд
+function getCountComments(gameId) {
+    return $.ajax({
+        url: '../php/get_count_comments_to_game.php',
+        type: 'POST',
+        data: {gameId : gameId}
+    });
+}
+//Слушатель изменения бд
+function dbListner(gameId) {
+    setInterval(() => {
+        getCountComments(gameId).done(function (data) {
+            var count = $.parseJSON(data);
+
+            if(count[0]['count'] != nowCount) {
+                getAllComments(gameId).done(function (data) {
+                    var comments = $.parseJSON(data);
+
+                    viewAllComments(comments, countComments);
+                });
+
+                nowCount = count[0]['count'];
+            }
+        });
+    }, 1500);
 }
