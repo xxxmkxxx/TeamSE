@@ -5,6 +5,15 @@ function mainFunction() {
     $("#file").change(function() {
         readURL(this);
     });
+
+    getGameByName(getNameGame()).done(function (data) {
+        game = $.parseJSON(data)[0];
+        getSession().done(function (data) {
+            var session = $.parseJSON(data);
+
+            createParty(game['game_id'], session['id']);
+        });
+    });
 }
 //функция предварительного просмотра загружаемого изображения
 function readURL(input) {
@@ -32,3 +41,35 @@ privacy.addEventListener('change', (event) => {
         $(".create_party_form").animate({"height": "36vw"}, 0);
     }
 })
+//Функция создания пати
+function createParty(gameId, userId) {
+    $('#create_party_form').submit(function (obj) {
+        obj.preventDefault();
+
+        var privacyCheckBox = document.getElementById('privacy');
+        var partyDescrTextArea = document.getElementById('party_descr');
+        var playerNumInput = document.getElementById('player_num');
+
+        var isPrivacyFlag = privacyCheckBox.value == 'yes';
+
+        if(isPrivacyFlag) {
+            var passwordForm = document.getElementById('passwordForm').value;
+
+            if(passwordForm.length != '' && passwordForm.length > 4) {
+                console.log('working');
+                $.ajax({
+                    url: '../php/set_party.php',
+                    type: 'POST',
+                    data: {
+                        gameId: gameId, partyPassword: passwordForm, gamersAmount: playerNumInput.value,
+                        partyDescription: partyDescrTextArea.value, privacy: 'закрытая',
+                        partyIcon: '', partyCreator: userId
+                    },
+                    success: function () {
+                        close_party_creator();
+                    }
+                });
+            }
+        }
+    });
+}
