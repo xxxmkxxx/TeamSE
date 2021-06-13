@@ -7,7 +7,7 @@ function mainFunction() {
     $('#send_filters').click(function (obj) {
         obj.preventDefault();
         var gamesByFiltersArray;
-        filtersArray = new Array();
+        var filtersArray = new Array();
 
         getAllGamesByFilters().done(function (data) {
             gamesByFiltersArray = $.parseJSON(data);
@@ -21,29 +21,8 @@ function mainFunction() {
             }
 
             if(filtersArray.length == 0) {
-                var popularGamesRowDiv = $('<div>', {
-                    'class': 'popular_games_row',
-                    'id': 'popular_games_row'
-                });
-
-                $('#game_catalog').append(popularGamesRowDiv);
-
-                $('#games_block').remove();
-                $('#popular_games_row').remove();
-
-                $('#search_message').text('');
-                var gamesBlockDiv = $('<div>', {
-                    'class': 'games_block',
-                    'id': 'games_block'
-                })
-                var gamesRowDiv = $('<div>', {
-                    'class': 'games_row',
-                    'id': 'games_row'
-                });
-
-                gamesBlockDiv.append(gamesRowDiv);
-
-                $('#popular_games_row').after(gamesBlockDiv);
+                $('#games_block').empty();
+                $('#popular_games_row').empty();
 
                 viewPopularGames(gamesArray);
                 viewAllGames(gamesArray);
@@ -65,33 +44,35 @@ function searchGamesByFilters(games, filters) {
     var resultArrayGames = new Array();
     var isSetGameVithFilter;
 
-    var popularGamesRowDiv = $('<div>', {
-        'class': 'popular_games_row',
-        'id': 'popular_games_row'
-    });
-
-    $('#games_block').remove();
-    $('#popular_games_row').remove();
-
-    $('#game_catalog').append(popularGamesRowDiv);
+    $('#games_block').empty();
+    $('#popular_games_row').empty();
 
     for (let i = 0; i < filters.length; i++) {
         for (let j = 0; j < games.length; j++) {
             isSetGameVithFilter = games[j]['genre'] == filters[i];
 
             if(isSetGameVithFilter) {
-                resultArrayGames.push(games[j]);
+                var coincidences = false;
+
+                for (let k = 0; k < resultArrayGames.length; k++) {
+                    if(games[j]['game_id'] == resultArrayGames[k]['game_id']){
+                        coincidences = true;
+                        break;
+                    }
+                }
+
+                if(!coincidences) {
+                    resultArrayGames.push(games[j]);
+                }
             }
         }
     }
 
     if(resultArrayGames.length == 0) {
         $('#search_message').text('ничего не найдено');
-        $('#games_block').remove();
+        $('#games_block').empty();
     } else {
-        for (let i = 0; i < resultArrayGames.length; i++) {
-            viewGame(resultArrayGames[i], $('#popular_games_row'), popularGamesRowDiv);
-        }
+        viewAllGames(resultArrayGames);
     }
 }
 //Функция для открытия формы с фильтрами
