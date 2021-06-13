@@ -45,7 +45,10 @@ main{
 }
 
 .header_buttons_cont{
-	margin-left: 54.5vw;
+	width: 77.5vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 
 .header_buttons{

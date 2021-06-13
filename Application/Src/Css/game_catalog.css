@@ -71,13 +71,24 @@ header{
 	cursor: pointer;
 }
 
-.menu_icon{
-	margin-left: 62vw;
+
+.profile_data{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	/*background-color: red;*/
+	width: 77.5vw;
 }
 
 .menu_icon > img{
-	height: 3vw;
-	
+	height: 2.5vw;
+	cursor: pointer;
+}
+
+.menu_icon{
+	margin-right: 1vw;
+	margin-left: 2vw;
 }
 
 .profile{
@@ -85,7 +96,19 @@ header{
 	font-family: ButtonsFont;
 	color: #b8d9ff;
 	margin-left: 1vw;
+	cursor: pointer;
 }
+
+.profile_icon > img{
+	height: 2vw;
+	border-radius: 10vw;
+}
+
+.profile_icon{
+	margin-left: 0.7vw;
+}
+
+
 
 main{
 	background-color: #111b33;

@@ -65,12 +65,25 @@ header{
 }
 
 
-.menu_icon{
-	margin-left: 62vw;
 
+
+.profile_data{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	/*background-color: red;*/
+	width: 77.5vw;
 }
+
 .menu_icon > img{
-	height: 3vw;
+	height: 2.5vw;
+	cursor: pointer;
+}
+
+.menu_icon{
+	margin-right: 1vw;
+	margin-left: 2vw;
 }
 
 .profile{
@@ -78,7 +91,19 @@ header{
 	font-family: ButtonsFont;
 	color: #b8d9ff;
 	margin-left: 1vw;
+	cursor: pointer;
 }
+
+.profile_icon > img{
+	height: 2vw;
+	border-radius: 10vw;
+}
+
+.profile_icon{
+	margin-left: 0.7vw;
+}
+
+
 
 
 main{
@@ -353,6 +378,11 @@ main{
 	margin-left: 1.5vw;
 	padding-left: 9px;
 	font-size: 1.4vw;
+}
+
+.find_game_inp::placeholder{
+	font-size: 1.2vw;
+	font-style: italic;
 }
 
 .find_icon > img{
