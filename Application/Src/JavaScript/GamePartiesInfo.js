@@ -37,11 +37,11 @@ function viewAllParties(partiesArray) {
                         if(numberPartyOnRow % 3 != 0) {
                             numberPartyOnRow++;
 
-                            createPartyBlock(numberPartyOnRow + 1, rowParty, partiesArray[i]['gamers_amount'], 5, user[0], partiesArray[i]['id_party']);
+                            createPartyBlock(numberPartyOnRow + 1, rowParty, 1, partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
                         } else {
                             numberPartyOnRow = 0;
                             rowParty = createNewRow(numberRow);
-                            createPartyBlock(numberPartyOnRow + 1, rowParty, partiesArray[i]['gamers_amount'], 5, user[0], partiesArray[i]['id_party']);
+                            createPartyBlock(numberPartyOnRow + 1, rowParty, 1, partiesArray[i]['gamers_amount'], user[0], partiesArray[i]['id_party']);
                         }
                     }
                 });
@@ -115,5 +115,15 @@ function createNewRow(id) {
 function getAllPartyMembers() {
     return $.ajax({
         url: '../php/get_party_members.php'
+    });
+}
+// Функция для получения количества игроков в пати
+function getCountPartyMembers(partyId) {
+    return $.ajax({
+        url: '../php/get_count_party_members.php',
+        type: "POST",
+        data: {
+            partyId: partyId
+        }
     });
 }

@@ -48,26 +48,25 @@
 
 	<main id = "main" name = "main">
 
-		<form> <!-- форма создания пати -->
+		<form id="create_party_form"> <!-- форма создания пати -->
 
 				<div class = "create_party_form">
 					<div class = "close_party_creator" onclick = "close_party_creator()"> <img src="../images/close_icon.png"> </div>
 
 					<div class = "cre_row">
 						<span class = "privacy_name" style = "margin-top: 0vw"> Приватность: </span>
-						<input type="checkbox" name = "privacy" id = "privacy" class = "privacy">
+						<input type="checkbox" id = "privacy" class = "privacy" value="yes">
 
 						<span class = "pl_num_name"> Количество игроков: </span>
-						<input type="number" name = "player_num"  min="2" max="100" value="2" class = "player_num">
+						<input type="number" id="player_num"  min="2" max="100" value="2" class = "player_num">
 					</div>
 
-					<input type ="text" class = "password_form" placeholder="пароль">
+					<input type ="text" class = "password_form" id="passwordForm" placeholder="пароль">
 
-				
 
 					<div class = "cre_row">
 						<span class = "load_name"> Загрузите изображение: </span>
-						<input type="file" name="file" id="file" class = "load">
+						<input type="file" id="file" class = "load">
 						
 					</div>
 
@@ -80,10 +79,10 @@
 					</div>
 
 					<div class = "cre_row">
-						<textarea name = "party_descr" wrap = "soft" maxlength="400" class = "party_descr"> </textarea>
+						<textarea id="party_descr" wrap = "soft" maxlength="400" class = "party_descr"> </textarea>
 					</div>
 					
-					<button name = "create_party" class = "create_button"> СОЗДАТЬ ПАТИ</button>
+					<button id="create_party_button" class = "create_button"> СОЗДАТЬ ПАТИ</button>
 				</div>
 		</form>
 
