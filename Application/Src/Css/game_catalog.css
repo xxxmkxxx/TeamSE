@@ -319,6 +319,10 @@ input[type=checkbox] {
 	width: 11.5vw;
 	height: 11.5vw;
 	border-radius: 2.3vw;
+	cursor: poiner
+}
+
+.game{
 	margin-right: 2.76vw;
 
 }

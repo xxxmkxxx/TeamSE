@@ -38,6 +38,9 @@ header{
 	z-index: 2;
 }
 
+
+ 
+
 main{
 	background-color: #111b33;
 	height: 100vh;
@@ -173,6 +176,11 @@ main{
   background-color: #ffa947;
   transition: all 0.3s;
 }
+
+A{
+    text-decoration: none;
+    color: inherit; 
+ }
 
 input:focus{
 outline: none;

@@ -28,6 +28,11 @@ if(count($user) != 0) {
 
         executePreparedQuery($query, $execute);
 
+        $query = 'SELECT * FROM `users` WHERE `login` = :login';
+        $execute = ['login'=>$_POST['reg_form_login']];
+
+        $user = executePreparedQuery($query, $execute);
+
         setLogin($user[0]['login']);
 
         echo 'success';

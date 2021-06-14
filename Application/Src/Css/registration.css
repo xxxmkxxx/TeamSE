@@ -33,6 +33,11 @@ header{
 	z-index: 2;
 }
 
+A{
+    text-decoration: none;
+    color: inherit; 
+ }
+ 
 main{
 	background-color: #111b33;
 	height: 88vh;
