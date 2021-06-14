@@ -163,3 +163,14 @@ function createPartyListner(gameId) {
         });
     }, 1200);
 }
+
+// Функция для получения минимального количиства игроков среди пати для игры с gameID
+function getMinPartyGamersAmount(gameId) {
+    return $.ajax({
+        url: '../php/get_min_party_gamers_amount.php',
+        type: "POST",
+        data: {
+            gameId: gameId
+        }
+    });
+}

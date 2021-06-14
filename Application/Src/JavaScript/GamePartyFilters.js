@@ -7,7 +7,7 @@ function mainFunction() {
         //obj.preventDefault();
 
         let filtersStatus = getFiltersStatus();
-        console.log(filtersStatus);
+        //console.log(filtersStatus);
         getAllParties().done(function(data){
             let partiesArray = $.parseJSON(data);
             searchPartyFilters(partiesArray, filtersStatus);
