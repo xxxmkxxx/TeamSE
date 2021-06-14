@@ -23,12 +23,4 @@ function ready_nick(){
     });
 }
 
-
-
-
-
-
-
-
-
 ready_nick();

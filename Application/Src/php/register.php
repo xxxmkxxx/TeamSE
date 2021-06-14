@@ -34,6 +34,7 @@ if(count($user) != 0) {
         $user = executePreparedQuery($query, $execute);
 
         setLogin($user[0]['login']);
+        setLoginId($user[0]['id_user']);
 
         echo 'success';
     } else {

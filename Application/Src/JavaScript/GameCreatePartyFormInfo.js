@@ -1,4 +1,6 @@
 var files_path;
+var gameId;
+var userId;
 
 $(document).ready(mainFunction());
 
@@ -14,12 +16,14 @@ function mainFunction() {
 
     getGameByName(getNameGame()).done(function (data) {
         var game = $.parseJSON(data)[0];
+        gameId = game['game_id'];
         getSession().done(function (data) {
             var session = $.parseJSON(data);
-
-            createParty(game['game_id'], session['id']);
+            userId = session['id'];
+                createParty(gameId, userId);
         });
     });
+
 }
 //функция предварительного просмотра загружаемого изображения
 function readURL(input) {
@@ -52,45 +56,44 @@ function createParty(gameId, userId) {
     $('#create_party_form').submit(function (obj) {
         obj.preventDefault();
 
-        var privacyCheckBox = document.getElementById('privacy');
-        var partyDescrTextArea = document.getElementById('party_descr');
-        var playerNumInput = document.getElementById('player_num');
+            var privacyCheckBox = document.getElementById('privacy');
+            var partyDescrTextArea = document.getElementById('party_descr');
+            var playerNumInput = document.getElementById('player_num');
 
-        var isPrivacyFlag = privacyCheckBox.value == 'yes';
+            var isPrivacyFlag = privacyCheckBox.value == 'yes';
 
-        if(isPrivacyFlag) {
-            var passwordForm = document.getElementById('passwordForm').value;
-
-            if(passwordForm.length != '' && passwordForm.length > 4 && partyDescrTextArea.value != '') {
-                $.ajax({
-                    url: '../php/set_party.php',
-                    type: 'POST',
-                    data: {
-                        gameId: gameId, partyPassword: passwordForm, gamersAmount: playerNumInput.value,
-                        partyDescription: partyDescrTextArea.value, privacy: 'закрытая',
-                        partyIcon: '', partyCreator: userId
-                    },
-                    success: function () {
-                        close_party_creator();
-                    }
-                });
+            if (isPrivacyFlag) {
+                var passwordForm = document.getElementById('passwordForm').value;
+                if (true) {
+                    $.ajax({
+                        url: '../php/set_party.php',
+                        type: 'POST',
+                        data: {
+                            gameId: gameId, partyPassword: passwordForm, gamersAmount: playerNumInput.value,
+                            partyDescription: partyDescrTextArea.value, privacy: 'закрытая',
+                            partyIcon: '', partyCreator: userId
+                        },
+                        success: function () {
+                            close_party_creator();
+                        }
+                    });
+                }
+            } else {
+                if (true) {
+                    $.ajax({
+                        url: '../php/set_party.php',
+                        type: 'POST',
+                        data: {
+                            gameId: gameId, partyPassword: '', gamersAmount: playerNumInput.value,
+                            partyDescription: partyDescrTextArea.value, privacy: 'открытая',
+                            partyIcon: '', partyCreator: userId
+                        },
+                        success: function () {
+                            close_party_creator();
+                        }
+                    });
+                }
             }
-        } else {
-            if(partyDescrTextArea.value != '') {
-                $.ajax({
-                    url: '../php/set_party.php',
-                    type: 'POST',
-                    data: {
-                        gameId: gameId, partyPassword: '', gamersAmount: playerNumInput.value,
-                        partyDescription: partyDescrTextArea.value, privacy: 'открытая',
-                        partyIcon: '', partyCreator: userId
-                    },
-                    success: function () {
-                        close_party_creator();
-                    }
-                });
-            }
-        }
     });
 }
 //Функция загрузки изображения на сервер
@@ -125,5 +128,20 @@ function checkCheckBox() {
             $('#privacy').val('no');
         else
             $('#privacy').val('yes');
+    });
+}
+function setPartyMember(partyId, membersPartyId, partyMemberRole) {
+    $.ajax({
+        url: '../php/set_party_member.php',
+        type: "POST",
+        data: {
+            partyId: partyId, membersPartyId: membersPartyId, partyMemberRole: partyMemberRole,
+            nickname: 'temp'
+        }
+    });
+}
+function getCountPartyes1() {
+    return $.ajax({
+        url: '../php/get_parties.php'
     });
 }

@@ -1,6 +1,8 @@
+
 $(document).ready(mainFunction());
 
 function mainFunction() {
+    ready_nick();
     //Скрываем форму создания пати
     $("#party_form").hide();
     //Подключение сессии
@@ -61,5 +63,59 @@ function open_new_com_form(){
             $('.write_commment').slideUp(200);
             $(".review_block2").animate({"margin-top": "0vw"}, 500);
         }
+    });
+}
+// функция окрашивания border в зеленый и тд
+function ready_nick(){
+    $(document).on('click','#ready_button', function (obj) {
+        obj.preventDefault();
+
+        $("#my_nick").css("border-color", "#76D874");
+        $('#my_nick').attr('readonly', true);
+        $("#edit_icon").css("display","flex");
+
+        var idParty = $(this).attr('id');
+        // getSession().done(function (data) {
+        //     var session = $.parseJSON(data);
+        //
+        //     setPartyMember(idParty, session['id'], 'обычный');
+        // });
+    });
+
+    $(document).on('click','#edit_icon', function (obj) {
+        obj.preventDefault();
+        $("#my_nick").css("border-color", "#2B3E8A");
+        $('#my_nick').attr('readonly', false);
+        $("#edit_icon").css("display","none");
+
+        // getSession().done(function (data) {
+        //     var session = $.parseJSON(data);
+        //
+        //     $.ajax({
+        //         url: '../php/delete_member_party.php',
+        //         type: "POST",
+        //         data: {
+        //             partyMembers: session['id']
+        //         }
+        //     });
+        // });
+    });
+
+    $(document).on('click','#exit_button', function (obj) {
+        obj.preventDefault();
+
+        // getSession().done(function (data) {
+        //     var session = $.parseJSON(data);
+        //
+        //     $.ajax({
+        //         url: '../php/delete_member_party.php',
+        //         type: "POST",
+        //         data: {
+        //             partyMembers: session['id']
+        //         }
+        //     });
+        // });
+
+        $("#party_form").hide();
     });
 }
